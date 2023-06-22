@@ -1,3 +1,4 @@
+import Reviews from '../components/Reviews'
 import Details from '../components/homeComponent/Details'
 import Header from '../components/homeComponent/Header'
 
@@ -7,6 +8,7 @@ const Home = () => {
     <Header/>
     <main>
       <Details/>
+      <Reviews/>
     </main>
     </>
   )

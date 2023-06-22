@@ -48,6 +48,7 @@ const Wrapper = styled.section`
         height: 4rem;
         border-radius: 50%;
         background-color: var(--primaryColor40);
+        margin-bottom: 1rem;
     }
     .feature-card{
         /* width: 20rem; */

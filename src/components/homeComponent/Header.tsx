@@ -47,6 +47,7 @@ const Wrapper = styled.header`
         top: 0;
         width: 100%;
         background-color: var(--primaryColor80);
+        z-index: 1;
     }
     .head{
         width: min(var(--maxWidth),90%);

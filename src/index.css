@@ -29,6 +29,7 @@ html {
   --primaryColor: #C44C00;
   --primaryColor70: #3b1700;
   --primaryColor80: #270f00;
+  --primaryColor90: #140800;
   --secondaryColor: ;
   --gray: ;
   --redText: #842029;
@@ -49,7 +50,8 @@ body {
   font-family: var(--bodyFont);
   font-weight: 400;
   line-height: 1.75;
-  color: #000000;
+  color: var(--primaryColor90);
+  letter-spacing: var(--letterSpacing);
 }
 
 p {
