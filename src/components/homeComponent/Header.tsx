@@ -29,7 +29,6 @@ const Header = () => {
             <div className="hero">
                 <img src={hero} alt="" className="img" />
             </div>
-            {/* <div className="phone"></div> */}
         </div>
     </Wrapper>
   )
@@ -42,7 +41,7 @@ const Wrapper = styled.header`
     color: var(--primaryColor10);
     padding-top: 5rem;
     .navbody{
-        padding-block: 1rem;
+        padding-block: .5rem;
         position: fixed;
         top: 0;
         width: 100%;
@@ -77,7 +76,7 @@ const Wrapper = styled.header`
         border: 1px solid var(--primaryColor);
     }
     .section{
-        padding-block: 4rem;
+        padding-block: 4.5rem 4rem;
         text-align: center;
         width: min(var(--maxWidth),90%);
         margin-inline: auto;

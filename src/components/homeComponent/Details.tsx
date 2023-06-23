@@ -34,13 +34,11 @@ const Wrapper = styled.section`
     width: min(var(--maxWidth),90%);
     margin-inline: auto;
     text-align: center;
-    padding-block: 5rem;
+    padding-block-start: 4rem;
     .section{
-        padding-top: 3rem;
-        /* display: flex;
-        flex-wrap: wrap; */
-        gap: 1rem;
+        padding-top: 3.5rem;
         display: grid;
+        gap: 1rem;
         grid-template-columns: repeat(auto-fill, minmax(18rem,1fr));
     }
     .circle{
@@ -51,13 +49,13 @@ const Wrapper = styled.section`
         margin-bottom: 1rem;
     }
     .feature-card{
-        /* width: 20rem; */
-        /* flex: 1 1 20rem; */
         background-color: var(--primaryColor20);
         display: flex;
         align-items: center;
+        justify-content: center;
         flex-direction: column;
-        padding: 2rem 1rem;
+        padding: 1rem 1rem;
         border-radius: 0.35rem;
+        height: 20rem;
     }
 `

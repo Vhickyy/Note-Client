@@ -1,6 +1,7 @@
-import Reviews from '../components/Reviews'
+import Reviews from '../components/homeComponent/Reviews'
 import Details from '../components/homeComponent/Details'
 import Header from '../components/homeComponent/Header'
+import Pricing from '../components/homeComponent/Pricing'
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
     <main>
       <Details/>
       <Reviews/>
+      <Pricing/>
     </main>
     </>
   )
