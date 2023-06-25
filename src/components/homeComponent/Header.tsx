@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import hero from "../../assets/undrawhero.svg"
 import Navbar from "../Navbar";
+import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <Wrapper>
@@ -10,7 +11,7 @@ const Header = () => {
             <div>
                 <h1>Secure your notes</h1>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis, sit! Cumque, hic sapiente beatae maxime delectus tempora deserunt nihil eaque?</p>
-                <button>Get Started</button>
+                <Link to={"/signup"}><button>Get Started</button></Link>
             </div>
             <div className="hero">
                 <img src={hero} alt="" className="img" />
@@ -26,42 +27,9 @@ const Wrapper = styled.header`
     background-color: var(--primaryColor80);
     color: var(--primaryColor10);
     padding-top: 5rem;
-     /* .navbody{
-        padding-block: .5rem;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background-color: var(--primaryColor80);
-        z-index: 100;
-        box-shadow: 0px 4px 6px -1px rgb(0 0 0/0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    } 
-    .head{
-        width: min(var(--maxWidth),90%);
-        margin-inline: auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        h1{
-            margin: 0;
-        }
-    } */
-    /* nav{
-        display: none;
-    } */
     span{
         color: var(--primaryColor);
     }
-    /* .ham{
-        display: block;
-    } */
-    /* .btn-container{
-        display: flex;
-        gap: 1.5rem;
-    }
-    .login{
-        background-color: transparent;
-        border: 1px solid var(--primaryColor);
-    } */
     .section{
         padding-block: 4rem 4rem;
         text-align: center;
@@ -79,14 +47,14 @@ const Wrapper = styled.header`
     .hero{
         display: none;
     }
-    @media screen and (min-width:960px){
+    @media screen and (min-width:900px){
         .ham{
             display: none;
         }
         nav{
             display: flex;
             align-items: center;
-            width: 55%;
+            width: 60%;
             justify-content: space-between;
         }
         .section{

@@ -1,12 +1,20 @@
 import { Link } from "react-router-dom";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 import styled from "styled-components";
+import {useState} from "react"
 const Navbar = () => {
+    const [show,setShow] = useState(false);
+    const openNav = () => {
+        setShow(true)
+    }
+    const closeNav = () => {
+        setShow(false)
+    }
   return (
     <Wrapper>
         <div className="head">
             <h2>VEE<span>NOTES</span></h2>
-            <FaBars className="icon ham"/>
+            {!show ?<FaBars className="icon ham" onClick={openNav}/> : <FaTimes className="icon ham" onClick={closeNav}/>}
             <nav>
                 <Link to={"/"}>Home</Link>
                 <Link to={"#"}>About</Link>
@@ -17,6 +25,14 @@ const Navbar = () => {
                 </div>
             </nav>
         </div>
+       {show && <div className="nav-mobile">
+            <Link to={"/"} onClick={closeNav}>Home</Link>
+            <Link to={"/"} onClick={closeNav}>About</Link>
+            <Link to={"/"} onClick={closeNav}>Contact</Link>
+            <Link to={"/"} onClick={closeNav}>FAQs</Link>
+            <Link to={"login"} onClick={closeNav}>Log in</Link>
+            <Link to={"signup"} onClick={closeNav}>sign up</Link>
+        </div>}
     </Wrapper>
   )
 }
@@ -41,6 +57,19 @@ const Wrapper = styled.div`
         h2{
             margin: 0;
         }
+    }
+    .nav-mobile{
+        width: min(var(--maxWidth),90%);
+        margin-inline: auto;
+        display: flex;
+        flex-direction: column;
+        padding-block: .7rem .5rem;
+        gap: .5rem;
+        /* button{
+            width: min(20rem,100%);
+            margin-inline: auto;
+        } */
+        
     }
     nav{
         display: none;
