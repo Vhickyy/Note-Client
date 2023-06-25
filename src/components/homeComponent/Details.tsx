@@ -1,28 +1,32 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
+
 const Details = () => {
   return (
     <Wrapper>
-        <h2>Featured</h2>
-        <div className="underline"></div>
-        <div className="section">
-            <div className="feature-card">
-                <div className="circle"></div>
-                <h4>Article</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, incidunt.</p>
-                <button>explore</button>
-            </div>
-            <div className="feature-card">
-                <div className="circle"></div>
-                <h4>Article</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, incidunt.</p>
-                <button>explore</button>
-            </div>
-            <div className="feature-card">
-                <div className="circle"></div>
-                <h4>Article</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, incidunt.</p>
-                <button>explore</button>
-            </div>
+        <div className="main">
+            <h2>Featured</h2>
+            <div className="underline"></div>
+            <motion.div className="section">
+                <div className="feature-card">
+                    <div className="circle"></div>
+                    <h4>Article</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, incidunt.</p>
+                    <button>explore</button>
+                </div>
+                <div className="feature-card">
+                    <div className="circle"></div>
+                    <h4>Article</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, incidunt.</p>
+                    <button>explore</button>
+                </div>
+                <div className="feature-card">
+                    <div className="circle"></div>
+                    <h4>Article</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, incidunt.</p>
+                    <button>explore</button>
+                </div>
+            </motion.div>
         </div>
     </Wrapper>
   )
@@ -31,10 +35,13 @@ const Details = () => {
 export default Details;
 
 const Wrapper = styled.section`
-    width: min(var(--maxWidth),90%);
-    margin-inline: auto;
-    text-align: center;
-    padding-block-start: 4rem;
+    padding-block: 4.5rem;
+    background-color: #ffffff;
+    .main{
+        width: min(var(--maxWidth),90%);
+        margin-inline: auto;
+        text-align: center;
+    }
     .section{
         padding-top: 3.5rem;
         display: grid;
@@ -57,5 +64,6 @@ const Wrapper = styled.section`
         padding: 1rem 1rem;
         border-radius: 0.35rem;
         height: 20rem;
+        box-shadow: var(--shadowmd);
     }
 `

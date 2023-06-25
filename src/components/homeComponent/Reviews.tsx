@@ -62,7 +62,7 @@ export default Reviews
 
 const Wrapper = styled.section`
 text-align: center;
-padding-block-start: 4rem;
+padding-block: 4.5rem;
     /* background-color: var(--primaryColor); */
     .section{
         
@@ -133,7 +133,8 @@ padding-block-start: 4rem;
         align-items: center;
         padding: 1rem 1.5rem;
         text-align: center;
-        border-radius: var(--borderRadius);
+        border-radius: .3rem;
+        box-shadow: var(--shadowlg);
         & > p:last-child{
             margin: 0;
             }

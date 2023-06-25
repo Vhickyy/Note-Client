@@ -46,7 +46,9 @@ const Wrapper = styled.header`
         top: 0;
         width: 100%;
         background-color: var(--primaryColor80);
-        z-index: 1;
+        /* background-color: white; */
+        z-index: 100;
+        box-shadow: 0px 4px 6px -1px rgb(0 0 0/0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     }
     .head{
         width: min(var(--maxWidth),90%);
@@ -76,7 +78,7 @@ const Wrapper = styled.header`
         border: 1px solid var(--primaryColor);
     }
     .section{
-        padding-block: 4.5rem 4rem;
+        padding-block: 4rem 4rem;
         text-align: center;
         width: min(var(--maxWidth),90%);
         margin-inline: auto;
@@ -84,7 +86,9 @@ const Wrapper = styled.header`
             letter-spacing: var(--letterSpacing);
         }
         button{
+            margin-top: 1rem;
             padding: .8rem 3.2rem;
+            box-shadow: 0 0 10px var(--primaryColor);
         }
     }
     .hero{
