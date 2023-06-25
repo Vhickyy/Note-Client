@@ -38,7 +38,7 @@ const Wrapper = styled.section`
     padding-block: 4.5rem;
     background-color: #ffffff;
     .main{
-        width: min(var(--maxWidth),90%);
+        width: min(var(--maxWidth),80%);
         margin-inline: auto;
         text-align: center;
     }
