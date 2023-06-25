@@ -23,11 +23,11 @@ export default Login
 
 const Wrapper = styled.div`
 padding-block: 7rem 3rem;
-/* letter-spacing: normal; */
+letter-spacing: normal;
 color: var(--primaryColor80);
 form{
   background-color: white;
-  width: min(80%,var(--fixedWidth));
+  width: min(90%,var(--fixedWidth));
   margin-inline: auto;
   padding: 2rem 2.5rem;
   border-radius: 0.3rem;
