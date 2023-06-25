@@ -120,7 +120,7 @@ const Wrapper = styled.footer`
     }
     @media screen and (min-width: 800px) {
         .support-contact{
-            width: 41%;
+            width: 42%;
             /* background-color: green; */
             flex-direction: row;
             justify-content: space-between;
