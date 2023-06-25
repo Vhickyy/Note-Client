@@ -29,7 +29,7 @@ form{
   background-color: white;
   width: min(90%,var(--fixedWidth));
   margin-inline: auto;
-  padding: 2rem 2.5rem;
+  padding: 2rem 2rem;
   border-radius: 0.3rem;
   box-shadow: var(--shadowlg);
   display: grid;
@@ -59,6 +59,7 @@ form{
     text-align: center;
   }
   input:focus{
+    border-radius: 0.3rem;
     outline: 2px solid var(--primaryColor70);
   }
   a{
