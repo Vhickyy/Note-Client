@@ -63,7 +63,11 @@ const Wrapper = styled.section`
         flex-direction: column;
         padding: 1rem 1rem;
         border-radius: 0.35rem;
-        height: 20rem;
         box-shadow: var(--shadowmd);
+    }
+    @media screen and (min-width: 673px) {
+        .main{
+            width: min(var(--maxWidth),90%);
+        }   
     }
 `

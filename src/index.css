@@ -40,7 +40,7 @@ html {
   --letterSpacing: 1px;
   --transition: all .3s ease-in-out;
   --maxWidth: 1120px;
-  --fixedWidth: 600px;
+  --fixedWidth: 500px;
   --shadowmd: 0px 4px 6px -1px rgb(0 0 0/0.1),
     0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadowlg: 0px 10px 15px -3px rgb(0 0 0/0.1),

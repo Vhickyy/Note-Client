@@ -141,7 +141,7 @@ padding-block: 4.5rem;
     }
     @keyframes infiniteScroll {
         0%{
-            transform: translateY(0);
+            transform: translateY(0%);
         }
         100%{
             transform: translateY(-100%);

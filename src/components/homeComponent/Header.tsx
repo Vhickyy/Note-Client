@@ -1,25 +1,11 @@
-import { Link } from "react-router-dom"
 import styled from "styled-components"
-import {FaBars} from "react-icons/fa";
 import hero from "../../assets/undrawhero.svg"
+import Navbar from "../Navbar";
 const Header = () => {
   return (
     <Wrapper>
-        <div className="navbody">
-            <div className="head">
-                <h1>VEE<span>NOTES</span></h1>
-                <FaBars className="icon ham"/>
-                <nav>
-                    <Link to={"/"}>Home</Link>
-                    <Link to={"#"}>About</Link>
-                    <Link to={"#"}>Contact</Link>
-                    <div className="btn-container">
-                        <button className="login">Log in</button>
-                        <button>sign up</button>
-                    </div>
-                </nav>
-            </div>
-        </div>
+        
+        <Navbar />
         <div className="section">
             <div>
                 <h1>Secure your notes</h1>
@@ -40,16 +26,15 @@ const Wrapper = styled.header`
     background-color: var(--primaryColor80);
     color: var(--primaryColor10);
     padding-top: 5rem;
-    .navbody{
+     /* .navbody{
         padding-block: .5rem;
         position: fixed;
         top: 0;
         width: 100%;
         background-color: var(--primaryColor80);
-        /* background-color: white; */
         z-index: 100;
         box-shadow: 0px 4px 6px -1px rgb(0 0 0/0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    }
+    } 
     .head{
         width: min(var(--maxWidth),90%);
         margin-inline: auto;
@@ -59,24 +44,24 @@ const Wrapper = styled.header`
         h1{
             margin: 0;
         }
-    }
-    nav{
+    } */
+    /* nav{
         display: none;
-    }
+    } */
     span{
         color: var(--primaryColor);
     }
-    .ham{
+    /* .ham{
         display: block;
-    }
-    .btn-container{
+    } */
+    /* .btn-container{
         display: flex;
         gap: 1.5rem;
     }
     .login{
         background-color: transparent;
         border: 1px solid var(--primaryColor);
-    }
+    } */
     .section{
         padding-block: 4rem 4rem;
         text-align: center;
