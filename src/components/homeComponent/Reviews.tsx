@@ -126,7 +126,7 @@ padding-block: 4.5rem;
         width: min(90%,25rem);
         height: 15rem;
         margin-inline: auto;
-        margin-block: .5rem;
+        margin-block-end: .5rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
