@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <Wrapper>
         <div className="head">
-            <h2>VEE<span>NOTES</span></h2>
+            <Link to={"/"}><h2>VEE<span>NOTES</span></h2></Link>
             {!show ?<FaBars className="icon ham" onClick={openNav}/> : <FaTimes className="icon ham" onClick={closeNav}/>}
             <nav>
                 <Link to={"/"}>Home</Link>
@@ -103,6 +103,9 @@ const Wrapper = styled.div`
             align-items: center;
             width: 55%;
             justify-content: space-between;
+        }
+        .nav-mobile{
+            display: none;
         }
     }
 `

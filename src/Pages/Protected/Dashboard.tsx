@@ -1,12 +1,10 @@
-import { Outlet } from "react-router-dom"
 
-const Protected = () => {
+const Dashboard = () => {
   return (
     <div>
-      <h1>protected</h1>
-      <Outlet/>
+      Dashboard
     </div>
   )
 }
 
-export default Protected
+export default Dashboard

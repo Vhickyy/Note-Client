@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <Wrapper>
-        
         <Navbar />
         <div className="section">
             <div>
