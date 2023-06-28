@@ -1,9 +1,11 @@
 import { FaBars, FaSearch } from "react-icons/fa"
 import styled from "styled-components"
+import Sidebar from "./Sidebar"
 
 const Navbar = () => {
   return (
     <Wrapper>
+        <Sidebar/>
         <div className="head">
             <div className="logo">
                 <FaBars className="icon"/>
@@ -12,7 +14,6 @@ const Navbar = () => {
             <FaSearch className="icon"/>
         </div>
         <div className="empty"></div>
-
     </Wrapper>
   )
 }
@@ -36,7 +37,7 @@ const Wrapper = styled.header`
             margin: 0;
         }
         .icon{
-            border: 2px solid white;
+            border: 2px solid var(--primaryColor80);
             padding: .3rem;
             border-radius: .25rem;
         }
