@@ -80,6 +80,9 @@ form{
   p{
     margin: 0;
     text-align: center;
+    a{
+      color: var(--primaryColor);
+    }
   }
   .text_small{
     text-align: start;

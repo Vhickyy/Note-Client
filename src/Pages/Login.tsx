@@ -57,6 +57,9 @@ form{
   p{
     margin: 0;
     text-align: center;
+    a{
+      color: var(--primaryColor);
+    }
   }
   input:focus{
     border-radius: 0.3rem;
