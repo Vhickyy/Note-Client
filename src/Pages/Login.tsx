@@ -47,7 +47,6 @@ form{
     font-size: 1rem;
     padding: .5rem;
     border-radius: .3rem;
-    /* outline: 2px solid var(--primaryColor); */
     caret-color: var(--primaryColor);
   }
   button{
@@ -62,10 +61,7 @@ form{
     }
   }
   input:focus{
-    /* border-radius: 0.3rem; */
-    
-    /* outline: 2px solid var(--primaryColor70); */
-    outline: none;
+    /* outline: none; */
     border: 2px solid var(--primaryColor70);
   }
   a{

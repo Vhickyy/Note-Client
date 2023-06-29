@@ -90,7 +90,7 @@ form{
     color: var(--redText);
   }
   input:focus{
-    outline: 2px solid var(--primaryColor70);
+    border: 2px solid var(--primaryColor70);
   }
   a{
     color: var(--primaryColor80);
