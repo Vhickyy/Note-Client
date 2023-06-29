@@ -2,6 +2,7 @@ import { FaBars, FaSearch } from "react-icons/fa"
 import styled from "styled-components"
 import Sidebar from "./Sidebar"
 import { useState } from "react"
+
 type Page = {
     page: string
 }
@@ -17,10 +18,10 @@ const Navbar = ({page}: Page) => {
     <Wrapper>
         {showSidebar && <Sidebar close={closeSidebar}/>}
         <div className="head">
-            <div className="logo">
+            {/* <div className="logo"> */}
                 <FaBars className="icon" onClick={openSidebar}/>
                 <h3>{page}</h3>
-            </div>
+            {/* </div> */}
             <FaSearch className="icon"/>
         </div>
         <div className="empty"></div>
@@ -38,11 +39,11 @@ const Wrapper = styled.header`
         display: flex;
         align-items: center;
         justify-content: space-between;
-        .logo{
+        /* .logo{
             display: flex;
             align-items: center;
-            justify-content: center;
-        }
+            gap: 1rem;
+        } */
         h3{
             margin: 0;
         }
