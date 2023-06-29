@@ -48,6 +48,7 @@ form{
     padding: .5rem;
     border-radius: .3rem;
     caret-color: var(--primaryColor);
+    outline: none;
   }
   button{
     margin-top: .5rem;
