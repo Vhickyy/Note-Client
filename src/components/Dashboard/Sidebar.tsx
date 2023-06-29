@@ -1,30 +1,32 @@
 import { FaHome, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
-const Sidebar = () => {
+type props = {
+    close: any
+}
+const Sidebar = ({close} : props) => {
   return (
-    <Wrapper>
-        <section className="sidebar">
+    <Wrapper onClick={close}>
+        <section className="sidebar" onClick={(e)=> {e.stopPropagation();}}>
             <div className="inner">
                 <div className="flex">
                     <h3>VEENOTES</h3>
-                    <FaTimes className="icon"/>
+                    <FaTimes className="icon" onClick={close}/>
                 </div>
                 <div className="links">
-                    <Link to={"dashboard"}>
+                    <Link to={"."} onClick={close}>
                         <FaHome/>
                         Dashboard
                     </Link>
-                    <Link to={"dashboard"}>
+                    <Link to={"allnotes"} onClick={close}>
                         <FaHome/>
                         All Notes
                     </Link>
-                    <Link to={"dashboard"}>
+                    <Link to={"deletednotes"} onClick={close}>
                         <FaHome/>
                         Deleted Notes
                     </Link>
-                    <Link to={"dashboard"}>
+                    <Link to={"profile"} onClick={close}>
                         <FaHome/>
                         Profile
                     </Link>

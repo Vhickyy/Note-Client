@@ -1,14 +1,22 @@
 import { FaBars, FaSearch } from "react-icons/fa"
 import styled from "styled-components"
 import Sidebar from "./Sidebar"
+import { useState } from "react"
 
 const Navbar = () => {
+    const [showSidebar, setShowsidebar] = useState(false);
+    const openSidebar = () => {
+        setShowsidebar(true)
+    }
+    const closeSidebar = () => {
+        setShowsidebar(false)
+    }
   return (
     <Wrapper>
-        <Sidebar/>
+        {showSidebar && <Sidebar close={closeSidebar}/>}
         <div className="head">
             <div className="logo">
-                <FaBars className="icon"/>
+                <FaBars className="icon" onClick={openSidebar}/>
                 <h3>Dashboard</h3>
             </div>
             <FaSearch className="icon"/>
