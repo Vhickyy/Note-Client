@@ -62,8 +62,11 @@ form{
     }
   }
   input:focus{
-    border-radius: 0.3rem;
-    outline: 2px solid var(--primaryColor70);
+    /* border-radius: 0.3rem; */
+    
+    /* outline: 2px solid var(--primaryColor70); */
+    outline: none;
+    border: 2px solid var(--primaryColor70);
   }
   a{
     color: var(--primaryColor80);
