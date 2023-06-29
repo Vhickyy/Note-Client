@@ -5,7 +5,7 @@ const Protected = () => {
   return (
     <>
         <Navbar />
-        <h1>protected</h1>
+        {/* <h1>protected</h1> */}
         <Outlet/>
     </>
   )

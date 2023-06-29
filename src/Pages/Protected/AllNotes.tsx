@@ -1,7 +1,9 @@
-
+import AllNotesComponent from "../../components/Dashboard/AllNotes/AllNoteComponent"
 const AllNotes = () => {
   return (
-    <div>AllNotes</div>
+    <div>
+      <AllNotesComponent/>
+    </div>
   )
 }
 
