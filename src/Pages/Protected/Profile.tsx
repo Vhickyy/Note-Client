@@ -1,7 +1,10 @@
-
+import Navbar from "../../components/Dashboard/Navbar"
 const Profile = () => {
   return (
-    <div>Profile</div>
+    <div>
+      <Navbar page="Profile"/>
+      Profile
+    </div>
   )
 }
 

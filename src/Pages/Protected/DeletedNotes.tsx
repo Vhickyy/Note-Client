@@ -1,7 +1,11 @@
+import Navbar from "../../components/Dashboard/Navbar"
 
 const DeletedNotes = () => {
   return (
-    <div>DeletedNotes</div>
+    <div>
+      <Navbar page="Deleted Notes"/>
+      DeletedNotes
+    </div>
   )
 }
 

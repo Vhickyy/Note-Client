@@ -2,8 +2,10 @@ import { FaBars, FaSearch } from "react-icons/fa"
 import styled from "styled-components"
 import Sidebar from "./Sidebar"
 import { useState } from "react"
-
-const Navbar = () => {
+type Page = {
+    page: string
+}
+const Navbar = ({page}: Page) => {
     const [showSidebar, setShowsidebar] = useState(false);
     const openSidebar = () => {
         setShowsidebar(true)
@@ -17,7 +19,7 @@ const Navbar = () => {
         <div className="head">
             <div className="logo">
                 <FaBars className="icon" onClick={openSidebar}/>
-                <h3>Dashboard</h3>
+                <h3>{page}</h3>
             </div>
             <FaSearch className="icon"/>
         </div>

@@ -14,19 +14,19 @@ const Sidebar = ({close} : props) => {
                     <FaTimes className="icon" onClick={close}/>
                 </div>
                 <div className="links">
-                    <Link to={"."} onClick={close}>
+                    <Link to={"/dashboard"} onClick={close}>
                         <FaHome/>
                         Dashboard
                     </Link>
-                    <Link to={"allnotes"} onClick={close}>
+                    <Link to={"/dashboard/allnotes"} onClick={close}>
                         <FaHome/>
                         All Notes
                     </Link>
-                    <Link to={"deletednotes"} onClick={close}>
+                    <Link to={"/dashboard/deletednotes"} onClick={close}>
                         <FaHome/>
                         Deleted Notes
                     </Link>
-                    <Link to={"profile"} onClick={close}>
+                    <Link to={"/dashboard/profile"} onClick={close}>
                         <FaHome/>
                         Profile
                     </Link>
