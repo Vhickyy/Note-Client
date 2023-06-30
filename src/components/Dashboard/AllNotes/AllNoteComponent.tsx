@@ -9,14 +9,14 @@ const AllNotesComponenent = () => {
     return i.category === category;
   })
   // let getData : any;
-  const getit = () =>   {
-    let getData = data;
-    if(category === "all"){
-      return
-    } else{
-      getData.filter(i=>i.category)
-    }
-  }
+ // const getit = () =>   {
+ //   let getData = data;
+  //  if(category === "all"){
+    //  return
+ //   } else{
+    //  getData.filter(i=>i.category)
+ //   }
+//  }
   
   return (
     <Wrapper>
