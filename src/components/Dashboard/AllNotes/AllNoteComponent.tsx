@@ -1,39 +1,13 @@
-import styled from "styled-components"
-import data from "../../../fakedata"
-import { useSearchParams } from "react-router-dom"
+import styled from "styled-components";
+import data from "../../../fakedata";
+
+import Filterform from "./Filterform";
 const AllNotesComponenent = () => {
-  const [search,setSearch] = useSearchParams("all");
-  const category = new URLSearchParams(search).get("category");
-  const newdata = data.filter(i=>{
-    if(category==="all")return i;
-    return i.category === category;
-  })
-  // let getData : any;
- // const getit = () =>   {
- //   let getData = data;
-  //  if(category === "all"){
-    //  return
- //   } else{
-    //  getData.filter(i=>i.category)
- //   }
-//  }
-  
   return (
     <Wrapper>
-      <form>
-        <div>
-           <label htmlFor="category">Filter</label>
-          <select name="category" id="category" onChange={(e)=>{setSearch({category: e.target.value});
-          }}>
-            <option value="all">All</option>
-            <option value="personal">Personal</option>
-            <option value="work">Work</option>
-            <option value="school">School</option>
-          </select>
-        </div>
-      </form>
+      <Filterform/>
       <div className="card-wrapper">
-        {newdata.map((i,index)=>{
+        {data.map((i,index)=>{
           return(
             <div key={index} className="card">
               <h4>{i.title}</h4>
@@ -60,7 +34,7 @@ const Wrapper = styled.main`
   .card-wrapper{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.3rem;
+    gap: 1.1rem;
   }
   .card{
     background-color: var(--primaryColor20);

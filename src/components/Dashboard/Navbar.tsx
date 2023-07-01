@@ -33,12 +33,14 @@ export default Navbar
 
 const Wrapper = styled.header`
 /* background-color: yellowgreen; */
+
     .head{
         width: min(var(--maxWidth),90%);
         margin-inline: auto;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        padding-block: .5rem;
         /* .logo{
             display: flex;
             align-items: center;
