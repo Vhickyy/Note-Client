@@ -1,14 +1,13 @@
-import { useState} from "react";
 import { FaArrowDown, FaSearch, FaTimes } from "react-icons/fa";
 import styled from "styled-components";
 import { sortList, categoryList } from "../../../fakeData/fakedata";
-const Filterform = () => {
-    const [sort,setSort] = useState({show:false,sort:"latest"});
-    const [category,setCategory] = useState({show:false,category:"all"});
-    const [showForm, setShowForm] = useState(false)
+import { Filter } from "../../../types/types";
+
+const Filterform = ({sort,category,setCategory,setSort,showForm,setShowForm}:Filter) => {
+    
   return (
     <>
-        <p>{category.category}</p>
+        <p>{category.category[0].toUpperCase()}{category.category.slice(1)}</p>
         <Wrapper>
             <div className="flex" onClick={()=>{setShowForm(pre=>!pre);
             setCategory({...category,show:false});
@@ -17,57 +16,59 @@ const Filterform = () => {
                 <h5>Filter Form</h5>
                 {!showForm ? <FaArrowDown/> : <FaTimes/>}
             </div>
-            {showForm && <div className="flex2">
-                <div>
-                    <label htmlFor="seach">Search</label>
-                    <div className="search">
-                        <input type="text" name="search" id="name"/>
-                        <FaSearch className="icon"/>
+            {showForm && <div>
+                <div className="flex2">
+                    <div>
+                        <label htmlFor="seach">Search</label>
+                        <div className="search">
+                            <input type="text" name="search" id="name"/>
+                            <FaSearch className="icon"/>
+                        </div>
+                    </div>
+                    <div >
+                        <p>Categoty</p>
+                        <div className="select-container" onClick={()=>setCategory({...category,show:!category.show})}>
+                            <p>{category.category}</p>
+                            <FaArrowDown/>
+                        </div>
+                        
+                    {category.show && <div className="select">
+                            <ul>
+                                {categoryList.map(category=>{
+                                    return(
+                                        <li key={category.li} onClick={()=>{
+                                            setCategory({...category,category:category.li,show:false})
+                                        }}>
+                                            {category.li}
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        </div>}
+                    </div>
+                    <div >
+                        <p>Sort</p>
+                        <div className="select-container" onClick={()=>setSort({...sort,show:!sort.show})}>
+                            <p>{sort.sort}</p>
+                            <FaArrowDown/>
+                        </div>
+                        
+                        {sort.show && <div className="select">
+                            <ul>
+                                {sortList.map(list=>{
+                                    return(
+                                        <li key={list.li} onClick={()=>{
+                                            setSort({...sort,sort:list.li,show:false})
+                                        }}>
+                                            {list.li}
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        </div>}
                     </div>
                 </div>
-                <div >
-                    <p>Categoty</p>
-                    <div className="select-container" onClick={()=>setCategory({...category,show:!category.show})}>
-                        <p>{category.category}</p>
-                        <FaArrowDown/>
-                    </div>
-                    
-                {category.show && <div className="select">
-                        <ul>
-                            {categoryList.map(category=>{
-                                return(
-                                    <li key={category.li} onClick={()=>{
-                                        setCategory({...category,category:category.li,show:false})
-                                    }}>
-                                        {category.li}
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                    </div>}
-                </div>
-                <div >
-                    <p>Sort</p>
-                    <div className="select-container" onClick={()=>setSort({...sort,show:!sort.show})}>
-                        <p>{sort.sort}</p>
-                        <FaArrowDown/>
-                    </div>
-                    
-                {sort.show && <div className="select">
-                        <ul>
-                            {sortList.map(list=>{
-                                return(
-                                    <li key={list.li} onClick={()=>{
-                                        setSort({...sort,sort:list.li,show:false})
-                                    }}>
-                                        {list.li}
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                    </div>}
-                </div>
-            <button>Clear Filters</button>
+                <button>Clear Filters</button>
             </div>}
         </Wrapper>
     </>
@@ -80,6 +81,9 @@ const Wrapper = styled.form`
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: var(--borderRadius);
+    button{
+        width: 100%;
+    }
     .flex{
         display: flex;
         justify-content: space-between;
@@ -141,13 +145,14 @@ const Wrapper = styled.form`
         }
     }
     @media screen and (min-width: 650px) {
-        /* .flex{
-            display: none;
-        } */
         .flex2{
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
             gap: 1rem;
+        }
+        button{
+            width: 30%;
+            margin-top: .5rem;
         }
     }
 `

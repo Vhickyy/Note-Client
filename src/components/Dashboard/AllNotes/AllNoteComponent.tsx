@@ -1,11 +1,15 @@
 import styled from "styled-components";
 import data from "../../../fakeData/fakedata";
+import { useState } from "react";
 
 import Filterform from "./Filterform";
 const AllNotesComponenent = () => {
+  const [sort,setSort] = useState({show:false,sort:"latest"});
+    const [category,setCategory] = useState({show:false,category:"all"});
+    const [showForm, setShowForm] = useState(false)
   return (
     <Wrapper>
-      <Filterform/>
+      <Filterform sort={sort} setSort={setSort} category={category} setCategory={setCategory} showForm={showForm} setShowForm={setShowForm}/>
       <div className="card-wrapper">
         {data.map((i,index)=>{
           return(
