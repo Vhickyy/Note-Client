@@ -1,42 +1,76 @@
-import {ChangeEvent} from "react";
-import { FaArrowDown, FaSearch } from "react-icons/fa";
+import { useState} from "react";
+import { FaArrowDown, FaSearch, FaTimes } from "react-icons/fa";
 import styled from "styled-components";
+import { sortList, categoryList } from "../../../fakeData/fakedata";
 const Filterform = () => {
+    const [sort,setSort] = useState({show:false,sort:"latest"});
+    const [category,setCategory] = useState({show:false,category:"all"});
+    const [showForm, setShowForm] = useState(false)
   return (
-    <Wrapper>
-        <div className="flex">
-            <h5>Filter Form</h5>
-            <FaArrowDown/>
-        </div>
-        <div className="flex2">
-            <div>
-                <label htmlFor="seach">Search</label>
-                <div className="search">
-                    <input type="text" name="search" id="name"/>
-                    <FaSearch className="icon"/>
+    <>
+        <p>{category.category}</p>
+        <Wrapper>
+            <div className="flex" onClick={()=>{setShowForm(pre=>!pre);
+            setCategory({...category,show:false});
+            setSort({...sort,show:false})
+            }}>
+                <h5>Filter Form</h5>
+                {!showForm ? <FaArrowDown/> : <FaTimes/>}
+            </div>
+            {showForm && <div className="flex2">
+                <div>
+                    <label htmlFor="seach">Search</label>
+                    <div className="search">
+                        <input type="text" name="search" id="name"/>
+                        <FaSearch className="icon"/>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <label htmlFor="category">Filter</label>
-                <select name="category" id="category" value="" onChange={(e:ChangeEvent<HTMLSelectElement>)=>{console.log(e.target.value);
-                }}>
-                <option value="all">All</option>
-                <option value="personal" >Personal</option>
-                <option value="work" >Work</option>
-                <option value="school" >School</option>
-                </select>
-            </div>
-            <div>
-                <label htmlFor="sort">Sort</label>
-                <select name="sort" id="sort">
-                    <option value="latest">Latest</option>
-                    <option value="oldest">Oldest</option>
-                    <option value="a-z">A-Z</option>
-                    <option value="z-a">Z-A</option>
-                </select>
-            </div>
-        </div>
-    </Wrapper>
+                <div >
+                    <p>Categoty</p>
+                    <div className="select-container" onClick={()=>setCategory({...category,show:!category.show})}>
+                        <p>{category.category}</p>
+                        <FaArrowDown/>
+                    </div>
+                    
+                {category.show && <div className="select">
+                        <ul>
+                            {categoryList.map(category=>{
+                                return(
+                                    <li key={category.li} onClick={()=>{
+                                        setCategory({...category,category:category.li,show:false})
+                                    }}>
+                                        {category.li}
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>}
+                </div>
+                <div >
+                    <p>Sort</p>
+                    <div className="select-container" onClick={()=>setSort({...sort,show:!sort.show})}>
+                        <p>{sort.sort}</p>
+                        <FaArrowDown/>
+                    </div>
+                    
+                {sort.show && <div className="select">
+                        <ul>
+                            {sortList.map(list=>{
+                                return(
+                                    <li key={list.li} onClick={()=>{
+                                        setSort({...sort,sort:list.li,show:false})
+                                    }}>
+                                        {list.li}
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>}
+                </div>
+            <button>Clear Filters</button>
+            </div>}
+        </Wrapper>
+    </>
   )
 }
 
@@ -59,13 +93,6 @@ const Wrapper = styled.form`
         display: flex;
         flex-direction: column;
     }
-    label{
-        display: block;
-    }
-    select{
-        width: 100%;
-        padding: .5rem;
-    }
     .search{
         display: flex;
         justify-content: space-between;
@@ -74,15 +101,43 @@ const Wrapper = styled.form`
         border: 1px solid black;
         border-radius: var(--borderRadius);
         padding-inline: .7rem;
+        height: 2.5rem;
         input{
             width: 95%;
             /* padding: .5rem; */
             border: none;
             outline: none;
+            height: 100%;
         }
         .icon{
-            width: 1.3rem;
+            width: 1.2rem;
             /* padding: 0.4rem; */
+        }
+    }
+    .select-container{
+        /* background-color: green; */
+        margin-bottom: .3rem;
+        padding-inline: 0.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 2.5rem;
+        border: 1px solid var(--primaryColor);
+        border-radius: var(--borderRadius);
+        p{
+            margin: 0;
+        }
+    }
+    .select{
+        border: 1px solid var(--primaryColor);
+        background-color: var(--primaryColor20);
+        li{
+            padding-inline: 0.5rem;
+        }
+        li:hover{
+            width: 100%;
+            cursor: pointer;
+            background-color: var(--primaryColor30);
         }
     }
     @media screen and (min-width: 650px) {

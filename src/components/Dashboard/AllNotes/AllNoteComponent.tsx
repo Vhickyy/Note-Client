@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import data from "../../../fakedata";
+import data from "../../../fakeData/fakedata";
 
 import Filterform from "./Filterform";
 const AllNotesComponenent = () => {

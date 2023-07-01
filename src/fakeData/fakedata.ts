@@ -36,5 +36,33 @@ const data = [
         category: "personal"
     }
 ]
+export const sortList = [
+        {
+            li:"latest"
+        },
+        {
+            li:"oldest"
+        },
+        {
+            li:"a-z"
+        },
+        {
+            li:"z-a"
+        },
+    ]
+export const categoryList = [
+    {
+        li:"all"
+    },
+    {
+        li:"personal"
+    },
+    {
+        li:"work"
+    },
+    {
+        li:"school"
+    },
+]
 
 export default data;
