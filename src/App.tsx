@@ -8,6 +8,7 @@ import AllNotes from "./Pages/Protected/AllNotes"
 import DeletedNotes from "./Pages/Protected/DeletedNotes"
 import Profile from "./Pages/Protected/Profile"
 import Protected from "./components/Shared/Protected"
+import AddNote from "./Pages/Protected/AddNote"
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(
     <>
@@ -21,6 +22,7 @@ function App() {
         <Route path="allnotes" element={<AllNotes/>}/>
         <Route path="deletednotes" element={<DeletedNotes/>}/>
         <Route path="profile" element={<Profile/>}/>
+        <Route path="addnote" element={<AddNote/>}/>
       </Route>
     </>
   ))
