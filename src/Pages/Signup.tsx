@@ -45,7 +45,7 @@ padding-block: 7rem 3rem;
 letter-spacing: normal;
 color: var(--primaryColor80);
 form{
-  background-color: var(--primaryColor30);
+  background-color: var(--primaryColor20);
   width: min(90%,var(--fixedWidth));
   margin-inline: auto;
   padding: 2rem 2rem;
