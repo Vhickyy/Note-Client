@@ -45,15 +45,21 @@ const Wrapper = styled.section`
     .section{
         padding-top: 3.5rem;
         display: grid;
-        gap: 1rem;
+        gap: 1.2rem;
         grid-template-columns: repeat(auto-fill, minmax(18rem,1fr));
+        h4{
+            margin: 0;
+        }
+        p{
+            margin: 0;
+        }
     }
     .circle{
         width: 4rem;
         height: 4rem;
         border-radius: 50%;
         background-color: var(--primaryColor40);
-        margin-bottom: 1rem;
+        /* margin-bottom: 1rem; */
     }
     .feature-card{
         background-color: var(--primaryColor20);
@@ -64,6 +70,8 @@ const Wrapper = styled.section`
         padding: 1rem 1rem;
         border-radius: 0.35rem;
         box-shadow: var(--shadowmd);
+        border-bottom: .4rem solid var(--primaryColor);
+        gap: 1rem;
     }
     @media screen and (min-width: 673px) {
         .main{
