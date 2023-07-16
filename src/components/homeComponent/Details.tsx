@@ -67,11 +67,11 @@ const Wrapper = styled.section`
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        padding: 1rem 1rem;
+        padding: 1.2rem 1rem;
         border-radius: 0.35rem;
         box-shadow: var(--shadowmd);
         border-bottom: .4rem solid var(--primaryColor);
-        gap: 1.2rem;
+        gap: 1rem;
     }
     @media screen and (min-width: 673px) {
         .main{
