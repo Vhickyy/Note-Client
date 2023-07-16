@@ -71,7 +71,7 @@ const Wrapper = styled.section`
         border-radius: 0.35rem;
         box-shadow: var(--shadowmd);
         border-bottom: .4rem solid var(--primaryColor);
-        gap: 1rem;
+        gap: 1.2rem;
     }
     @media screen and (min-width: 673px) {
         .main{
