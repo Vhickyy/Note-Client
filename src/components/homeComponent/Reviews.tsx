@@ -63,7 +63,6 @@ export default Reviews
 const Wrapper = styled.section`
 text-align: center;
 padding-block: 4.5rem;
-background-color: var(--primaryColor30);
     /* background-color: var(--primaryColor); */
     .section{
         
