@@ -1,25 +1,25 @@
 import { FaBars, FaSearch } from "react-icons/fa"
 import styled from "styled-components"
-import Sidebar from "./Sidebar"
+import MobileSidebar from "./MobileSidebar"
 import { useState } from "react"
+import Sidebar from "./Sidebar"
 
 type Page = {
     page: string
 }
 const Navbar = ({page}: Page) => {
     const [showSidebar, setShowsidebar] = useState(false);
-    const openSidebar = () => {
-        setShowsidebar(true)
-    }
-    const closeSidebar = () => {
-        setShowsidebar(false)
+    const toggleSidebar = () => {
+        setShowsidebar(preState =>!preState)
+        console.log(showSidebar);
+        
     }
   return (
     <Wrapper>
-        {showSidebar && <Sidebar close={closeSidebar}/>}
+        <MobileSidebar showSidebar={showSidebar} close={toggleSidebar}/>
         <div className="head">
             {/* <div className="logo"> */}
-                <FaBars className="icon" onClick={openSidebar}/>
+                <FaBars className="icon" onClick={toggleSidebar}/>
                 <h3>{page}</h3>
             {/* </div> */}
             <FaSearch className="icon"/>
@@ -35,7 +35,8 @@ const Wrapper = styled.header`
 /* background-color: yellowgreen; */
 
     .head{
-        width: min(var(--maxWidth),90%);
+        width: min(1440px,90%);
+        /* width: 90%; */
         margin-inline: auto;
         display: flex;
         align-items: center;
@@ -56,7 +57,7 @@ const Wrapper = styled.header`
         }
     }
     .empty{
-        height: 1rem;
+        height: .5rem;
         width: 100%;
         background-color: var(--primaryColor);
     }

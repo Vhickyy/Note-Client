@@ -62,34 +62,27 @@ export default Reviews
 
 const Wrapper = styled.section`
 text-align: center;
-padding-block: 4.5rem;
-    /* background-color: var(--primaryColor); */
+padding-block: 4rem;
+    background-color: var(--primaryColor20);
     .section{
         
         /* background-color: brown; */
     }
     .reviews-section{
         width: min(90%,var(--maxWidth));
-        margin-top: 3.5rem;
+        margin-top: 3rem;
         margin-inline: auto;
         display: flex;
         justify-content: center;
-        /* align-items: center; */
         column-gap: 3rem;
-        /* background-color: yellow; */
     }
     .img-holder{
         display: none;
-        /* height: 60vh; */
-        /* background-color: blue; */
     }
     .card-slide-section{
-        /* margin-top: 2.5rem; */
-        /* background-color: green; */
         height: 60vh;
         display: flex;
         flex-direction: column;
-        /* row-gap: 1rem; */
         overflow: hidden;
         position: relative;
         
@@ -100,8 +93,7 @@ padding-block: 4.5rem;
         top: 0;
         width: 100%;
         height: 1.5rem;
-        background: linear-gradient(to right, whitesmoke, hsla(0,0%,0%,0));
-        background: linear-gradient(to right, whitesmoke 0, #f5f5f599);
+        background: linear-gradient(to right, var(--primaryColor20) 0, #f3dbcc99);
         z-index: 1;
     }
     .card-slide-section::after{
@@ -111,7 +103,7 @@ padding-block: 4.5rem;
         left: 0;
         width: 100%;
         height: 1.5rem;
-        background: linear-gradient(to right, whitesmoke 0, #f5f5f599);
+        background: linear-gradient(to right, var(--primaryColor20) 0, #f3dbcc99);
     }
     .card-wrapper{
         display: flex;
