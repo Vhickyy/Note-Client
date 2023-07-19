@@ -2,8 +2,6 @@ import { FaBars, FaSearch } from "react-icons/fa"
 import styled from "styled-components"
 import MobileSidebar from "./MobileSidebar"
 import { useState } from "react"
-import Sidebar from "./Sidebar"
-
 type Page = {
     page: string
 }
