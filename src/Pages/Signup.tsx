@@ -50,6 +50,7 @@ form{
   margin-inline: auto;
   padding: 2rem 2rem;
   border-radius: 0.3rem;
+  border-top: .5rem solid var(--primaryColor);
   box-shadow: var(--shadowlg);
   display: grid;
   gap: 1rem;
