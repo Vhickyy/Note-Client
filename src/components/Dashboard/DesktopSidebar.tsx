@@ -20,10 +20,7 @@ const DesktopSidebar = ({showSidebar}:props) => {
 export default DesktopSidebar;
 const Wrapper = styled.aside`
     display: none;
-    position: relative;
     min-height: 100vh;
-    position: sticky;
-      top: 0;
     .main{
       box-shadow: var(--shadowlg);
       width: 17rem;
