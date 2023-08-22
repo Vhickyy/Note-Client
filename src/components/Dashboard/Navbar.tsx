@@ -11,10 +11,8 @@ const Navbar = ({page}: Page) => {
   return (
     <Wrapper>
         <div className="head">
-            {/* <div className="logo"> */}
-                <FaBars className="icon" onClick={toggleSidebar}/>
-                <h3>{page}</h3>
-            {/* </div> */}
+            <FaBars className="icon" onClick={toggleSidebar}/>
+            <h3>{page}</h3>
             <FaSearch className="icon"/>
         </div>
         <div className="empty"></div>
@@ -25,21 +23,14 @@ const Navbar = ({page}: Page) => {
 export default Navbar
 
 const Wrapper = styled.header`
-/* background-color: yellowgreen; */
-
+    background-color: whitesmoke;
     .head{
         width: min(1440px,90%);
-        /* width: 90%; */
         margin-inline: auto;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding-block: .5rem;
-        /* .logo{
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        } */
+        padding-block: 1.5rem;
         h3{
             margin: 0;
         }
@@ -53,5 +44,9 @@ const Wrapper = styled.header`
         height: .5rem;
         width: 100%;
         background-color: var(--primaryColor);
+    }
+    @media screen and (min-width: 800px){
+        position: sticky;
+        top: 0;
     }
 `

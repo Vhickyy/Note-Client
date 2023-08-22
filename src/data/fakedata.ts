@@ -34,6 +34,18 @@ const data = [
         title: "reaaalll",
         content: "ddjdh udyttf hxcgydytcy",
         category: "personal"
+    },
+    {
+        id: 7,
+        title: "reaaalll",
+        content: "ddjdh udyttf hxcgydytcy",
+        category: "personal"
+    },
+    {
+        id: 8,
+        title: "reaaalll",
+        content: "ddjdh udyttf hxcgydytcy",
+        category: "personal"
     }
 ]
 export const sortList = [
