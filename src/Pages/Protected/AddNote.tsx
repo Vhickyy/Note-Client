@@ -4,6 +4,7 @@ const AddNote = () => {
   return (
     <>
         <Navbar page="Add New Note"/>
+        <h1>add note</h1>
     </>
   )
 }

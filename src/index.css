@@ -39,7 +39,7 @@ html {
   --borderRadius: .25rem;
   --letterSpacing: 1px;
   --transition: all .3s ease-in-out;
-  --maxWidth: 1120px;
+  --maxWidth: 1440px;
   --fixedWidth: 500px;
   --shadowmd: 0px 4px 6px -1px rgb(0 0 0/0.1),
     0 2px 4px -2px rgb(0 0 0 / 0.1);

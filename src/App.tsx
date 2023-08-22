@@ -11,20 +11,22 @@ import Protected from "./components/Shared/Protected"
 import AddNote from "./Pages/Protected/AddNote"
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(
-    <>
-      <Route path="/" element={<Layout/>}>
-        <Route index element={<Home/>}/>
-        <Route path="login" element={<Login/>}/>
-        <Route path="signup" element={<Signup/>}/>
+    // <>
+      <Route path="/" >
+        <Route element={<Layout/>}>
+          <Route index element={<Home/>}/>
+          <Route path="login" element={<Login/>}/>
+          <Route path="signup" element={<Signup/>}/>
+        </Route>
+        <Route path="dashboard" element={<Protected/>}>
+          <Route index element={<Dashboard/>}/>
+          <Route path="allnotes" element={<AllNotes/>}/>
+          <Route path="deletednotes" element={<DeletedNotes/>}/>
+          <Route path="profile" element={<Profile/>}/>
+          <Route path="addnote" element={<AddNote/>}/>
+        </Route>
       </Route>
-      <Route path="dashboard" element={<Protected/>}>
-        <Route index element={<Dashboard/>}/>
-        <Route path="allnotes" element={<AllNotes/>}/>
-        <Route path="deletednotes" element={<DeletedNotes/>}/>
-        <Route path="profile" element={<Profile/>}/>
-        <Route path="addnote" element={<AddNote/>}/>
-      </Route>
-    </>
+    // </>
   ))
   return (
     <RouterProvider router={router}/>

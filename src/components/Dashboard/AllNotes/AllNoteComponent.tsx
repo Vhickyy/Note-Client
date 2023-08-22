@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import data from "../../../fakeData/fakedata";
+import data from "../../../data/fakedata";
 import { useState } from "react";
 
 import Filterform from "./Filterform";

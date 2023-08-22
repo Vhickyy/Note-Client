@@ -1,6 +1,6 @@
 import { FaArrowDown, FaSearch, FaTimes } from "react-icons/fa";
 import styled from "styled-components";
-import { sortList, categoryList } from "../../../fakeData/fakedata";
+import { sortList, categoryList } from "../../../data/fakedata";
 import { Filter } from "../../../types/types";
 
 const Filterform = ({sort,category,setCategory,setSort,showForm,setShowForm}:Filter) => {

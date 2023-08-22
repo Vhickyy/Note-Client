@@ -1,20 +1,15 @@
 import { FaBars, FaSearch } from "react-icons/fa"
 import styled from "styled-components"
-import MobileSidebar from "./MobileSidebar"
-import { useState } from "react"
+// import MobileSidebar from "./MobileSidebar"
+import { useOutletContext } from "react-router-dom"
+
 type Page = {
     page: string
 }
 const Navbar = ({page}: Page) => {
-    const [showSidebar, setShowsidebar] = useState(false);
-    const toggleSidebar = () => {
-        setShowsidebar(preState =>!preState)
-        console.log(showSidebar);
-        
-    }
+  const toggleSidebar = useOutletContext()
   return (
     <Wrapper>
-        <MobileSidebar showSidebar={showSidebar} close={toggleSidebar}/>
         <div className="head">
             {/* <div className="logo"> */}
                 <FaBars className="icon" onClick={toggleSidebar}/>

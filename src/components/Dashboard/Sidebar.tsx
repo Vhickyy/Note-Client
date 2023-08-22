@@ -1,67 +1,37 @@
-import { FaHome, FaTimes } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import links from "../../data/Links";
 type Prop = {
     close? : ()=>void;
 }
 const Sidebar = ({close}:Prop) => {
   return (
-    <Wrapper className="sidebar" onClick={(e)=> {e.stopPropagation();}}>
-            <div className="inner">
-                <div className="flex">
-                    <h3>VEENOTES</h3>
-                    <FaTimes className="icon" onClick={close}/>
-                </div>
-                <div className="links">
-                    <Link to={"/dashboard"} onClick={close}>
-                        <FaHome/>
-                        Dashboard
-                    </Link>
-                    <Link to={"/dashboard/allnotes"} onClick={close}>
-                        <FaHome/>
-                        All Notes
-                    </Link>
-                    <Link to={"/dashboard/deletednotes"} onClick={close}>
-                        <FaHome/>
-                        Deleted Notes
-                    </Link>
-                    <Link to={"/dashboard/profile"} onClick={close}>
-                        <FaHome/>
-                        Profile
-                    </Link>
-                </div>
+    <Wrapper >
+        <div className="inner">
+            <div className="links">
+                {links.map(link=>{
+                    return (
+                        <NavLink to={`${link.path}`} onClick={close} end>
+                            {link.icon}
+                            {link.link}
+                        </NavLink>
+                    )
+                })}
             </div>
-        </Wrapper>
+        </div>
+    </Wrapper>
   )
 }
 
 export default Sidebar;
 
 const Wrapper = styled.section`
-    height: 100%;
-    width: 20rem;
-    background-color: whitesmoke;
-    box-shadow: var(--shadowlg);
-    /* z-index: -10; */
     .inner{
-        /* background-color: green; */
         height: 100%;
         width: 90%;
         margin-inline: auto;
         padding: 1rem;
         /* margin-block: 1rem; */
-    }
-    .flex{
-        display: flex;
-        justify-content: space-between;
-    }
-    h3{
-        margin: 0;
-    }
-    .icon{
-        border: 2px solid var(--primaryColor80);
-        padding: .3rem;
-        border-radius: .25rem;
     }
     .links{
         display: flex;
