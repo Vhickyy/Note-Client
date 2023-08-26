@@ -1,24 +1,20 @@
 import styled from "styled-components";
 
 const Wrapper = styled.header`
-/* transition: var(--transition); */
-.fixed{
-    width: 100%;
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
-    transform: translateY(50);
     background-color: #ffffff;
+.shadow{
     box-shadow: var(--shadowmd);
 }
 .nav{
-    padding-block: 1rem;
+    padding-block: .7rem;
     width: min(90%, var(--maxWidth));
     margin-inline: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* transition: var(--transition); */
     h2{
         margin-bottom: 0;
         color: var(--textColor50);

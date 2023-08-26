@@ -13,7 +13,7 @@ const Navbar = () => {
     }
     useEffect(()=>{
         const scroll = () => {
-            navRef.current.classList.toggle("fixed", window.scrollY > 70);
+            navRef.current.classList.toggle("shadow", window.scrollY > 70);
         }
         window.addEventListener("scroll", scroll)
         return () => {
