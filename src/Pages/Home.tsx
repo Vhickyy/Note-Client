@@ -1,17 +1,17 @@
-import Reviews from '../components/homeComponent/Reviews'
-import Details from '../components/homeComponent/Details'
-import Header from '../components/homeComponent/Header'
-import Pricing from '../components/homeComponent/Pricing';
+import Reviews from '../components/Home/Reviews'
+import Details from '../components/Home/Details'
+import Header from '../components/Home/Header'
+import Pricing from '../components/Home/Pricing';
 
 const Home = () => {
   return (
     <>
     <Header/>
-    <main>
+    {/* <main> */}
       <Details/>
       <Reviews/>
       <Pricing/>
-    </main>
+    {/* </main> */}
     </>
   )
 }

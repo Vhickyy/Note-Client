@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 
@@ -19,48 +20,39 @@ html {
     sans-serif;
   --bodyFont: 'Montserrat',
     sans-serif;
-  --smallText: 0.7em;
-
   /* colors */
-  --primaryColor10: #f9ede6;
-  --primaryColor20: #f3dbcc;
-  --primaryColor30: #dc9466;
   --primaryColor40: #d6824d;
   --primaryColor: #C44C00;
-  --primaryColor70: #3b1700;
-  --primaryColor80: #270f00;
-  --primaryColor90: #140800;
-  --secondaryColor: ;
-  --gray: ;
+  --textColor: #cbd5e1;
+  --textColor50: #020617;
   --redText: #842029;
   --redBackground: #f8d7da;
   --greenText: #0f5132;
   --greenBackground: #d1e7dd;
-  --borderRadius: .25rem;
+  --backgroundColor: white;
   --letterSpacing: 1px;
-  --transition: all .3s ease-in-out;
+  --transition: all 2s linear;
   --maxWidth: 1440px;
   --fixedWidth: 500px;
   --shadowmd: 0px 4px 6px -1px rgb(0 0 0/0.1),
     0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadowlg: 0px 10px 15px -3px rgb(0 0 0/0.1),
     0 4px 6px -4px rgb(0 0 0 / 0.1);
-  /* colors, shadows,backgroundColor */
 }
 
 body {
-  background: var(--primaryColor10);
-  background-color: whitesmoke;
+  background-color: var(--backgroundColor);
   font-family: var(--bodyFont);
   font-weight: 400;
   line-height: 1.75;
-  color: var(--primaryColor90);
   letter-spacing: var(--letterSpacing);
+  /* position: relative; */
+  /* height: 700rem; */
 }
 
 p {
   margin-bottom: 1.5rem;
-  max-width: 35em;
+  max-width: 33rem;
   margin-inline: auto;
   font-size: 1rem;
 }
@@ -106,7 +98,6 @@ small,
 a {
   text-decoration: none;
   /* color: white; */
-  /* color: var(--primaryColor40); */
 }
 
 ul {
@@ -126,15 +117,15 @@ button{
   border-radius: .25rem;
   cursor: pointer;
   background-color: var(--primaryColor);
-  letter-spacing: var(--letterSpacing);
+  color: var(--backgroundColor);
+  /* letter-spacing: var(--letterSpacing); */
   text-transform: capitalize;
   font-size: 1.1rem;
-  color: var(--primaryColor10);
   font-weight: 500;
 }
 .icon{
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
   cursor: pointer;
 }
 
@@ -151,4 +142,9 @@ button{
 }
 .show{
   display: block;
+}
+@media screen and (min-width:700px) {
+  h1 {
+      font-size: 4rem;
+    }
 }

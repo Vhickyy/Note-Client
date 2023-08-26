@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
-import MobileSidebar from "../Dashboard/MobileSidebar";
+import MobileSidebar from "./MobileSidebar";
 import { useState } from "react"
-import DesktopSidebar from "../Dashboard/DesktopSidebar";
+import DesktopSidebar from "./DesktopSidebar";
 import styled from "styled-components";
 
-const Protected = () => {
+const ProtectedLayout = () => {
   const [showSidebar, setShowsidebar] = useState(false);
   const toggleSidebar = () => {
       setShowsidebar(preState =>!preState)
@@ -14,21 +14,18 @@ const Protected = () => {
     <Wrapper>
       <MobileSidebar showSidebar={showSidebar} close={toggleSidebar}/>
       <DesktopSidebar showSidebar={showSidebar}/>
-      <div className="main">
+      <main>
         <Outlet context={toggleSidebar}/>
-      </div>
+      </main>
     </Wrapper>
   )
 }
 
-export default Protected;
+export default ProtectedLayout;
 
-const Wrapper = styled.main`
+const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  .main{
-    /* min-height: 100vh; */
-  }
   @media screen and (min-width:800px){
     grid-template-columns: auto 1fr;
   }

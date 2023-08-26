@@ -1,11 +1,9 @@
 import styled from "styled-components"
-import hero from "../../assets/undrawhero.svg"
-import Navbar from "../Navbar";
+import hero from "../../assets/undrawhero.svg";
 import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <Wrapper>
-        <Navbar />
         <div className="section">
             <div>
                 <h1>Secure your notes</h1>
@@ -22,15 +20,15 @@ const Header = () => {
 
 export default Header
 
-const Wrapper = styled.header`
+const Wrapper = styled.div`
     background-color: var(--primaryColor80);
     color: var(--primaryColor10);
-    padding-top: 5rem;
+    /* padding-top: 5rem; */
     span{
         color: var(--primaryColor);
     }
     .section{
-        padding-block: 4rem 4rem;
+        padding-block: 4rem 5rem;
         text-align: center;
         width: min(var(--maxWidth),90%);
         margin-inline: auto;
@@ -47,15 +45,6 @@ const Wrapper = styled.header`
         display: none;
     }
     @media screen and (min-width:900px){
-        .ham{
-            display: none;
-        }
-        nav{
-            display: flex;
-            align-items: center;
-            width: 60%;
-            justify-content: space-between;
-        }
         .section{
             padding-block: 3rem;
             text-align: start;

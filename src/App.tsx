@@ -1,13 +1,13 @@
 import Home from "./Pages/Home"
 import {createBrowserRouter,createRoutesFromElements,Route, RouterProvider} from "react-router-dom"
-import Layout from "./components/Shared/Layout"
+import Layout from "./components/Home/Layout"
 import Login from "./Pages/Login"
 import Signup from "./Pages/Signup"
 import Dashboard from "./Pages/Protected/Dashboard"
 import AllNotes from "./Pages/Protected/AllNotes"
 import DeletedNotes from "./Pages/Protected/DeletedNotes"
 import Profile from "./Pages/Protected/Profile"
-import Protected from "./components/Shared/Protected"
+import Protected from "./components/Dashboard/ProtectedLayout"
 import AddNote from "./Pages/Protected/AddNote"
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(
