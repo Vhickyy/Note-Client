@@ -33,12 +33,13 @@ const Wrapper = styled.div`
         width: min(var(--maxWidth),90%);
         margin-inline: auto;
         p{
+            margin-inline: 0;
             letter-spacing: var(--letterSpacing);
         }
         button{
             margin-top: 1rem;
             padding: .8rem 3.2rem;
-            box-shadow: 0 0 10px var(--primaryColor);
+            /* box-shadow: 0 0 10px var(--primaryColor); */
         }
     }
     .hero{
@@ -53,7 +54,7 @@ const Wrapper = styled.div`
             align-items: center;
             column-gap: 2rem;
             p{
-                width: 30em;
+                width: 30rem;
             }
         }
         .hero{

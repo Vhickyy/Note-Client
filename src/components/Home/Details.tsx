@@ -36,7 +36,7 @@ export default Details;
 
 const Wrapper = styled.section`
     padding-block: 4.5rem;
-    background-color: #ffffff;
+    background-color: whitesmoke;
     .main{
         width: min(var(--maxWidth),80%);
         margin-inline: auto;
@@ -47,6 +47,7 @@ const Wrapper = styled.section`
         display: grid;
         gap: 1.2rem;
         grid-template-columns: repeat(auto-fill, minmax(18rem,1fr));
+        
         h4{
             margin: 0;
         }
@@ -62,7 +63,7 @@ const Wrapper = styled.section`
         /* margin-bottom: 1rem; */
     }
     .feature-card{
-        background-color: var(--primaryColor20);
+        background-color: white;
         display: flex;
         align-items: center;
         justify-content: center;

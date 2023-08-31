@@ -45,10 +45,10 @@ const Reviews = () => {
                 <div className="card-wrapper">
                 {reviews.map((review,index)=>{
                     return (
-                            <div className="card" key={index}>
-                                <p>{review.name}</p>
-                                <p>{review.review}</p>
-                            </div>
+                        <div className="card" key={index}>
+                            <p>{review.name}</p>
+                            <p>{review.review}</p>
+                        </div>
                     )
                 })}
                 </div>

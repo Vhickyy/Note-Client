@@ -4,6 +4,7 @@ const Wrapper = styled.header`
     position: sticky;
     top: 0;
     left: 0;
+    z-index: 2;
     background-color: #ffffff;
 .shadow{
     box-shadow: var(--shadowmd);
