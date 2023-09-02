@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FaAngleRight, FaArrowRight } from "react-icons/fa";
+import { FaAngleRight } from "react-icons/fa";
 
 const Details = () => {
   return (
