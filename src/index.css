@@ -74,7 +74,7 @@ h5 {
 
 h1 {
   font-weight: 700;
-  font-size: clamp(3rem, calc(4vw + 1rem), 4.5rem);
+  font-size: clamp(2.5rem, calc(4vw + 1rem), 4.5rem);
   /* background-color: green; */
 }
 
