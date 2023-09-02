@@ -29,7 +29,7 @@ const AllNotesComponenent = () => {
 export default AllNotesComponenent
 
 const Wrapper = styled.main`
-  margin-block: 2rem;
+  padding-block: 2rem;
   width: min(90%,var(--maxWidth));
   p{
     margin: 0;
@@ -37,20 +37,21 @@ const Wrapper = styled.main`
   margin-inline: auto;
   .card-wrapper{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 1.1rem;
   }
   .card{
-    background-color: var(--primaryColor20);
-    /* background-color: white; */
+    /* background-color: var(--primaryColor20); */
+    /* background-color: var(--backgroundColor); */
+    background-color: white;
     padding: 1rem;
     border-radius: var(--borderRadius);
     box-shadow: var(--shadowmd);
     height: 10rem;
   }
-  @media screen and (min-width: 900px){
+  @media screen and (min-width: 1000px){
     .card-wrapper{
-      grid-template-columns: repeat(3,1fr);
+      grid-template-columns: 1fr 1fr;
     }
   }
 `

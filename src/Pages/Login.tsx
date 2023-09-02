@@ -22,7 +22,7 @@ const Login = () => {
 export default Login
 
 const Wrapper = styled.div`
-padding-block: 7rem 3rem;
+padding-block: 4rem;
 letter-spacing: normal;
 color: var(--primaryColor80);
 form{

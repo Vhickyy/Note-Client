@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { FaAngleRight, FaArrowRight } from "react-icons/fa";
 
 const Details = () => {
   return (
@@ -12,19 +14,19 @@ const Details = () => {
                     <div className="circle"></div>
                     <h4>Article</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, incidunt.</p>
-                    <button>explore</button>
+                    <Link to={"#"}>Learn More<FaAngleRight/></Link>
                 </div>
                 <div className="feature-card">
                     <div className="circle"></div>
                     <h4>Article</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, incidunt.</p>
-                    <button>explore</button>
+                    <Link to={"#"}>Learn More<FaAngleRight/></Link>
                 </div>
                 <div className="feature-card">
                     <div className="circle"></div>
                     <h4>Article</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, incidunt.</p>
-                    <button>explore</button>
+                    <Link to={"#"}>Learn More<FaAngleRight/></Link>
                 </div>
             </motion.div>
         </div>
@@ -38,7 +40,7 @@ const Wrapper = styled.section`
     padding-block: 4.5rem;
     background-color: whitesmoke;
     .main{
-        width: min(var(--maxWidth),80%);
+        width: min(var(--maxWidth),90%);
         margin-inline: auto;
         text-align: center;
     }
@@ -47,13 +49,6 @@ const Wrapper = styled.section`
         display: grid;
         gap: 1.2rem;
         grid-template-columns: repeat(auto-fill, minmax(18rem,1fr));
-        
-        h4{
-            margin: 0;
-        }
-        p{
-            margin: 0;
-        }
     }
     .circle{
         width: 4rem;
@@ -72,11 +67,21 @@ const Wrapper = styled.section`
         border-radius: 0.35rem;
         box-shadow: var(--shadowmd);
         border-bottom: .4rem solid var(--primaryColor);
+        gap: 1.5rem;
+    }
+    a{
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        color: var(--primaryColor);
+        transition: hover .2s linear;
+    }
+    a:hover{
         gap: 1rem;
     }
-    @media screen and (min-width: 673px) {
+    /* @media screen and (min-width: 673px) {
         .main{
             width: min(var(--maxWidth),90%);
         }   
-    }
+    } */
 `

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 const Wrapper = styled.footer`
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
     color: var(--textColor50);
     letter-spacing: normal;
     h5{

@@ -23,7 +23,7 @@ const Navbar = ({page}: Page) => {
 export default Navbar
 
 const Wrapper = styled.header`
-    background-color: whitesmoke;
+    background-color: white;
     .head{
         width: min(1440px,90%);
         margin-inline: auto;
@@ -32,7 +32,7 @@ const Wrapper = styled.header`
         justify-content: space-between;
         padding-block: 1.5rem;
         h3{
-            margin: 0;
+            font-weight: 500;
         }
         .icon{
             border: 2px solid var(--primaryColor80);
