@@ -79,9 +79,10 @@ const Wrapper = styled.section`
     a:hover{
         gap: 1rem;
     }
-    /* @media screen and (min-width: 673px) {
-        .main{
-            width: min(var(--maxWidth),90%);
+    @media screen and (min-width: 1100px) {
+        .section{
+            display: flex;
+            justify-content: space-between;
         }   
-    } */
+    }
 `
