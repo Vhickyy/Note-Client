@@ -25,8 +25,9 @@ const Wrapper = styled.div`
 padding-block: 4rem;
 letter-spacing: normal;
 color: var(--primaryColor80);
+background-color: whitesmoke;
 form{
-  background-color: var(--primaryColor10);
+  background-color: white;
   width: min(90%,var(--fixedWidth));
   margin-inline: auto;
   padding: 2rem 2rem;
@@ -39,6 +40,7 @@ form{
   label{
     display: block;
     font-weight: 600;
+    margin-bottom: .5rem;
   }
   input{
     width: 100%;
