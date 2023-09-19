@@ -1,19 +1,29 @@
+import React, { useRef } from "react";
 import { useState } from "react";
 import styled from "styled-components";
 
 const VerifyCode = () => {
-  const [code,setCode] = useState("")
+  const [code,setCode] = useState<string[]>(Array(6).fill(""));
+  const inputRef = useRef(null)
+  const handleChange = ({target}: React.ChangeEvent<HTMLInputElement>, index:number ) => {
+    const {value} = target;
+    const otp:string[] = [...code]
+    otp[index] = value;
+    
+    setCode(otp)
+  }
+  console.log(code);
+  
+  
   return (
     <Wrapper>
         <h3>Verify Email</h3>
         <div className="verify-box">
             <h5>Input OTP</h5>
             <div className="code-container">
-                {Array.from({length:6}).map((inp,index)=>{
+                {code.map((inp,index)=>{
                     return (
-                        <>
-                        <input type="text" />
-                        </>
+                        <input key={index} type="text" maxLength={1} onChange={(e)=>handleChange(e,index)} ref={inputRef} value={inp} />
                     )
                 })}
             </div>
@@ -65,5 +75,8 @@ const Wrapper = styled.div`
             text-align: center;
             font-size: 1.2rem;
         }
+        /* .spin-button-none::-webkit-inner-spin-button,.spin-button-none::-webkit-outer-spin-button{
+            appearance: none;
+        } */
     }
 `
