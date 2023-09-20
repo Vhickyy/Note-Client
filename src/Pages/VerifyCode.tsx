@@ -94,6 +94,10 @@ const Wrapper = styled.div`
             width: 2.5rem;
             text-align: center;
             font-size: 1.2rem;
+            caret-color: var(--primaryColor);
+        }
+        input[focus]{
+            border: 1px solid var(--primaryColor);
         }
     }
 `
