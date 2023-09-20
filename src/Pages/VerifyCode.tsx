@@ -1,19 +1,36 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import styled from "styled-components";
 
 const VerifyCode = () => {
   const [code,setCode] = useState<string[]>(Array(6).fill(""));
-  const inputRef = useRef(null)
+  const [active,setActive] = useState(0)
+  const inputRef = useRef<HTMLInputElement>(null)
+
   const handleChange = ({target}: React.ChangeEvent<HTMLInputElement>, index:number ) => {
     const {value} = target;
-    const otp:string[] = [...code]
-    otp[index] = value;
-    
-    setCode(otp)
+    if(isNaN(Number(value)) || !value){
+        return
+    } else{
+        const otp:string[] = code.map((inp,i)=> i === index ? value[value.length-1] : inp);
+        setActive(index + 1)
+        setCode(otp);
+    }
   }
-  console.log(code);
   
+  const handleKey = ({key}:React.KeyboardEvent<HTMLInputElement>,index:number) => {
+      if(key === "Backspace"){
+        const otp:string[] = code.map((inp,i)=> i ===index ? '' : inp);
+        setCode(otp);
+        return setActive(index - 1);
+    }
+  }
+  const handleClick = (index:number) => {
+    setActive(index)
+  }
+  useEffect(()=>{
+    inputRef?.current?.focus()
+  },[active])
   
   return (
     <Wrapper>
@@ -23,7 +40,13 @@ const VerifyCode = () => {
             <div className="code-container">
                 {code.map((inp,index)=>{
                     return (
-                        <input key={index} type="text" maxLength={1} onChange={(e)=>handleChange(e,index)} ref={inputRef} value={inp} />
+                        <input key={index} 
+                        type="text" 
+                        onChange={(e)=>handleChange(e,index)}
+                        onKeyDown={(e)=>handleKey(e,index)}
+                        ref={index === active ? inputRef : null}
+                        onClick={()=>handleClick(index)}
+                        value={inp} />
                     )
                 })}
             </div>
@@ -40,7 +63,7 @@ const Wrapper = styled.div`
     letter-spacing: var(--letterSpacing);
     color: var(--textColor50);
     background-color: whitesmoke;
-    padding-block: 3rem;
+    padding-block: 4rem;
     text-align: center;
     display: grid;
     gap: 2rem;
@@ -55,8 +78,6 @@ const Wrapper = styled.div`
         box-shadow: var(--shadowmd);
         border-radius: 1rem;
         text-align: center;
-        /* display: grid; */
-        /* gap: ; */
     }
     span{
         color: var(--primaryColor);
@@ -68,15 +89,11 @@ const Wrapper = styled.div`
         align-items: center;
         gap: .5rem;
         margin-block: 1.5rem;
-        /* background-color: yellow; */
         input{
             height: 2.5rem;
             width: 2.5rem;
             text-align: center;
             font-size: 1.2rem;
         }
-        /* .spin-button-none::-webkit-inner-spin-button,.spin-button-none::-webkit-outer-spin-button{
-            appearance: none;
-        } */
     }
 `
