@@ -1,9 +1,27 @@
 import styled from "styled-components"
-import { Link } from "react-router-dom"
-const Signup = () => {
+import { Link } from "react-router-dom";
+import axios from "axios";
+const Signup =  () => {
+  const submitForm = async (e:React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget
+    const formData = new FormData(e.currentTarget);
+    const newUser = Object.fromEntries(formData);
+    if(!newUser.first_name || !newUser.last_name || !newUser.password){
+      console.log("all fields are required");
+      return
+    }
+    try{
+      const response = await axios.post("/api/test-user", newUser);
+      console.log(response.data)
+       form.reset()
+    }catch(e){
+      console.log(e)
+    }
+  }
   return (
     <Wrapper>
-      <form>
+      <form onSubmit={submitForm}>
         <div className="flex">
             <div>
                 <label htmlFor="first_name">First Name</label>

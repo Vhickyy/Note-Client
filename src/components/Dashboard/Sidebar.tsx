@@ -10,9 +10,9 @@ const Sidebar = ({close}:Prop) => {
   return (
     <Wrapper >
         <nav className="links">
-            {links.map(link=>{
+            {links.map((link,index)=>{
                 return (
-                    <NavLink to={`${link.path}`} onClick={close} end>
+                    <NavLink to={`${link.path}`} onClick={close} end key={index}>
                         {link.icon}
                         {link.link}
                     </NavLink>

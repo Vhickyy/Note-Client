@@ -97,6 +97,7 @@ const Wrapper = styled.div`
             caret-color: var(--primaryColor);
         }
         input[focus]{
+            outline: none;
             border: 1px solid var(--primaryColor);
         }
     }

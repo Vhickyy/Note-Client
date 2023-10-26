@@ -11,6 +11,7 @@ import Profile from "./Pages/Protected/Profile"
 import Protected from "./components/Dashboard/ProtectedLayout"
 import AddNote from "./Pages/Protected/AddNote"
 function App() {
+  // fetch("/api").then(data=>data.json()).then(data=>console.log(data)).catch(err=>console.log(err))
   const router = createBrowserRouter(createRoutesFromElements(
     <Route path="/" >
       <Route element={<Layout/>}>
