@@ -7,6 +7,11 @@ const links = [
         icon: <FaHome/>
     },
     {
+        path: "addnote",
+        link: "Add Notes",
+        icon: <FaHome/>
+    },
+    {
         path: "allnotes",
         link: "All Notes",
         icon: <FaHome/>

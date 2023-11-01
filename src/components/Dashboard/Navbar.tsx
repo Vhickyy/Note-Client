@@ -24,6 +24,8 @@ export default Navbar
 
 const Wrapper = styled.header`
     background-color: white;
+    position: sticky;
+    top: 0;
     .head{
         width: min(1440px,90%);
         margin-inline: auto;
@@ -45,8 +47,8 @@ const Wrapper = styled.header`
         width: 100%;
         background-color: var(--primaryColor);
     }
-    @media screen and (min-width: 800px){
+    /* @media screen and (min-width: 800px){
         position: sticky;
         top: 0;
-    }
+    } */
 `

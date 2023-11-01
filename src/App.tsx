@@ -10,6 +10,7 @@ import DeletedNotes from "./Pages/Protected/DeletedNotes"
 import Profile from "./Pages/Protected/Profile"
 import Protected from "./components/Dashboard/ProtectedLayout"
 import AddNote from "./Pages/Protected/AddNote"
+import Project from "./Pages/Protected/Project"
 function App() {
   // fetch("/api").then(data=>data.json()).then(data=>console.log(data)).catch(err=>console.log(err))
   const router = createBrowserRouter(createRoutesFromElements(
@@ -26,6 +27,7 @@ function App() {
         <Route path="deletednotes" element={<DeletedNotes/>}/>
         <Route path="profile" element={<Profile/>}/>
         <Route path="addnote" element={<AddNote/>}/>
+        <Route path="project" element={<Project/>}/>
       </Route>
     </Route>
   ))
@@ -34,4 +36,9 @@ function App() {
   )
 }
 
-export default App
+export default App;
+
+// add users to note
+// have message once user are added to note
+// allow real time update when two users are involvec
+// notification

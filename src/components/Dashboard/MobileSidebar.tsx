@@ -24,6 +24,8 @@ export default MobileSidebar;
 const Wrapper = styled.aside`
     background-color: #f5f5f599;
     position: fixed;
+    top:0;
+    z-index: 1;
     height: 100%;
     width: 100%;
     background-color: #f5f5f599;

@@ -37,12 +37,11 @@ const Wrapper = styled.main`
   margin-inline: auto;
   .card-wrapper{
     display: grid;
-    grid-template-columns: 1fr;
+    /* grid-template-columns: 1fr; */
+    grid-template-columns: repeat(auto-fit,minmax(250px,auto));
     gap: 1.1rem;
   }
   .card{
-    /* background-color: var(--primaryColor20); */
-    /* background-color: var(--backgroundColor); */
     background-color: white;
     padding: 1rem;
     border-radius: var(--borderRadius);
@@ -51,7 +50,8 @@ const Wrapper = styled.main`
   }
   @media screen and (min-width: 1000px){
     .card-wrapper{
-      grid-template-columns: 1fr 1fr;
+      /* grid-template-columns: 1fr 1fr; */
+      grid-template-columns: repeat(auto-fit,minmax(300px,auto));
     }
   }
 `

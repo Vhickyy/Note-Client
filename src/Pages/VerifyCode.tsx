@@ -20,18 +20,20 @@ const VerifyCode = () => {
   
   const handleKey = ({key}:React.KeyboardEvent<HTMLInputElement>,index:number) => {
       if(key === "Backspace"){
-        const otp:string[] = code.map((inp,i)=> i ===index ? '' : inp);
+        const otp:string[] = code.map((inp,i)=> i === index ? '' : inp);
         setCode(otp);
-        return setActive(index - 1);
+        setActive(index - 1);
     }
   }
+
   const handleClick = (index:number) => {
     setActive(index)
   }
   useEffect(()=>{
     inputRef?.current?.focus()
   },[active])
-  
+
+
   return (
     <Wrapper>
         <h3>Verify Email</h3>
