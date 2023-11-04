@@ -51,6 +51,7 @@ const Signup =  () => {
         </div>
         <button>Register</button>
         <p>Already have an account? <Link to={"/login"}>Log in</Link></p>
+        <button className="google">Sign up with Google</button>
       </form>
     </Wrapper>
   )

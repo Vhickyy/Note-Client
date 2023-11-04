@@ -2,17 +2,18 @@ import Navbar from "../../components/Dashboard/Navbar";
 import NoteEditor from "../../components/Dashboard/AddNotes/NoteEditor";
 
 const AddNote = () => {
+  const Edit: boolean = false
   return (
     <>
-        <Navbar page="Add New Note"/>
+        <Navbar page={!Edit ? "Add New Note" : "Edit Note"}/>
         {/* <h1>add note</h1> */}
-        <div>
+        <form>
           <div>
             <h4>Title</h4>
-            <button>Save</button>
+            {!Edit ? <button>Save</button> : <button>Save Changes</button>}
           </div>
           <NoteEditor/>
-        </div>
+        </form>
     </>
   )
 }

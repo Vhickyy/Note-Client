@@ -147,6 +147,11 @@ button{
 .show{
   display: block;
 }
+.google {
+  background-color: transparent;
+  color: var(--primaryColor);
+  border: 1px solid var(--primaryColor);
+}
 /* @media screen and (min-width:700px) {
   h1 {
       font-size: 4rem;

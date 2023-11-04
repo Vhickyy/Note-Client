@@ -4,36 +4,36 @@ import Filterform from "../../components/Dashboard/AllNotes/Filterform";
 import { useState } from "react";
 import CreateProjectModal from "../../components/Dashboard/Project/CreateProjectModal";
 const projects:any[] = [
-  // {
-  //   title: "something",
-  //   status: "in Progress",
-  //   onSocket: false
-  // },
-  // {
-  //   title: "something",
-  //   status: "in Progress",
-  //   onSocket: false
-  // },
-  // {
-  //   title: "something",
-  //   status: "in Progress",
-  //   onSocket: false
-  // },
-  // {
-  //   title: "something",
-  //   status: "in Progress",
-  //   onSocket: false
-  // },
-  // {
-  //   title: "something",
-  //   status: "in Progress",
-  //   onSocket: true
-  // },
-  // {
-  //   title: "something",
-  //   status: "in Progress",
-  //   onSocket: false
-  // },
+  {
+    title: "something",
+    status: "in Progress",
+    onSocket: false
+  },
+  {
+    title: "something",
+    status: "in Progress",
+    onSocket: false
+  },
+  {
+    title: "something",
+    status: "in Progress",
+    onSocket: false
+  },
+  {
+    title: "something",
+    status: "in Progress",
+    onSocket: false
+  },
+  {
+    title: "something",
+    status: "in Progress",
+    onSocket: true
+  },
+  {
+    title: "something",
+    status: "in Progress",
+    onSocket: false
+  },
 ]
 const Project = () => {
   const [sort,setSort] = useState({show:false,sort:"latest"});
@@ -58,15 +58,21 @@ const Project = () => {
           <h3>You have no project, create new project.</h3>
           <button onClick={openModal}>Create Project</button>
           </> :
-          projects.map((project,index)=>{
-            return (
-              <div className="card" key={index}>
-                <h3>{project.title}</h3>
-                <p>{project.status}</p>
-                <p>{project.onSocket === true ? "true" : "false"}, number of members,date and dealine, countdown, creator or collaborator </p>
-              </div>
-            )
-          })
+          <>
+            <div className="card">
+              <h5>Create New Project</h5>
+              <button onClick={openModal}>New</button>
+            </div>
+            {projects.map((project,index)=>{
+              return (
+                <div className="card" key={index}>
+                  <h3>{project.title}</h3>
+                  <p>{project.status}</p>
+                  <p>{project.onSocket === true ? "true" : "false"}, number of members,date and dealine, countdown, creator or collaborator </p>
+                </div>
+              )
+            })}
+          </>
           }
         </div>
       </div>

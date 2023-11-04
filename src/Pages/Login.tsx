@@ -14,6 +14,7 @@ const Login = () => {
         </div>
         <button>Log In</button>
         <p>Don't have an account? <Link to={"/signup"}>Register</Link></p>
+        <button className="google">Sign in with Google</button>
       </form>
     </Wrapper>
   )
