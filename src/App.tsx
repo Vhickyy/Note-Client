@@ -12,7 +12,7 @@ import Protected from "./components/Dashboard/ProtectedLayout"
 import AddNote from "./Pages/Protected/AddNote"
 import Project from "./Pages/Protected/Project"
 function App() {
-  // fetch("/api").then(data=>data.json()).then(data=>console.log(data)).catch(err=>console.log(err))
+  fetch("/api/test-user").then(data=>data.json()).then(data=>console.log(data)).catch(err=>console.log(err))
   const router = createBrowserRouter(createRoutesFromElements(
     <Route path="/" >
       <Route element={<Layout/>}>

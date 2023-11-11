@@ -1,6 +1,37 @@
 import styled from "styled-components"
-import { Link } from "react-router-dom"
+import axios from "axios"
+import { Link, useNavigate } from "react-router-dom"
+
 const Login = () => {
+  const navigate = useNavigate();
+  const googleSignIn = async (e:React.MouseEvent<HTMLButtonElement> ) => {
+    e.preventDefault()
+    window.open("http://localhost:8000/auth/google","_self")
+    console.log("b4")
+    // navigate("/dashboard")
+  //  fetch("/api/auth/google",{
+        // method: "GET",}).then(data=>data.json()).then(data=>console.log(data)).catch(err=>console.log(err))
+    // try{
+    //   console.log("try")
+    //   // const data = await axios.get("/api/auth/google")
+    //   // const data2 = await axios.get("/api/test-user")
+    //   const data = await fetch("/api/auth/google",{
+    //     method: "GET",
+    //     credentials: "include",
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //       "Access-Control-Allow-Credentials": "true"
+    //     }
+    //     },
+    //   )
+    //   console.log(data)
+    // }catch(e){
+    //   console.log("catch")
+    //   console.log(e)
+    // }
+
+  }
   return (
     <Wrapper>
       <form>
@@ -14,7 +45,7 @@ const Login = () => {
         </div>
         <button>Log In</button>
         <p>Don't have an account? <Link to={"/signup"}>Register</Link></p>
-        <button className="google">Sign in with Google</button>
+        <button className="google" onClick={googleSignIn}>Sign in with Google</button>
       </form>
     </Wrapper>
   )
