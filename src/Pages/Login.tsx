@@ -1,9 +1,9 @@
 import styled from "styled-components"
-import axios from "axios"
-import { Link, useNavigate } from "react-router-dom"
+// import axios from "axios"
+import { Link } from "react-router-dom"
 
 const Login = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const googleSignIn = async (e:React.MouseEvent<HTMLButtonElement> ) => {
     e.preventDefault()
     window.open("http://localhost:8000/auth/google","_self")

@@ -3,6 +3,7 @@ import Navbar from "../../components/Dashboard/Navbar";
 import Filterform from "../../components/Dashboard/AllNotes/Filterform";
 import { useState } from "react";
 import CreateProjectModal from "../../components/Dashboard/Project/CreateProjectModal";
+import { Link } from "react-router-dom";
 const projects:any[] = [
   {
     title: "something",
@@ -65,11 +66,13 @@ const Project = () => {
             </div>
             {projects.map((project,index)=>{
               return (
-                <div className="card" key={index}>
-                  <h3>{project.title}</h3>
-                  <p>{project.status}</p>
-                  <p>{project.onSocket === true ? "true" : "false"}, number of members,date and dealine, countdown, creator or collaborator </p>
-                </div>
+                <Link to={"./1"} key={index}>
+                  <div className="card" >
+                    <h3>{project.title}</h3>
+                    <p>{project.status}</p>
+                    <p>{project.onSocket === true ? "true" : "false"}, number of members,date and dealine, countdown, creator or collaborator </p>
+                  </div>
+                </Link>
               )
             })}
           </>
@@ -85,6 +88,9 @@ export default Project
 const Wrapper = styled.div`
 background-color: whitesmoke;
 min-height: 100vh;
+a{
+  color: black;
+}
 .section{
   padding-block: 2rem;
   width: min(90%,var(--maxWidth));

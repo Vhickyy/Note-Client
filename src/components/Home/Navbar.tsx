@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { FaBars, FaSun, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { BsSunFill } from "react-icons/bs";
 import Wrapper from "../../styles/HomeNavbarWrapper";
 import {useRef, useState, useEffect} from "react"
 const Navbar = () => {
@@ -26,14 +27,14 @@ const Navbar = () => {
             <div className="nav">
                 <Link to={"/"}><h2>VEENOTES</h2></Link>
                 <div className="icon-container">
-                    <FaSun className="icon"/>
+                    <BsSunFill className="icon"/>
                     {!show ?<FaBars className="icon ham" onClick={openNav}/> : <FaTimes className="icon ham" onClick={closeNav}/>}
                 </div>
                 <div className="desktop-links">
                     <Link to={"/"}>Home</Link>
                     <Link to={"#"}>About</Link>
                     <Link to={"#"}>Contact</Link>
-                    <FaSun className="icon"/>
+                    <BsSunFill className="icon"/>
                     <div className="btn-container">
                         <Link to={"login"}><button className="login">Log in</button></Link>
                         <Link to={"signup"}><button>sign up</button></Link>

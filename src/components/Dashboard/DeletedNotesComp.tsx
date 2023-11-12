@@ -1,17 +1,10 @@
 import styled from "styled-components";
-import data from "../../../data/fakedata";
-import { useState } from "react";
-
-import Filterform from "./Filterform";
-import { FaEdit, FaTrash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import data from "../../data/fakedata";
+import { FaTrash } from "react-icons/fa";
 const AllNotesComponenent = () => {
-  const [sort,setSort] = useState({show:false,sort:"latest"});
-    const [category,setCategory] = useState({show:false,category:"all"});
-    const [showForm, setShowForm] = useState(false)
   return (
     <Wrapper>
-      <Filterform sort={sort} setSort={setSort} category={category} setCategory={setCategory} showForm={showForm} setShowForm={setShowForm}/>
+      <button>Clear All</button>
       <div className="card-wrapper">
         {data.map((i,index)=>{
           return(
@@ -20,8 +13,8 @@ const AllNotesComponenent = () => {
               <p>{i.content}</p>
               <p>{i.category}</p>
               <div>
-                <Link to={"../editnote/1"}><FaEdit/></Link>
                 <FaTrash/>
+                <button>Retrieve</button>
               </div>
             </div>
           )
@@ -37,6 +30,9 @@ export default AllNotesComponenent
 const Wrapper = styled.main`
   padding-block: 2rem;
   width: min(90%,var(--maxWidth));
+  button{
+    margin-bottom: 1rem;
+  }
   p{
     margin: 0;
   }

@@ -17,6 +17,11 @@ const links = [
         icon: <FaHome/>
     },
     {
+        path: "project",
+        link: "Project",
+        icon: <FaHome/>
+    },
+    {
         path: "deletednotes",
         link: "Deleted Notes",
         icon: <FaHome/>
