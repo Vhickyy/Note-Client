@@ -1,13 +1,17 @@
 import DeletedNotesComp from "../../components/Dashboard/DeletedNotesComp"
 import Navbar from "../../components/Dashboard/Navbar"
-
+import styled from "styled-components"
 const DeletedNotes = () => {
   return (
-    <div>
+    <Wrapper>
       <Navbar page="Deleted Notes"/>
       <DeletedNotesComp />
-    </div>
+    </Wrapper>
   )
 }
 
 export default DeletedNotes
+
+const Wrapper = styled.div`
+  background-color: whitesmoke;
+`

@@ -8,7 +8,11 @@ import { Link } from "react-router-dom";
 const AllNotesComponenent = () => {
   const [sort,setSort] = useState({show:false,sort:"latest"});
     const [category,setCategory] = useState({show:false,category:"all"});
-    const [showForm, setShowForm] = useState(false)
+    const [showForm, setShowForm] = useState(false);
+
+    const deletNote =(id:string)=>{
+      console.log(id)
+    }
   return (
     <Wrapper>
       <Filterform sort={sort} setSort={setSort} category={category} setCategory={setCategory} showForm={showForm} setShowForm={setShowForm}/>
@@ -21,7 +25,7 @@ const AllNotesComponenent = () => {
               <p>{i.category}</p>
               <div>
                 <Link to={"../editnote/1"}><FaEdit/></Link>
-                <FaTrash/>
+                <FaTrash onClick={()=>deletNote("1")}/>
               </div>
             </div>
           )
@@ -37,10 +41,10 @@ export default AllNotesComponenent
 const Wrapper = styled.main`
   padding-block: 2rem;
   width: min(90%,var(--maxWidth));
+  margin-inline: auto;
   p{
     margin: 0;
   }
-  margin-inline: auto;
   .card-wrapper{
     display: grid;
     /* grid-template-columns: 1fr; */

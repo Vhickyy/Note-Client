@@ -13,6 +13,7 @@ import AddNote from "./Pages/Protected/AddNote"
 import Project from "./Pages/Protected/Project"
 import EditNote from "./Pages/Protected/EditNote"
 import ReadProject from "./Pages/Protected/ReadProject"
+import Memorycheck from "./Pages/Protected/Memorycheck"
 function App() {
   // fetch("/api/test-user").then(data=>data.json()).then(data=>console.log(data)).catch(err=>console.log(err))
   const router = createBrowserRouter(createRoutesFromElements(
@@ -32,6 +33,7 @@ function App() {
         <Route path="editnote/:id" element={<EditNote/>}/>
         <Route path="project" element={<Project/>}/>
         <Route path="project/:id" element={<ReadProject/>}/>
+        <Route path="memorycheck" element={<Memorycheck/>}/>
       </Route>
     </Route>
   ))

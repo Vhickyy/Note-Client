@@ -2,9 +2,18 @@ import styled from "styled-components";
 import data from "../../data/fakedata";
 import { FaTrash } from "react-icons/fa";
 const AllNotesComponenent = () => {
+  const retrieveNote = (id:string) => {
+    console.log(id)
+  }
+  const deleteNote = (id:string) => {
+    console.log(id)
+  }
+  const clearNotes = () => {
+    console.log("clear")
+  }
   return (
     <Wrapper>
-      <button>Clear All</button>
+      <button onClick={clearNotes}>Clear All</button>
       <div className="card-wrapper">
         {data.map((i,index)=>{
           return(
@@ -13,8 +22,8 @@ const AllNotesComponenent = () => {
               <p>{i.content}</p>
               <p>{i.category}</p>
               <div>
-                <FaTrash/>
-                <button>Retrieve</button>
+                <FaTrash onClick={()=>deleteNote("1")}/>
+                <button onClick={()=>retrieveNote("1")}>Retrieve</button>
               </div>
             </div>
           )

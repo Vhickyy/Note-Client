@@ -27,6 +27,11 @@ const links = [
         icon: <FaHome/>
     },
     {
+        path: "memorycheck",
+        link: "Memory-Check",
+        icon: <FaHome/>
+    },
+    {
         path: "profile",
         link: "Profile",
         icon: <FaHome/>
