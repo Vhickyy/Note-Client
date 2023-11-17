@@ -1,19 +1,20 @@
-import Home from "./Pages/Home"
-import {createBrowserRouter,createRoutesFromElements,Route, RouterProvider} from "react-router-dom"
-import Layout from "./components/Home/Layout"
-import Login from "./Pages/Login"
-import Signup from "./Pages/Signup"
-import VerifyCode from "./Pages/VerifyCode"
-import Dashboard from "./Pages/Protected/Dashboard"
-import AllNotes from "./Pages/Protected/AllNotes"
-import DeletedNotes from "./Pages/Protected/DeletedNotes"
-import Profile from "./Pages/Protected/Profile"
-import Protected from "./components/Dashboard/ProtectedLayout"
-import AddNote from "./Pages/Protected/AddNote"
-import Project from "./Pages/Protected/Project"
-import EditNote from "./Pages/Protected/EditNote"
-import ReadProject from "./Pages/Protected/ReadProject"
-import Memorycheck from "./Pages/Protected/Memorycheck"
+import Home from "./Pages/Home";
+import {createBrowserRouter,createRoutesFromElements,Route, RouterProvider} from "react-router-dom";
+import Layout from "./components/Home/Layout";
+import Login from "./Pages/Login";
+import Signup from "./Pages/Signup";
+import VerifyCode from "./Pages/VerifyCode";
+import Dashboard from "./Pages/Protected/Dashboard";
+import AllNotes from "./Pages/Protected/AllNotes";
+import DeletedNotes from "./Pages/Protected/DeletedNotes";
+import Profile from "./Pages/Protected/Profile";
+import Protected from "./components/Dashboard/ProtectedLayout";
+import AddNote from "./Pages/Protected/AddNote";
+import Project from "./Pages/Protected/Project";
+import EditNote from "./Pages/Protected/EditNote";
+import ReadProject from "./Pages/Protected/ReadProject";
+import Memorycheck from "./Pages/Protected/Memorycheck";
+
 function App() {
   // fetch("/api/test-user").then(data=>data.json()).then(data=>console.log(data)).catch(err=>console.log(err))
   const router = createBrowserRouter(createRoutesFromElements(
