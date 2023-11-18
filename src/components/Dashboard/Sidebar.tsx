@@ -41,6 +41,10 @@ const Wrapper = styled.section`
             display: flex;
             align-items: center;
             gap: 1rem;
+            border: 1px solid var(--primaryColor);
+            padding-inline: 1rem;
+            padding-block: .7rem;
+            border-radius: .5rem;
         }
     }
 `

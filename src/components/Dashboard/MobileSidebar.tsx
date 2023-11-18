@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Sidebar from "./Sidebar";
-import { FaTimes } from "react-icons/fa";
+import { FaPersonBooth, FaTimes } from "react-icons/fa";
 type props = {
     close: ()=>void,
     showSidebar: boolean
@@ -9,11 +9,18 @@ const MobileSidebar = ({close,showSidebar} : props) => {
   return (
     <Wrapper onClick={close} className={`main ${showSidebar ? "show" : "hide"}`}>
       <div className="nav" onClick={(e)=> {e.stopPropagation()}}>
-        <div className="flex">
-          <h3>VEENOTES</h3>
-          <FaTimes className="icon" onClick={close}/>
+        <div className="grid">
+          <div className="flex">
+            <h3>VEENOTES</h3>
+            <FaTimes className="icon" onClick={close}/>
+          </div>
+          <Sidebar close={close}/>
+          <div className="flex">
+            <FaPersonBooth />
+            Logout
+            {/* <Link to={}>Logout</Link> */}
+          </div>
         </div>
-        <Sidebar close={close}/>
       </div>
     </Wrapper>
   )
@@ -50,6 +57,13 @@ const Wrapper = styled.aside`
     padding: .3rem;
     border-radius: .25rem;
   }
+  .grid{
+      display: grid;
+      padding-inline: 1rem;
+      gap: 3.5rem;
+      padding-block: 2rem;
+      /* background-color: red; */
+    }
   @media screen and (min-width: 800px) {
     display: none;
   }

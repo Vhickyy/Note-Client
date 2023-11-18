@@ -8,9 +8,12 @@ const DesktopSidebar = ({showSidebar}:props) => {
   return (
     <Wrapper>
       <div className={`main ${showSidebar ? "hide" : "show"}`}>
-        <div className="side">
+        <div className="grid">
 
-        <Sidebar />
+          <h3>VeeNotes</h3>
+          <div className="side">
+          <Sidebar />
+        </div>
         </div>
       </div>
     </Wrapper>
@@ -29,6 +32,11 @@ const Wrapper = styled.aside`
     .side{
       position: sticky;
       top: 0;
+    }
+    .grid{
+      display: grid;
+      gap: 2rem;
+      padding-block: 2rem;
     }
     @media screen and (min-width: 800px){
       display: block;
