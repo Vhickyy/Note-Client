@@ -6,7 +6,7 @@ import Filterform from "./Filterform";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { deleteSingleNote, getAllNotes } from "../../../api/axios";
-import { NoteType } from "../../../api/types";
+import { NoteType } from "../../../types/types";
 const AllNotesComponenent = () => {
   const [sort,setSort] = useState({show:false,sort:"latest"});
     const [category,setCategory] = useState({show:false,category:"all"});

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { NoteType } from "./types";
+import { NoteType } from "../types/types";
 
 export const customFetch = axios.create({
         baseURL: "/api"
