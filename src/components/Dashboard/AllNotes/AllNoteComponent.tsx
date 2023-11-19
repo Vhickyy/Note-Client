@@ -12,7 +12,7 @@ const AllNotesComponenent = () => {
     const [category,setCategory] = useState({show:false,category:"all"});
     const [showForm, setShowForm] = useState(false);
 
-    const {data} = useQuery<NoteType[]>({queryKey: ["notes"],queryFn: getAllNotes})
+    const {data,isLoading,error} = useQuery<NoteType[]>({queryKey: ["notes"],queryFn: getAllNotes})
     const {mutate}  = useMutation({
       mutationFn:  deleteSingleNote
     })
@@ -20,15 +20,21 @@ const AllNotesComponenent = () => {
    const deletNote =(id:string)=>{
       mutate(id)
     }
+    if(isLoading){
+      return <h1>Loading</h1>
+    }
+    if(error){
+      return <h2>{error.message}</h2>
+    }
   return (
     <Wrapper>
       <Filterform sort={sort} setSort={setSort} category={category} setCategory={setCategory} showForm={showForm} setShowForm={setShowForm}/>
       <div className="card-wrapper">
-        {data?.map((i:any,index:any)=>{
+        {data?.map((i,index)=>{
           return(
             <div key={index} className="card">
               <h4>{i.title}</h4>
-              <p>{i.content}</p>
+              <p>{i.noteBody}</p>
               <p>{i.category}</p>
               <div>
                 <Link to={"../editnote/1"}><FaEdit/></Link>

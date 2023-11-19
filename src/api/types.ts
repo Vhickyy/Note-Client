@@ -3,5 +3,6 @@ export type NoteType = {
     title: string,
     noteBody: string,
     isFav: boolean,
-    isDeleted: boolean
+    isDeleted: boolean,
+    category: string
 }
