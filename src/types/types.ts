@@ -18,3 +18,11 @@ export type Filter = {
     showForm: boolean,
     setShowForm: React.Dispatch<React.SetStateAction<boolean>>
 }
+
+export type NoteType = {
+    id: string
+    title: string,
+    noteBody: string,
+    isFav: boolean,
+    isDeleted: boolean
+}

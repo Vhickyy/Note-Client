@@ -1,23 +1,38 @@
 import styled from "styled-components";
-import data from "../../../data/fakedata";
+// import data from "../../../data/fakedata";
+import { UseMutationResult, useMutation, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-
 import Filterform from "./Filterform";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { customFetch, deleteSingleNote, getAllNotes, updateNote } from "../../../api/axios";
+import { NoteType } from "../../../api/types";
 const AllNotesComponenent = () => {
   const [sort,setSort] = useState({show:false,sort:"latest"});
     const [category,setCategory] = useState({show:false,category:"all"});
     const [showForm, setShowForm] = useState(false);
 
-    const deletNote =(id:string)=>{
-      console.log(id)
+   
+    // {
+    //   queryKey: ["notes"],
+    //   queryFn: getAllNotes
+    // }
+    
+    const {isLoading, data, error} = useQuery<NoteType[],Error>({queryKey: ["notes"],queryFn: async () => {
+       const {data}  = await customFetch.get("/notes");
+        return data;
+    }} )
+    // const {mutate}  = useMutation(async (id:string): Promise<any> => {await customFetch.delete(`/notes/${id}`)})
+  
+   const deletNote =(id:string)=>{
+      
+      // mutate(id)
     }
   return (
     <Wrapper>
       <Filterform sort={sort} setSort={setSort} category={category} setCategory={setCategory} showForm={showForm} setShowForm={setShowForm}/>
       <div className="card-wrapper">
-        {data.map((i,index)=>{
+        {data?.map((i:any,index:any)=>{
           return(
             <div key={index} className="card">
               <h4>{i.title}</h4>
@@ -65,3 +80,7 @@ const Wrapper = styled.main`
     }
   }
 `
+// function async() {
+//   throw new Error("Function not implemented.");
+// }
+

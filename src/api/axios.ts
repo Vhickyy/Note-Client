@@ -1,36 +1,53 @@
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { NoteType } from "./types";
 
-export const getAllNotes = () => {
+export const customFetch = axios.create({
+        baseURL: "/api"
+    })
+
+
+export const getAllNotes = async () : Promise<NoteType[] | unknown> => {
     try {
-        const data = axios.get("/")
-        console.log(data);    
+        const response  = await customFetch.get("/notes")
+        console.log(response.data);   
+        return response.data;
     } catch (error) {
         console.log(error);
+        return error
     }
 }
 
 export const addNote = (note:any) => {
     try {
-        const data = axios.post("/",note)
+        const data = customFetch.post("/notes",note)
         console.log(data);    
     } catch (error) {
         console.log(error);
     }
 }
 
-export const updateNote = (id:string,note:any) => {
+export const getNote = (id:string) => {
     try {
-        const data = axios.patch(`/${id}`,note)
+        const data = customFetch.get(`/notes/${id}`)
         console.log(data);    
     } catch (error) {
         console.log(error);
     }
 }
 
-export const deleteNote = (id:string) => {
+export const updateNote = (id:string,note:any) :any=> {
     try {
-        const data = axios.delete(`/${id}`)
+        const data = customFetch.patch(`/notes/${id}`,note)
+        console.log(data);   
+        return data
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const deleteSingleNote = async (id:string) => {
+    try {
+        const data = await customFetch.delete(`/notes/${id}`)
         console.log(data);    
     } catch (error) {
         console.log(error);
