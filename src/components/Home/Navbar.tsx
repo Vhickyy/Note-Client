@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { BsSunFill } from "react-icons/bs";
+import { BsMoonFill, BsSunFill } from "react-icons/bs";
 import Wrapper from "../../styles/HomeNavbarWrapper";
 import {useRef, useState, useEffect} from "react"
+import { useTheme } from "../../context/ThemeContext";
+
 const Navbar = () => {
     const navRef = useRef<HTMLDivElement>(null!);
     const [show,setShow] = useState(false);
+    const {theme, toggleTheme} = useTheme()
     const openNav = () => {
         setShow(true)
     }
@@ -27,14 +30,14 @@ const Navbar = () => {
             <div className="nav">
                 <Link to={"/"}><h2>VEENOTES</h2></Link>
                 <div className="icon-container">
-                    <BsSunFill className="icon"/>
+                    {theme == "dark" ? <BsSunFill className="icon" onClick={toggleTheme}/> : <BsMoonFill className="icon" onClick={toggleTheme}/>}
                     {!show ?<FaBars className="icon ham" onClick={openNav}/> : <FaTimes className="icon ham" onClick={closeNav}/>}
                 </div>
                 <div className="desktop-links">
                     <Link to={"/"}>Home</Link>
                     <Link to={"#"}>About</Link>
                     <Link to={"#"}>Contact</Link>
-                    <BsSunFill className="icon"/>
+                    {theme == "dark" ? <BsSunFill className="icon" onClick={toggleTheme}/> : <BsMoonFill className="icon" onClick={toggleTheme}/>}
                     <div className="btn-container">
                         <Link to={"login"}><button className="login">Log in</button></Link>
                         <Link to={"signup"}><button>sign up</button></Link>

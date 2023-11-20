@@ -41,6 +41,8 @@ html {
 }
 .dark{
   --backgroundColor: #130700;
+  --textGray: ;
+  --textColor: ;
 }
 
 body {
