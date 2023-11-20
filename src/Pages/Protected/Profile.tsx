@@ -1,11 +1,15 @@
+import styled from "styled-components"
 import Navbar from "../../components/Dashboard/Navbar"
 const Profile = () => {
   return (
-    <div>
+    <Wrapper>
       <Navbar page="Profile"/>
       Profile
-    </div>
+    </Wrapper>
   )
 }
 
 export default Profile
+const Wrapper = styled.div`
+  min-height: 86vh;
+`
