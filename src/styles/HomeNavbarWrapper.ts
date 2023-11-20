@@ -11,7 +11,7 @@ const Wrapper = styled.header`
 }
 .nav{
     padding-block: .7rem;
-    width: min(90%, var(--maxWidth));
+    width: min(85%, var(--maxWidth));
     margin-inline: auto;
     display: flex;
     justify-content: space-between;
@@ -46,7 +46,7 @@ a button{
     box-shadow: var(--shadowmd);
 }
 .nav-mobile{
-    width: min(var(--maxWidth),90%);
+    width: min(var(--maxWidth),85%);
     margin-inline: auto;
     display: flex;
     flex-direction: column;

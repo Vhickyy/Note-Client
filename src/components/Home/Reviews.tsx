@@ -69,7 +69,7 @@ padding-block: 4rem;
         /* background-color: brown; */
     }
     .reviews-section{
-        width: min(90%,var(--maxWidth));
+        width: min(85%,var(--maxWidth));
         margin-top: 3rem;
         margin-inline: auto;
         display: flex;

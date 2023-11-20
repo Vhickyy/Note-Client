@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <Wrapper>
+        <div className="fixed-color"></div>
         <div className="section">
             <div>
                 <h1>Secure your <span>notes</span></h1>
@@ -21,14 +22,17 @@ const Header = () => {
 export default Header
 
 const Wrapper = styled.div`
+width: min(var(--maxWidth),85%);
+        margin-inline: auto;
+        position: relative;
+        z-index: 1;
     span{
         color: var(--primaryColor);
     }
     .section{
         padding-block: 4rem 5rem;
         text-align: center;
-        width: min(var(--maxWidth),90%);
-        margin-inline: auto;
+        
         h1{
             margin-bottom: 1.5rem;
             span{
@@ -50,6 +54,16 @@ const Wrapper = styled.div`
     .hero{
         display: none;
     }
+    .fixed-color{
+        position: absolute;
+        height: 20rem;
+        width: 20rem;
+        background-color: var(--primaryColor);
+        filter: blur(7rem);
+        border: 128px;
+        right: 0;
+        z-index: -1;
+    }
     @media screen and (min-width:900px){
         .section{
             padding-block: 3rem;
@@ -69,7 +83,7 @@ const Wrapper = styled.div`
             height: 22rem; */
             width: 29%;
             height: 22rem;
-            background-color: green;
+            /* background-color: green; */
         }
     }
 `
