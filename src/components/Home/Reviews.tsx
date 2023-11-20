@@ -114,7 +114,7 @@ padding-block: 4rem;
     }
     .card{
         background-color: var(--primaryColor40);
-        background-color: white;
+        background-color: gray;
         width: min(90%,25rem);
         height: 15rem;
         margin-inline: auto;

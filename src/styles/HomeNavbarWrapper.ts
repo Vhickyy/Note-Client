@@ -5,7 +5,7 @@ const Wrapper = styled.header`
     top: 0;
     left: 0;
     z-index: 2;
-    background-color: #ffffff;
+    background-color: var(--backgroundColor);
 .shadow{
     box-shadow: var(--shadowmd);
 }
@@ -18,7 +18,6 @@ const Wrapper = styled.header`
     align-items: center;
     h2{
         margin-bottom: 0;
-        color: var(--textColor50);
     }
 }
 .icon-container{
@@ -29,7 +28,7 @@ const Wrapper = styled.header`
     display: none;
 }
 a{
-    color: var(--textColor50);
+    color: var(--textColor);
 }
 a button{
     color: #ffffff;

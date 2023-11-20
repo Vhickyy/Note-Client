@@ -9,6 +9,7 @@ const Details = () => {
         <div className="main">
             <h2>Featured</h2>
             <div className="underline"></div>
+            
             <motion.div className="section">
                 <div className="feature-card">
                     <div className="circle"></div>
@@ -38,7 +39,7 @@ export default Details;
 
 const Wrapper = styled.section`
     padding-block: 4.5rem;
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
     .main{
         width: min(var(--maxWidth),90%);
         margin-inline: auto;
@@ -48,7 +49,7 @@ const Wrapper = styled.section`
         padding-top: 3.5rem;
         display: grid;
         gap: 1.2rem;
-        grid-template-columns: repeat(auto-fill, minmax(18rem,1fr));
+        grid-template-columns: repeat(auto-fill, minmax(16rem,1fr));
     }
     .circle{
         width: 4rem;
@@ -58,7 +59,7 @@ const Wrapper = styled.section`
         /* margin-bottom: 1rem; */
     }
     .feature-card{
-        background-color: white;
+        background-color: gray;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -68,6 +69,7 @@ const Wrapper = styled.section`
         box-shadow: var(--shadowmd);
         border-bottom: .4rem solid var(--primaryColor);
         gap: 1.5rem;
+        color: var(--textColor);
     }
     a{
         display: flex;
