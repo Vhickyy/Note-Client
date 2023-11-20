@@ -7,27 +7,20 @@ export const customFetch = axios.create({
 
 
 export const getAllNotes = async () : Promise<NoteType[]> => {
-    const response  = await customFetch.get("/notes")
-    console.log(response.data);   
-    return response.data;
+    const { data }  = await customFetch.get("/notes")
+    console.log(data);   
+    return data;
 }
 
-export const addNote = (note:any) => {
-    try {
-        const data = customFetch.post("/notes",note)
-        console.log(data);    
-    } catch (error) {
-        console.log(error);
-    }
+export const addNote = async (note:NoteType) : Promise<NoteType> => {
+    const {data} = await customFetch.post("/notes",note);
+    console.log(data);
+    return data
 }
 
 export const getNote = (id:string) => {
-    try {
-        const data = customFetch.get(`/notes/${id}`)
-        console.log(data);    
-    } catch (error) {
-        console.log(error);
-    }
+    const data = customFetch.get(`/notes/${id}`)
+    console.log(data); 
 }
 
 export const updateNote = (id:string,note:any) :any=> {
