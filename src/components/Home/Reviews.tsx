@@ -63,7 +63,7 @@ export default Reviews
 const Wrapper = styled.section`
 text-align: center;
 padding-block: 4rem;
-    background-color: var(--primaryColor20);
+    /* background-color: var(--primaryColor20); */
     .section{
         
         /* background-color: brown; */
@@ -113,9 +113,10 @@ padding-block: 4rem;
         /* background-color: black; */
     }
     .card{
-        background-color: var(--primaryColor40);
-        background-color: gray;
-        width: min(90%,25rem);
+        /* background-color: var(--primaryColor40); */
+        background-color: #33261f;
+        color: white;
+        width: min(100%,25rem);
         height: 15rem;
         margin-inline: auto;
         margin-block-end: .5rem;

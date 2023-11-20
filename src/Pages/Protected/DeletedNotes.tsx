@@ -13,5 +13,5 @@ const DeletedNotes = () => {
 export default DeletedNotes
 
 const Wrapper = styled.div`
-  background-color: whitesmoke;
+  min-height: 86vh;
 `

@@ -23,9 +23,11 @@ const Navbar = ({page}: Page) => {
 export default Navbar
 
 const Wrapper = styled.header`
-    background-color: white;
+    /* background-color: var(--primaryColor); */
     position: sticky;
     top: 0;
+    /* background-color: red; */
+    background-color: var(--backgroundColor);
     .head{
         width: min(1440px,90%);
         margin-inline: auto;

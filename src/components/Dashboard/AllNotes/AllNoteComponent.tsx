@@ -53,7 +53,7 @@ export default AllNotesComponenent
 
 const Wrapper = styled.main`
   padding-block: 2rem;
-  width: min(90%,var(--maxWidth));
+  width: 90%;
   margin-inline: auto;
   p{
     margin: 0;

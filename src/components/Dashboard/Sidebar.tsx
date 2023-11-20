@@ -6,13 +6,13 @@ type Prop = {
 }
 
 const Sidebar = ({close}:Prop) => {
-
+// className={({isActive})=>{isActive && "active"}}
   return (
     <Wrapper >
         <nav className="links">
             {links.map((link,index)=>{
                 return (
-                    <NavLink to={`${link.path}`} onClick={close} end key={index}>
+                    <NavLink to={`${link.path}`} onClick={close} end key={index} >
                         {link.icon}
                         {link.link}
                     </NavLink>
@@ -37,7 +37,7 @@ const Wrapper = styled.section`
         /* margin-block-start: 2rem; */
         /* justify-content: center; */
         a{
-            color: black;
+            color: var(--textColor);
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -46,5 +46,8 @@ const Wrapper = styled.section`
             padding-block: .7rem;
             border-radius: .5rem;
         }
+    }
+    .active{
+        color: var(--primaryColor);
     }
 `

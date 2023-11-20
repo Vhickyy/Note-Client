@@ -56,11 +56,11 @@ width: min(var(--maxWidth),85%);
     }
     .fixed-color{
         position: absolute;
-        height: 20rem;
-        width: 20rem;
+        height: 15rem;
+        width: 15rem;
         background-color: var(--primaryColor);
         filter: blur(7rem);
-        border: 128px;
+        /* border: 128px; */
         right: 0;
         z-index: -1;
     }

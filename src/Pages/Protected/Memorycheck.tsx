@@ -56,7 +56,6 @@ const Memorycheck = () => {
 export default Memorycheck;
 
 const Wrapper = styled.div`
-  background-color: whitesmoke;
   span{
      margin-right: 2px;
     padding: .2rem;

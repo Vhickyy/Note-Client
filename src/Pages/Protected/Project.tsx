@@ -86,14 +86,12 @@ const Project = () => {
 export default Project
 
 const Wrapper = styled.div`
-background-color: whitesmoke;
-min-height: 100vh;
 a{
   color: black;
 }
 .section{
   padding-block: 2rem;
-  width: min(90%,var(--maxWidth));
+  width: 90%;
   margin-inline: auto;
 }
 .main{

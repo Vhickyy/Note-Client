@@ -56,19 +56,20 @@ export default Login
 const Wrapper = styled.div`
 padding-block: 4rem;
 letter-spacing: normal;
-color: var(--primaryColor80);
-background-color: whitesmoke;
+/* color: var(--primaryColor80); */
+/* background-color: whitesmoke; */
 form{
-  background-color: white;
+  /* background-color: white; */
   width: min(90%,var(--fixedWidth));
   margin-inline: auto;
   padding: 2rem 2rem;
-  border-radius: 0.3rem;
-  border-top: .5rem solid var(--primaryColor);
-  box-shadow: var(--shadowlg);
+  /* border-radius: 0.3rem; */
+  /* border-top: .5rem solid var(--primaryColor); */
+  /* box-shadow: var(--shadowlg); */
   display: grid;
   gap: 1rem;
   font-size: .9rem;
+  color: var(--textColor);
   label{
     display: block;
     font-weight: 600;
@@ -76,7 +77,7 @@ form{
   }
   input{
     width: 100%;
-    background-color: whitesmoke;
+    background-color: #5e3b26;
     border: transparent;
     height: 2.5rem;
     font-size: 1rem;
@@ -97,8 +98,7 @@ form{
     }
   }
   input:focus{
-    /* outline: none; */
-    border: 2px solid var(--primaryColor70);
+    border: 2px solid var(--primaryColor);
   }
   a{
     color: var(--primaryColor80);

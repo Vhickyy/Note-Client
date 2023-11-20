@@ -47,12 +47,12 @@ export default CreateProjectModal
 const Wrapper = styled.div`
     position: fixed;
     inset: 0;
-    background-color: #f5f5f599;
+    background-color: var(--overlay);
     display: grid;
     place-items: center;
     z-index: 100;
     .content{
-        background-color: white;
+        background-color: var(--backgroundColor);
         width: min(90%,var(--fixedWidth));
         padding: 2rem;
         display: grid;

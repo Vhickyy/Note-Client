@@ -26,6 +26,9 @@ export default ProtectedLayout;
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
+  main{
+    background-color: var(--secondaryColor);
+  }
   @media screen and (min-width:800px){
     grid-template-columns: auto 1fr;
   }

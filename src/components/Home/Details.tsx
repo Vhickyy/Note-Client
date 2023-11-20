@@ -59,7 +59,8 @@ const Wrapper = styled.section`
         /* margin-bottom: 1rem; */
     }
     .feature-card{
-        background-color: gray;
+        background-color: #33261f;
+        color: white;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -69,7 +70,6 @@ const Wrapper = styled.section`
         box-shadow: var(--shadowmd);
         border-bottom: .4rem solid var(--primaryColor);
         gap: 1.2rem;
-        color: var(--textColor);
     }
     a{
         display: flex;

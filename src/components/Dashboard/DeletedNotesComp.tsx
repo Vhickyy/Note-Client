@@ -33,12 +33,12 @@ const AllNotesComponenent = () => {
   )
 }
 
-
 export default AllNotesComponenent
 
 const Wrapper = styled.main`
   padding-block: 2rem;
-  width: min(90%,var(--maxWidth));
+  /* width: min(90%,var(--maxWidth)); */
+  width: 90%;
   button{
     margin-bottom: 1rem;
   }
@@ -53,7 +53,7 @@ const Wrapper = styled.main`
     gap: 1.1rem;
   }
   .card{
-    background-color: white;
+    background-color: var(--backgroundColor);
     padding: 1rem;
     border-radius: var(--borderRadius);
     box-shadow: var(--shadowmd);

@@ -21,10 +21,9 @@ const AddNote = () => {
 export default AddNote
 
 const Wrapper = styled.div`
-  background-color: whitesmoke;
   form{
     padding-block: 2rem;
-    width: min(90%,var(--maxWidth));
+    width: 90%;
     margin-inline: auto;
     min-height: 86vh;
   }

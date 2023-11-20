@@ -1,11 +1,15 @@
 import styled from "styled-components";
 import Sidebar from "./Sidebar";
-import { FaPersonBooth, FaTimes } from "react-icons/fa";
+import {  FaTimes } from "react-icons/fa";
+import { BsMoonFill, BsSunFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import { useTheme } from "../../context/ThemeContext";
 type props = {
     close: ()=>void,
     showSidebar: boolean
 }
 const MobileSidebar = ({close,showSidebar} : props) => {
+  const {theme,toggleTheme} = useTheme();
   return (
     <Wrapper onClick={close} className={`main ${showSidebar ? "show" : "hide"}`}>
       <div className="nav" onClick={(e)=> {e.stopPropagation()}}>
@@ -15,10 +19,12 @@ const MobileSidebar = ({close,showSidebar} : props) => {
             <FaTimes className="icon" onClick={close}/>
           </div>
           <Sidebar close={close}/>
-          <div className="flex">
-            <FaPersonBooth />
-            Logout
-            {/* <Link to={}>Logout</Link> */}
+          <div>
+            {theme == "dark" ? <BsSunFill className="icon" onClick={toggleTheme}/> : <BsMoonFill className="icon" onClick={toggleTheme}/>}
+            <div className="flex">
+              {/* <FaPersonBooth /> */}
+              <Link to={"/login"}>Logout</Link>
+            </div>
           </div>
         </div>
       </div>
@@ -29,13 +35,13 @@ const MobileSidebar = ({close,showSidebar} : props) => {
 export default MobileSidebar;
 
 const Wrapper = styled.aside`
-    background-color: #f5f5f599;
+    /* background-color: #f5f5f599; */
     position: fixed;
     top:0;
     z-index: 1;
     height: 100%;
     width: 100%;
-    background-color: #f5f5f599;
+    /* background-color: #f5f5f599; */
     inset: 0;
     padding-block: .5rem;
     box-shadow: var(--shadowlg); 
