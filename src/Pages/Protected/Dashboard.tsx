@@ -1,4 +1,3 @@
-import styled from "styled-components"
 import Navbar from "../../components/Dashboard/Navbar"
 
 const Dashboard = () => {
@@ -11,6 +10,3 @@ const Dashboard = () => {
 }
 
 export default Dashboard
-
-const Wrapper = styled.div`
-`

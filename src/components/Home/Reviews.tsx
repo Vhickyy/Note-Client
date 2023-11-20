@@ -114,8 +114,9 @@ padding-block: 4rem;
     }
     .card{
         /* background-color: var(--primaryColor40); */
-        background-color: #33261f;
-        color: white;
+        background-color: var(--secondaryColor);
+        /* color: white; */
+        color: var(--textColor);
         width: min(100%,25rem);
         height: 15rem;
         margin-inline: auto;

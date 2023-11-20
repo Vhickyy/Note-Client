@@ -59,8 +59,9 @@ const Wrapper = styled.section`
         /* margin-bottom: 1rem; */
     }
     .feature-card{
-        background-color: #33261f;
-        color: white;
+        background-color: var(--secondaryColor);
+        /* color: white; */
+        color: var(--textColor);
         display: flex;
         align-items: center;
         justify-content: center;
