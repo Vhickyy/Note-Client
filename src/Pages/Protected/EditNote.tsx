@@ -1,8 +1,8 @@
 import styled from "styled-components"
 import Navbar from "../../components/Dashboard/Navbar"
 import NoteEditor from '../../components/Dashboard/AddNotes/NoteEditor'
-import { useMutation } from "@tanstack/react-query"
-import { updateNote } from "../../api/axios"
+// import { useMutation } from "@tanstack/react-query"
+// import { updateNote } from "../../api/axios"
 
 const EditNote = () => {
   // const {mutate} = useMutation({
