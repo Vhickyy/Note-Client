@@ -37,11 +37,11 @@ const Login = () => {
       <form>
         <div>
           <label htmlFor="email">Email</label>
-          <input type="text" name="email" id="email"/>
+          <input type="text" name="email" id="email" placeholder="Enter Email"/>
         </div>
         <div>
           <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password"/>
+          <input type="password" name="password" id="password" placeholder="password"/>
         </div>
         <button>Log In</button>
         <p>Don't have an account? <Link to={"/signup"}>Register</Link></p>
@@ -54,26 +54,24 @@ const Login = () => {
 export default Login
 
 const Wrapper = styled.div`
-padding-block: 4rem;
+padding-block: 5rem;
 letter-spacing: normal;
-/* color: var(--primaryColor80); */
-/* background-color: whitesmoke; */
 form{
-  /* background-color: white; */
+  background-color: #33261f;
   width: min(90%,var(--fixedWidth));
   margin-inline: auto;
-  padding: 2rem 2rem;
-  /* border-radius: 0.3rem; */
-  /* border-top: .5rem solid var(--primaryColor); */
+  padding: 3rem 2.5rem;
+  border-radius: 0.5rem;
+  border-bottom: .5rem solid var(--primaryColor);
   /* box-shadow: var(--shadowlg); */
   display: grid;
-  gap: 1rem;
+  gap: .7rem;
   font-size: .9rem;
-  color: var(--textColor);
+  color: white;
   label{
     display: block;
     font-weight: 600;
-    margin-bottom: .5rem;
+    margin-bottom: .6rem;
   }
   input{
     width: 100%;
@@ -85,6 +83,7 @@ form{
     border-radius: .3rem;
     caret-color: var(--primaryColor);
     outline: none;
+    color: white;
   }
   button{
     margin-top: .5rem;

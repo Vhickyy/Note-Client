@@ -25,28 +25,28 @@ const Signup =  () => {
         <div className="flex">
             <div>
                 <label htmlFor="first_name">First Name</label>
-                <input type="text" name="first_name" id="first_name"/>
+                <input type="text" name="first_name" id="first_name" placeholder="First Name"/>
                 {/* <p className="text_small">must be between 3 to 20 characters</p> */}
             </div>
             <div>
                 <label htmlFor="last_name">Last Name</label>
-                <input type="text" name="last_name" id="last_name"/>
+                <input type="text" name="last_name" id="last_name" placeholder=" Last Name"/>
                 {/* <p className="text_small">must be between 3 to 20 characters</p> */}
             </div>
         </div>
         <div>
           <label htmlFor="email">Email</label>
-          <input type="text" name="email" id="email"/>
+          <input type="text" name="email" id="email" placeholder="Email"/>
           {/* <p className="text_small">Enter a valid email address</p> */}
         </div>
         <div>
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password"/>
+          <label htmlFor="password">Password</label> 
+          <input type="password" name="password" id="password" placeholder="Password"/>
           {/* <p className="text_small">password too weak</p> */}
         </div>
         <div>
           <label htmlFor="confirm_password">Confirm Password</label>
-          <input type="password" name="confirm_password" id="confirm_password"/>
+          <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password"/>
           {/* <p className="text_small">Password do not match</p> */}
         </div>
         <button>Register</button>
@@ -64,17 +64,17 @@ padding-block: 4rem;
 letter-spacing: normal;
 /* background-color: whitesmoke; */
 form{
-  /* background-color: white; */
+  background-color: #33261f;
   width: min(90%,var(--fixedWidth));
   margin-inline: auto;
   padding: 2rem 2rem;
-  /* border-radius: 0.3rem; */
-  /* border-top: .5rem solid var(--primaryColor);
-  box-shadow: var(--shadowlg); */
+  border-radius: 0.5rem;
+  border-bottom: .5rem solid var(--primaryColor);
+  /* box-shadow: var(--shadowlg); */
   display: grid;
-  gap: 1rem;
+  gap: .6rem;
   font-size: .9rem;
-  color: var(--textColor);
+  color: white;
   .flex{
     display: flex;
     flex-direction: column;
@@ -83,7 +83,7 @@ form{
   label{
     display: block;
     font-weight: 600;
-    margin-bottom: .5rem;
+    margin-block: .5rem;
   }
   input{
     width: 100%;
@@ -95,6 +95,7 @@ form{
     border-radius: .3rem;
     caret-color: var(--primaryColor);
     outline: none;
+    color: white;
   }
   button{
     margin-top: .5rem;

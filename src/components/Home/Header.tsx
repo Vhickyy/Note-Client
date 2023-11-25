@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <Wrapper>
-        <div className="fixed-color"></div>
+        {/* <div className="fixed-color"></div> */}
         <div className="section">
             <div>
                 <h1>Secure your <span>notes</span></h1>

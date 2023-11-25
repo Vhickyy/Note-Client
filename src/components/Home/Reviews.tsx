@@ -62,14 +62,15 @@ export default Reviews
 
 const Wrapper = styled.section`
 text-align: center;
-padding-block: 4rem;
+padding-block: 7rem;
+/* background-color: pink; */
     /* background-color: var(--primaryColor20); */
     .section{
         
         /* background-color: brown; */
     }
     .reviews-section{
-        width: min(85%,var(--maxWidth));
+        width: min(70%,var(--maxWidth2));
         margin-top: 3rem;
         margin-inline: auto;
         display: flex;
@@ -80,11 +81,12 @@ padding-block: 4rem;
         display: none;
     }
     .card-slide-section{
-        height: 60vh;
+        height: 50vh;
         display: flex;
         flex-direction: column;
         overflow: hidden;
         position: relative;
+        gap: 1rem;
         
     }
     .card-slide-section::before{
@@ -109,12 +111,14 @@ padding-block: 4rem;
         display: flex;
         flex-direction: column;
         align-items: end;
-        animation: infiniteScroll 20s linear infinite;
+        animation: infiniteScroll 40s linear infinite;
+        gap: 1rem;
         /* background-color: black; */
     }
     .card{
         /* background-color: var(--primaryColor40); */
         background-color: var(--secondaryColor);
+        /* background-color: var(--primaryColor); */
         /* color: white; */
         color: var(--textColor);
         width: min(100%,25rem);
@@ -128,6 +132,7 @@ padding-block: 4rem;
         padding: 1rem 1.5rem;
         text-align: center;
         border-radius: .3rem;
+        border: 2px solid var(--primaryColor);
         box-shadow: var(--shadowlg);
         & > p:last-child{
             margin: 0;

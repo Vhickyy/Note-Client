@@ -4,12 +4,16 @@ const Profile = () => {
   return (
     <Wrapper>
       <Navbar page="Profile"/>
-      Profile
+      <section>
+        Profile
+      </section>
     </Wrapper>
   )
 }
 
 export default Profile
 const Wrapper = styled.div`
+section{
   min-height: 86vh;
+}
 `
