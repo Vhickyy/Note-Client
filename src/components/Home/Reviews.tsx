@@ -63,15 +63,13 @@ export default Reviews
 const Wrapper = styled.section`
 text-align: center;
 padding-block: 7rem;
-/* background-color: pink; */
-    /* background-color: var(--primaryColor20); */
     .section{
         
         /* background-color: brown; */
     }
     .reviews-section{
         width: min(70%,var(--maxWidth2));
-        margin-top: 3rem;
+        padding-top: 4rem;
         margin-inline: auto;
         display: flex;
         justify-content: center;

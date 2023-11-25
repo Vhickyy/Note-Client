@@ -60,7 +60,7 @@ const Wrapper = styled.section`
 
     }
     .section{
-        padding-top: 3.5rem;
+        padding-top: 4rem;
         display: grid;
         gap: 1.2rem;
         grid-template-columns: repeat(auto-fill, minmax(14.5rem,1fr));
