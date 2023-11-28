@@ -6,31 +6,32 @@ import { FaAngleRight } from "react-icons/fa";
 const Details = () => {
   return (
     <Wrapper>
-        <div className="main">
+        <h2>Featured</h2>
+        <div className="underline"></div>
+        <div className="relative">
             <div className="absolute"></div>
-            <h2>Featured</h2>
-            <div className="underline"></div>
-            
-            <motion.div className="section">
-                <div className="feature-card">
-                    <div className="circle"></div>
-                    <h4>Article</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur.</p>
-                    <Link to={"#"}>Learn More<FaAngleRight/></Link>
-                </div>
-                <div className="feature-card">
-                    <div className="circle"></div>
-                    <h4>Article</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur.</p>
-                    <Link to={"#"}>Learn More<FaAngleRight/></Link>
-                </div>
-                <div className="feature-card">
-                    <div className="circle"></div>
-                    <h4>Article</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur.</p>
-                    <Link to={"#"}>Learn More<FaAngleRight/></Link>
-                </div>
-            </motion.div>
+            <div className="main">
+                <motion.div className="section">
+                    <div className="feature-card">
+                        <div className="circle"></div>
+                        <h4>Article</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur.</p>
+                        <Link to={"#"}>Learn More<FaAngleRight/></Link>
+                    </div>
+                    <div className="feature-card">
+                        <div className="circle"></div>
+                        <h4>Article</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur.</p>
+                        <Link to={"#"}>Learn More<FaAngleRight/></Link>
+                    </div>
+                    <div className="feature-card">
+                        <div className="circle"></div>
+                        <h4>Article</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur.</p>
+                        <Link to={"#"}>Learn More<FaAngleRight/></Link>
+                    </div>
+                </motion.div>
+            </div>
         </div>
     </Wrapper>
   )
@@ -41,23 +42,28 @@ export default Details;
 const Wrapper = styled.section`
     padding-block: 4.5rem;
     margin-top: 3rem;
-    position: relative;
+    
+    text-align: center;
     .main{
         /* position: relative; */
-        width: min(var(--maxWidth),85%);
+        width: min(1200px,85%);
         margin-inline: auto;
         text-align: center;
     }
+    .relative{
+        max-width: var(--maxWidth);
+    margin-inline: auto;
+    position: relative;
+    }
     .absolute{
-        height: 90%;
+        height: 100%;
         width: 50%;
         position: absolute;
         background-color: #d6824d99;
-        border-radius: 9rem;
+        border-radius: 0 2rem 2rem 0;
+        top: 2rem;
         z-index: -1;
-        /* bottom: 1rem; */
         left: -7rem;
-
     }
     .section{
         padding-top: 4rem;
@@ -99,8 +105,14 @@ const Wrapper = styled.section`
     }
     @media screen and (min-width: 1100px) {
         .section{
-            display: flex;
-            justify-content: space-between;
+            /* display: flex;
+            justify-content: space-between; */
+            grid-template-columns: repeat(3,1fr);
         }   
+    }
+    @media screen and (min-width: 1140px) {
+        .absolute{
+            left: 0;
+        }
     }
 `

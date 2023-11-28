@@ -7,6 +7,7 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { deleteSingleNote, getAllNotes } from "../../../api/axios";
 import { NoteType } from "../../../types/types";
+import Skeleton from "../skeleton";
 const AllNotesComponenent = () => {
   const [sort,setSort] = useState({show:false,sort:"latest"});
     const [category,setCategory] = useState({show:false,category:"all"});
@@ -21,7 +22,7 @@ const AllNotesComponenent = () => {
       mutate(id)
     }
     if(isLoading){
-      return <h1>Loading</h1>
+      return <Skeleton/>
     }
     if(error){
       return <h2>{error.message}</h2>
