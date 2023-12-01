@@ -34,7 +34,7 @@ const DesktopSidebar = ({showSidebar}:props) => {
 export default DesktopSidebar;
 const Wrapper = styled.aside`
     display: none;
-    min-height: 100vh;
+    min-height: 100dvh;
     background-color: var(--backgroundColor);
     .main{
       box-shadow: var(--shadowlg);

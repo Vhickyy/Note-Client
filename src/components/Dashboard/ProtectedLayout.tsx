@@ -26,6 +26,7 @@ export default ProtectedLayout;
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
+  height: 100dvh;
   main{
     background-color: var(--secondaryColor);
   }

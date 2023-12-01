@@ -14,6 +14,7 @@ import Project from "./Pages/Protected/Project";
 import EditNote from "./Pages/Protected/EditNote";
 import ReadProject from "./Pages/Protected/ReadProject";
 import Memorycheck from "./Pages/Protected/Memorycheck";
+import NotFound from "./Pages/NotFound";
 
 function App() {
   // fetch("/api/test-user").then(data=>data.json()).then(data=>console.log(data)).catch(err=>console.log(err))
@@ -36,6 +37,7 @@ function App() {
         <Route path="project/:id" element={<ReadProject/>}/>
         <Route path="memorycheck" element={<Memorycheck/>}/>
       </Route>
+      <Route path="*" element={<NotFound/>}/>
     </Route>
   ))
   return (

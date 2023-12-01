@@ -7,7 +7,7 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { deleteSingleNote, getAllNotes } from "../../../api/axios";
 import { NoteType } from "../../../types/types";
-import Skeleton from "../skeleton";
+import Skeleton from "../Skeleton";
 const AllNotesComponenent = () => {
   const [sort,setSort] = useState({show:false,sort:"latest"});
     const [category,setCategory] = useState({show:false,category:"all"});
@@ -31,19 +31,24 @@ const AllNotesComponenent = () => {
     <Wrapper>
       <Filterform sort={sort} setSort={setSort} category={category} setCategory={setCategory} showForm={showForm} setShowForm={setShowForm}/>
       <div className="card-wrapper">
-        {data?.map((i,index)=>{
-          return(
-            <div key={index} className="card">
-              <h4>{i.title}</h4>
-              <p>{i.noteBody}</p>
-              <p>{i.category}</p>
-              <div>
-                <Link to={"../editnote/1"}><FaEdit/></Link>
-                <FaTrash onClick={()=>deletNote("1")}/>
+        {data?.length ? 
+          data.map((i,index)=>{
+            return(
+              <div key={index} className="card">
+                <h4>{i.title}</h4>
+                <p>{i.noteBody}</p>
+                <p>{i.category}</p>
+                <div>
+                  <Link to={"../editnote/1"}><FaEdit/></Link>
+                  <FaTrash onClick={()=>deletNote("1")}/>
+                </div>
               </div>
-            </div>
-          )
-        })}
+            )
+          }) : 
+          <div>
+            <h2>You have not created any note.</h2>
+            <button>Create Note.</button>
+          </div>}
       </div>
     </Wrapper>
   )

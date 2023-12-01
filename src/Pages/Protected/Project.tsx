@@ -109,11 +109,12 @@ a{
     gap: 1.1rem;
   }
   .card{
-    background-color: white;
+    background-color: var(--backgroundColor);
     padding: 1rem;
     border-radius: var(--borderRadius);
     box-shadow: var(--shadowmd);
     height: 10rem;
+    color: var(--textColor);
   }
   @media screen and (min-width: 1000px){
     .card-wrapper{

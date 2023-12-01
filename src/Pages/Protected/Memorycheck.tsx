@@ -8,25 +8,23 @@ const Memorycheck = () => {
   const [result,setResult] = useState<{word:string,match:boolean}[]>([]);
 
   const changeMain = (e:React.ChangeEvent<HTMLTextAreaElement>) => {
-    setMainText(e.target.value.replace("\n",""))
-    const newResult = e.target.value.trim().split(" ");
-    console.log(newResult.join(" ").trim().split(" "));
-    const newRes = result.map((res,index) => res.word.toLowerCase().trim() === newResult[index]?.toLowerCase().trim() ? {word:res.word,match:true} : res.word.toLowerCase().trim() !== newResult[index]?.toLowerCase().trim() ? {word:res.word,match:false} : res);
+    setMainText(e.target.value.replace("\n",""));
+    const newResult = e.target.value.split(" ").filter(i=>i);
+    // console.log(newResult.join(" ").split(" ").filter(i=>i));
+    const newRes = result.map((res,index) => res.word.toLowerCase() === newResult[index]?.toLowerCase() ? {word:res.word,match:true} : res.word.toLowerCase() !== newResult[index]?.toLowerCase() ? {word:res.word,match:false} : res);
     // console.log(newRes);
-    
     setResult(newRes);
   }
+  // console.log(mainText);
+  
 
   const changeTry = (e:React.ChangeEvent<HTMLTextAreaElement>) => {
     setTryText(e.target.value.replace("\n",""));
-    const newResult = e.target.value.trim().split(" ");
-    // console.log(newResult.join(" ").trim());
-    
-    const mainText2 = mainText.split(" ").slice(0,newResult.length + 1);
-    // // console.log(newResult,mainText2)
-    // // const newResult2 = newResult.map()
-    const newRes = newResult.map((res,index)=> res.toLowerCase() === mainText2[index]?.toLowerCase() ? {word:res.trim(),match:true} : {word:res.trim(),match:false});
-    // newRes.filter(res=>!res.word)
+    const newResult = e.target.value.split(" ").filter(i=>i);
+    const mainText2 = mainText.split(" ").filter(i=>i);
+    // .slice(0,newResult.length + 1)
+    console.log(newResult,mainText2)
+    const newRes = newResult.map((res,index)=> res.toLowerCase() === mainText2[index]?.toLowerCase() ? {word:res,match:true} : {word:res,match:false});
     setResult(newRes);
   }
   return (
@@ -61,9 +59,7 @@ const Wrapper = styled.div`
     padding: .2rem;
   }
   .green{
-    background-color: green;
-   
-    
+    background-color: green;    
   }
   .red{
     background-color: red;
