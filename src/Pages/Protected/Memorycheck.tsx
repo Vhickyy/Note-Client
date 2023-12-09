@@ -27,6 +27,7 @@ const Memorycheck = () => {
     const newRes = newResult.map((res,index)=> res.toLowerCase() === mainText2[index]?.toLowerCase() ? {word:res,match:true} : {word:res,match:false});
     setResult(newRes);
   }
+  
   return (
     <Wrapper>
         <Navbar page="How many words do you remember?"/>

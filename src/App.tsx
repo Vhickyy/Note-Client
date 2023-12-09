@@ -15,6 +15,8 @@ import EditNote from "./Pages/Protected/EditNote";
 import ReadProject from "./Pages/Protected/ReadProject";
 import Memorycheck from "./Pages/Protected/Memorycheck";
 import NotFound from "./Pages/NotFound";
+// import { ErrorBoundary } from "react-error-boundary";
+// import Fallback from "./components/Fallback";
 
 function App() {
   // fetch("/api/test-user").then(data=>data.json()).then(data=>console.log(data)).catch(err=>console.log(err))
@@ -40,8 +42,15 @@ function App() {
       <Route path="*" element={<NotFound/>}/>
     </Route>
   ))
+
+  // const errorHandler = (error: any,errorInfo: any) => {
+  //   console.log(error,errorInfo)
+  // }
+
   return (
-    <RouterProvider router={router}/>
+    // <ErrorBoundary FallbackComponent={Fallback} onError={errorHandler}>
+      <RouterProvider router={router}/>
+    // </ErrorBoundary>
   )
 }
 

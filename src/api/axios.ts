@@ -1,15 +1,18 @@
 import axios from "axios";
-import { NoteType } from "../types/types";
+import { NoteType, User } from "../types/types";
 
 export const customFetch = axios.create({
         baseURL: "/api"
     })
 
 
+export const getUser = async () : Promise<User> => {
+    const { data }  = await customFetch.get("/user");
+    return data.user;
+}
 export const getAllNotes = async () : Promise<NoteType[]> => {
-    const { data }  = await customFetch.get("/notes")
-    console.log(data);   
-    return data;
+    const { data }  = await customFetch.get("/notes");
+    return data.notes;
 }
 
 export const addNote = async (note:NoteType) : Promise<NoteType> => {
@@ -24,13 +27,9 @@ export const getNote = (id:string) => {
 }
 
 export const updateNote = (id:string,note:any) :any=> {
-    try {
-        const data = customFetch.patch(`/notes/${id}`,note)
-        console.log(data);   
-        return data
-    } catch (error) {
-        console.log(error);
-    }
+    const data = customFetch.patch(`/notes/${id}`,note)
+    console.log(data);   
+    return data
 }
 
 export const deleteSingleNote = async (id:string) => {

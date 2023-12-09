@@ -7,7 +7,7 @@ type Page = {
     page: string
 }
 const Navbar = ({page}: Page) => {
-  const toggleSidebar = useOutletContext()
+  const {toggleSidebar} = useOutletContext() as any;
   return (
     <Wrapper>
         <div className="head">

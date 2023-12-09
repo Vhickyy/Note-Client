@@ -25,7 +25,7 @@ const AllNotesComponenent = () => {
       return <Skeleton/>
     }
     if(error){
-      return <h2>{error.message}</h2>
+      return <h2>{error.message}!!!</h2>
     }
   return (
     <Wrapper>
@@ -71,7 +71,7 @@ const Wrapper = styled.main`
     gap: 1.1rem;
   }
   .card{
-    background-color: white;
+    background-color: var(--backgroundColor);
     padding: 1rem;
     border-radius: var(--borderRadius);
     box-shadow: var(--shadowmd);

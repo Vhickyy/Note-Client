@@ -1,37 +1,26 @@
 import styled from "styled-components"
 // import axios from "axios"
-import { Link  } from "react-router-dom"
+import { Link, useNavigate  } from "react-router-dom"
+import axios from "axios"
 
 const Login = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const googleSignIn = async (e:React.MouseEvent<HTMLButtonElement> ) => {
     e.preventDefault()
     window.open("http://localhost:8000/auth/google","_self")
-    console.log("b4")
-    // navigate("/dashboard")
-  //  fetch("/api/auth/google",{
-        // method: "GET",}).then(data=>data.json()).then(data=>console.log(data)).catch(err=>console.log(err))
-    // try{
-    //   console.log("try")
-    //   // const data = await axios.get("/api/auth/google")
-    //   // const data2 = await axios.get("/api/test-user")
-    //   const data = await fetch("/api/auth/google",{
-    //     method: "GET",
-    //     credentials: "include",
-    //     headers: {
-    //       Accept: "application/json",
-    //       "Content-Type": "application/json",
-    //       "Access-Control-Allow-Credentials": "true"
-    //     }
-    //     },
-    //   )
-    //   console.log(data)
-    // }catch(e){
-    //   console.log("catch")
-    //   console.log(e)
-    // }
-
   }
+
+  const login = async (e:React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    try{
+      const res = await axios.post("/api/login",{email:"vee@gmail.com",password:"secret"});
+      console.log(res.data);
+      navigate("/dashboard")
+    }catch (e:any){
+      console.log(e.response.data);
+    }
+  }
+
   return (
     <Wrapper>
       <form>
@@ -43,7 +32,7 @@ const Login = () => {
           <label htmlFor="password">Password</label>
           <input type="password" name="password" id="password" placeholder="password"/>
         </div>
-        <button>Log In</button>
+        <button onClick={login}>Log In</button>
         <p>Don't have an account? <Link to={"/signup"}>Register</Link></p>
         <button className="google" onClick={googleSignIn}>Sign in with Google</button>
       </form>

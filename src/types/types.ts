@@ -27,3 +27,11 @@ export type NoteType = {
     isDeleted: boolean,
     category:string
 }
+
+export type User = {
+    _id:string,
+    name:string,
+    profile:string,
+    email:string,
+    role: "user" | "admin"
+}

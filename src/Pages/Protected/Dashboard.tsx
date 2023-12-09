@@ -1,12 +1,23 @@
-import Navbar from "../../components/Dashboard/Navbar"
+import Navbar from "../../components/Dashboard/Navbar";
+import { useOutletContext } from "react-router-dom"
 
 const Dashboard = () => {
-  return (
-    <div>
-      <Navbar page="Dashboard"/>
-        Dashboard
-    </div>
-  )
+  const {user} = useOutletContext() as any;
+  
+  
+  // if(isLoading){
+  //   return <>Loadung</>
+  // }else if(error){
+  //   return <>{error}</>
+  // }else{ 
+    return (
+      <div>
+        <Navbar page="Dashboard"/>
+          Dashboard
+          {user?.name}
+      </div>
+    )
+  // }
 }
 
 export default Dashboard
