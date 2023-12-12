@@ -15,6 +15,7 @@ import EditNote from "./Pages/Protected/EditNote";
 import ReadProject from "./Pages/Protected/ReadProject";
 import Memorycheck from "./Pages/Protected/Memorycheck";
 import NotFound from "./Pages/NotFound";
+import { AuthContextProvider } from "./context/AuthContext";
 // import { ErrorBoundary } from "react-error-boundary";
 // import Fallback from "./components/Fallback";
 
@@ -49,7 +50,9 @@ function App() {
 
   return (
     // <ErrorBoundary FallbackComponent={Fallback} onError={errorHandler}>
+    <AuthContextProvider>
       <RouterProvider router={router}/>
+    </AuthContextProvider>
     // </ErrorBoundary>
   )
 }

@@ -4,7 +4,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import Filterform from "./Filterform";
 import { FaEdit, FaTrash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { deleteSingleNote, getAllNotes } from "../../../api/axios";
 import { NoteType } from "../../../types/types";
 import Skeleton from "../Skeleton";
@@ -25,6 +25,9 @@ const AllNotesComponenent = () => {
       return <Skeleton/>
     }
     if(error){
+      // console.log(error);
+      // const navigate = useNavigate();
+      // navigate("/login")
       return <h2>{error.message}!!!</h2>
     }
   return (

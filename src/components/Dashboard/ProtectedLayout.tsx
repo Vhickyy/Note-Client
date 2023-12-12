@@ -1,40 +1,35 @@
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import MobileSidebar from "./MobileSidebar";
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import DesktopSidebar from "./DesktopSidebar";
 import styled from "styled-components";
-import { useQuery } from "@tanstack/react-query";
-import { getUser } from "../../api/axios";
-import { customFetch } from "../../api/axios";
+// import { useQuery, useQueryClient } from "@tanstack/react-query";
+// import { getUser } from "../../api/axios";
+// import { customFetch } from "../../api/axios";
+import { AuthContextProvider, useAuth } from "../../context/AuthContext";
 
 const ProtectedLayout = () => {
+  // const navigate = useNavigate()
   const [showSidebar, setShowsidebar] = useState(false);
+  const {user} = useAuth()
+  const navigate = useNavigate()
+
   const toggleSidebar = () => {
       setShowsidebar(preState =>!preState);
   }
-  const {data:user,error} = useQuery({queryKey:["user"],queryFn: getUser});
-  console.log(user);
-
-  customFetch.interceptors.response.use(
-    response => {
-      console.log("hi");
-      return response
-    },
-    error => {
-      console.log("hey");
-      if(error.response.status === 401){
-
-      }
-      return Promise.reject(error)
-    },
-  )
+  // useEffect(()=>{
+  //   if(!user){
+  //     navigate("/login")
+  //   }
+  // },[])
+ 
   
   return (
     <Wrapper>
       <MobileSidebar showSidebar={showSidebar} close={toggleSidebar}/>
       <DesktopSidebar showSidebar={showSidebar}/>
       <main>
-        <Outlet context={{toggleSidebar,user}}/>
+        <Outlet context={{toggleSidebar}}/>
       </main>
     </Wrapper>
   )

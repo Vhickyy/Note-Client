@@ -1,17 +1,18 @@
 import axios from "axios";
 import { NoteType, User } from "../types/types";
 
+
 export const customFetch = axios.create({
-        baseURL: "/api"
+        baseURL: "/api",
     })
 
 
 export const getUser = async () : Promise<User> => {
-    const { data }  = await customFetch.get("/user");
+    const { data }  = await customFetch.get("/user",{withCredentials:true});
     return data.user;
 }
 export const getAllNotes = async () : Promise<NoteType[]> => {
-    const { data }  = await customFetch.get("/notes");
+    const { data }  = await customFetch.get("/notes",{withCredentials:true});
     return data.notes;
 }
 

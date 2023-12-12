@@ -1,9 +1,13 @@
 import styled from "styled-components"
 // import axios from "axios"
-import { Link, useNavigate  } from "react-router-dom"
-import axios from "axios"
+import { Link, useNavigate  } from "react-router-dom";
+import { customFetch } from "../api/axios";
+import { useAuth } from "../context/AuthContext";
+import { useState } from "react";
 
 const Login = () => {
+  // const {loading} = useAuth();
+  const [loading,setLoading] = useState(false)
   const navigate = useNavigate();
   const googleSignIn = async (e:React.MouseEvent<HTMLButtonElement> ) => {
     e.preventDefault()
@@ -11,15 +15,18 @@ const Login = () => {
   }
 
   const login = async (e:React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault()
-    try{
-      const res = await axios.post("/api/login",{email:"vee@gmail.com",password:"secret"});
-      console.log(res.data);
-      navigate("/dashboard")
-    }catch (e:any){
-      console.log(e.response.data);
+      e.preventDefault()
+      setLoading(true)
+      try{
+        const user = await customFetch.post("/login",{email:"vee@gmail.com",password:"secret"});
+        console.log(user);
+        navigate("/dashboard")
+      }catch (e:any){
+        console.log(e.response.data);
+      }finally{
+        setLoading(false)
+      }
     }
-  }
 
   return (
     <Wrapper>
@@ -32,7 +39,7 @@ const Login = () => {
           <label htmlFor="password">Password</label>
           <input type="password" name="password" id="password" placeholder="password"/>
         </div>
-        <button onClick={login}>Log In</button>
+        <button onClick={login} disabled={loading}>{loading ? "Loading..." : "Log In"}</button>
         <p>Don't have an account? <Link to={"/signup"}>Register</Link></p>
         <button className="google" onClick={googleSignIn}>Sign in with Google</button>
       </form>
@@ -77,6 +84,9 @@ form{
   button{
     margin-top: .5rem;
     width: 100%;
+  }
+  button:disabled{
+    background-color: #5e3b26;
   }
   p{
     margin: 0;
