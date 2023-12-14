@@ -1,26 +1,29 @@
 import styled from "styled-components"
-// import axios from "axios"
-import { Link, useNavigate  } from "react-router-dom";
+import { Link, useLocation, useNavigate  } from "react-router-dom";
 import { customFetch } from "../api/axios";
 import { useAuth } from "../context/AuthContext";
-import { useState } from "react";
+import {  useState } from "react";
 
 const Login = () => {
-  // const {loading} = useAuth();
   const [loading,setLoading] = useState(false)
+  const {saveUser} = useAuth()
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/dashboard";
+  
   const googleSignIn = async (e:React.MouseEvent<HTMLButtonElement> ) => {
     e.preventDefault()
     window.open("http://localhost:8000/auth/google","_self")
   }
-
+  // getaddrinfo ENOTFOUND ac-kh38zfn-shard-00-00.up4r05f.mongodb.net
   const login = async (e:React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
       setLoading(true)
       try{
-        const user = await customFetch.post("/login",{email:"vee@gmail.com",password:"secret"});
-        console.log(user);
-        navigate("/dashboard")
+        const {data} = await customFetch.post("/login",{email:"vee@gmail.com",password:"secret"});
+        console.log(data);
+        saveUser(data.user)
+        navigate(from, {replace: true})
       }catch (e:any){
         console.log(e.response.data);
       }finally{
@@ -52,6 +55,7 @@ export default Login
 const Wrapper = styled.div`
 padding-block: 5rem;
 letter-spacing: normal;
+/* min-height: 100vh; */
 form{
   background-color: #33261f;
   width: min(90%,var(--fixedWidth));

@@ -4,6 +4,7 @@ import { NoteType, User } from "../types/types";
 
 export const customFetch = axios.create({
         baseURL: "/api",
+        withCredentials:true
     })
 
 

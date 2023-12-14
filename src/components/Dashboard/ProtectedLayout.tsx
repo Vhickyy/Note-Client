@@ -1,37 +1,29 @@
-import { Navigate, Outlet, useNavigate } from "react-router-dom";
+import { Navigate, Outlet, useLocation} from "react-router-dom";
 import MobileSidebar from "./MobileSidebar";
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import DesktopSidebar from "./DesktopSidebar";
 import styled from "styled-components";
-// import { useQuery, useQueryClient } from "@tanstack/react-query";
-// import { getUser } from "../../api/axios";
-// import { customFetch } from "../../api/axios";
-import { AuthContextProvider, useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 
 const ProtectedLayout = () => {
-  // const navigate = useNavigate()
+  const location = useLocation();
   const [showSidebar, setShowsidebar] = useState(false);
-  const {user} = useAuth()
-  const navigate = useNavigate()
+  const {user,loading} = useAuth()
 
   const toggleSidebar = () => {
       setShowsidebar(preState =>!preState);
   }
-  // useEffect(()=>{
-  //   if(!user){
-  //     navigate("/login")
-  //   }
-  // },[])
  
-  
   return (
-    <Wrapper>
-      <MobileSidebar showSidebar={showSidebar} close={toggleSidebar}/>
-      <DesktopSidebar showSidebar={showSidebar}/>
-      <main>
-        <Outlet context={{toggleSidebar}}/>
-      </main>
-    </Wrapper>
+    <>
+     {loading ? <h1>loading</h1> : user?.name ? <Wrapper>
+        <MobileSidebar showSidebar={showSidebar} close={toggleSidebar}/>
+        <DesktopSidebar showSidebar={showSidebar}/>
+        <main>
+          <Outlet context={{toggleSidebar}}/>
+        </main>
+      </Wrapper> : <Navigate to={"/login"} state={{from:location}} replace  />}
+    </>
   )
 }
 

@@ -4,12 +4,14 @@ import { BsMoonFill, BsSunFill } from "react-icons/bs";
 import { useTheme } from "../../context/ThemeContext";
 // import { FaPersonBooth } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 type props = {
     // close: ()=>void,
     showSidebar: boolean
 }
 const DesktopSidebar = ({showSidebar}:props) => {
   const {theme,toggleTheme} = useTheme()
+  const {removeUser} = useAuth();
   return (
     <Wrapper>
       <div className={`main ${showSidebar ? "hide" : "show"}`}>

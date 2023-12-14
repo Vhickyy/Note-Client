@@ -1,8 +1,8 @@
 import Navbar from "../../components/Dashboard/Navbar";
-import { useOutletContext } from "react-router-dom"
+import { useAuth } from "../../context/AuthContext";
 
 const Dashboard = () => {
-  const {user} = useOutletContext() as any;
+  const {user} = useAuth();
   
   
   // if(isLoading){
