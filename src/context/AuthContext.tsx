@@ -41,6 +41,8 @@ export const AuthContextProvider = ({children}:{children:React.ReactNode}) => {
       const userExist = async () => {
           try {
             const user = await getUser();
+            console.log(user);
+            
             saveUser(user)
           } catch (error) {
             removeUser()
