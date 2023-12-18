@@ -18,6 +18,7 @@ const Login = () => {
   // getaddrinfo ENOTFOUND ac-kh38zfn-shard-00-00.up4r05f.mongodb.net
   const login = async (e:React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
+      console.log("hi");
       setLoading(true)
       try{
         const {data} = await customFetch.post("/login",{email:"vee@gmail.com",password:"secret"});
@@ -25,6 +26,8 @@ const Login = () => {
         saveUser(data.user)
         navigate(from, {replace: true})
       }catch (e:any){
+        // console.log(e);
+        // check for server error
         console.log(e.response.data);
       }finally{
         setLoading(false)

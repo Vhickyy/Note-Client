@@ -9,17 +9,19 @@ export const customFetch = axios.create({
 
 
 export const getUser = async () : Promise<User> => {
-    const { data }  = await customFetch.get("/user",{withCredentials:true});
+    const { data }  = await customFetch.get("/user");
     return data.user;
 }
+
+// NOTES API
 export const getAllNotes = async () : Promise<NoteType[]> => {
-    const { data }  = await customFetch.get("/notes",{withCredentials:true});
+    const { data }  = await customFetch.get("/notes");
     return data.notes;
 }
 
-export const addNote = async (note:NoteType) : Promise<NoteType> => {
+export const addNoteApi = async (note:{title:string,category:string,noteBody:string}) : Promise<NoteType> => {
     const {data} = await customFetch.post("/notes",note);
-    console.log(data);
+    console.log(data); 
     return data
 }
 
@@ -38,3 +40,28 @@ export const deleteSingleNote = async (id:string) => {
     const data = await customFetch.delete(`/notes/${id}`)
     console.log(data); 
 }
+
+export const removeNote = async (id:string) => {
+    const data = await customFetch.patch(`/notes/delete/${id}`)
+    console.log(data); 
+}
+
+export const retrieveNote = async (id:string) => {
+    const data = await customFetch.patch(`/notes/retrieve/${id}`)
+    console.log(data); 
+}
+
+export const getAllDeletedNotes = async () : Promise<NoteType[]> => {
+    const { data }  = await customFetch.get("/deleted-notes");
+    console.log(data);
+    
+    return data.notes;
+}
+
+export const clearNotes = async () : Promise<NoteType[]> => {
+    const { data }  = await customFetch.delete("/clear-notes");
+    return data.notes;
+}
+
+
+// PROJECT API

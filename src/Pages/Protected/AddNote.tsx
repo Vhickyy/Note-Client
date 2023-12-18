@@ -1,8 +1,20 @@
 import Navbar from "../../components/Dashboard/Navbar";
 import NoteEditor from "../../components/Dashboard/AddNotes/NoteEditor";
 import styled from "styled-components";
+import { useMutation } from "@tanstack/react-query";
+import { addNoteApi } from "../../api/axios";
+import { useState } from "react";
 const AddNote = () => {
+  const [value,setValue] = useState("")
   // const Edit: boolean = false
+  const {mutate} = useMutation({
+    mutationFn: addNoteApi
+  })
+  const addNote = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>,note:{title:string,category:string,noteBody:string}) => {
+    e.preventDefault()
+    mutate(note)
+    console.log(note);
+  }
   return (
     <Wrapper>
         <Navbar page="Add New Note"/>
@@ -10,9 +22,9 @@ const AddNote = () => {
         <form>
           <div className="top">
             <h4>Title</h4>
-            <button>Save</button>
+            <button onClick={(e)=>addNote(e,{title:"firdt note from frontend",category:"personal",noteBody:value})}>Save</button>
           </div>
-          <NoteEditor/>
+          <NoteEditor value={value} setValue={setValue}/>
         </form>
     </Wrapper>
   )

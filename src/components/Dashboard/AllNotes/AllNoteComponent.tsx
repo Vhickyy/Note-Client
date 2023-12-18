@@ -4,8 +4,8 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import Filterform from "./Filterform";
 import { FaEdit, FaTrash } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
-import { deleteSingleNote, getAllNotes } from "../../../api/axios";
+import { Link } from "react-router-dom";
+import { deleteSingleNote, getAllNotes, removeNote } from "../../../api/axios";
 import { NoteType } from "../../../types/types";
 import Skeleton from "../Skeleton";
 const AllNotesComponenent = () => {
@@ -15,7 +15,7 @@ const AllNotesComponenent = () => {
 
     const {data,isLoading,error} = useQuery<NoteType[]>({queryKey: ["notes"],queryFn: getAllNotes})
     const {mutate}  = useMutation({
-      mutationFn:  deleteSingleNote
+      mutationFn:  removeNote
     })
 
    const deletNote =(id:string)=>{
@@ -26,8 +26,6 @@ const AllNotesComponenent = () => {
     }
     if(error){
       // console.log(error);
-      // const navigate = useNavigate();
-      // navigate("/login")
       return <h2>{error.message}!!!</h2>
     }
   return (
@@ -43,7 +41,7 @@ const AllNotesComponenent = () => {
                 <p>{i.category}</p>
                 <div>
                   <Link to={"../editnote/1"}><FaEdit/></Link>
-                  <FaTrash onClick={()=>deletNote("1")}/>
+                  <FaTrash onClick={()=>deletNote(i._id)}/>
                 </div>
               </div>
             )

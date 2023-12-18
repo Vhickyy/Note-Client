@@ -1,7 +1,12 @@
 import styled from "styled-components";
-import data from "../../data/fakedata";
 import { FaTrash } from "react-icons/fa";
+import { useQuery } from "@tanstack/react-query";
+import { NoteType } from "../../types/types";
+import { getAllDeletedNotes } from "../../api/axios";
+import Skeleton from "./Skeleton";
 const AllNotesComponenent = () => {
+
+  const {data,isLoading:getLoading,isError:getError,error:getErrorDetail} = useQuery<NoteType[]>({queryKey: ["notes"],queryFn: getAllDeletedNotes})
   const retrieveNote = (id:string) => {
     console.log(id)
   }
@@ -11,15 +16,23 @@ const AllNotesComponenent = () => {
   const clearNotes = () => {
     console.log("clear")
   }
+
+  if(getLoading){
+    return <Skeleton/>
+  }
+  if(getError){
+    // console.log(error);
+    return <h2>{getErrorDetail.message}!!!</h2>
+  }
   return (
     <Wrapper>
       <button onClick={clearNotes}>Clear All</button>
       <div className="card-wrapper">
-        {data.map((i,index)=>{
+        {data?.map((i,index)=>{
           return(
             <div key={index} className="card">
               <h4>{i.title}</h4>
-              <p>{i.content}</p>
+              <p>{i.noteBody}</p>
               <p>{i.category}</p>
               <div>
                 <FaTrash onClick={()=>deleteNote("1")}/>

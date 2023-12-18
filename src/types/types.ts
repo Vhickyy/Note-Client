@@ -20,7 +20,7 @@ export type Filter = {
 }
 
 export type NoteType = {
-    id: string
+    _id: string
     title: string,
     noteBody: string,
     isFav: boolean,
