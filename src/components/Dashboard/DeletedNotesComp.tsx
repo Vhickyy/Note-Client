@@ -1,20 +1,32 @@
 import styled from "styled-components";
 import { FaTrash } from "react-icons/fa";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { NoteType } from "../../types/types";
-import { getAllDeletedNotes } from "../../api/axios";
+import { clearAllNote, deleteSingleNote, getAllDeletedNotes, retrieveNoteApi } from "../../api/axios";
 import Skeleton from "./Skeleton";
 const AllNotesComponenent = () => {
 
-  const {data,isLoading:getLoading,isError:getError,error:getErrorDetail} = useQuery<NoteType[]>({queryKey: ["notes"],queryFn: getAllDeletedNotes})
+  const {data,isLoading:getLoading,isError:getError,error:getErrorDetail} = useQuery<NoteType[]>({queryKey: ["deleted-notes"],queryFn: getAllDeletedNotes})
+
+  const {mutate: retrieveMutate}  = useMutation({
+    mutationFn:  retrieveNoteApi
+  })
+
+  const {mutate: deleteMutate}  = useMutation({
+    mutationFn:  deleteSingleNote
+  })
+
+  const {mutate:clearNoteMutate} = useMutation({
+    mutationFn: clearAllNote
+  })
   const retrieveNote = (id:string) => {
-    console.log(id)
+    retrieveMutate(id)
   }
   const deleteNote = (id:string) => {
-    console.log(id)
+    deleteMutate(id)
   }
   const clearNotes = () => {
-    console.log("clear")
+    clearNoteMutate()
   }
 
   if(getLoading){
@@ -35,8 +47,8 @@ const AllNotesComponenent = () => {
               <p>{i.noteBody}</p>
               <p>{i.category}</p>
               <div>
-                <FaTrash onClick={()=>deleteNote("1")}/>
-                <button onClick={()=>retrieveNote("1")}>Retrieve</button>
+                <FaTrash onClick={()=>deleteNote(i._id)}/>
+                <button onClick={()=>retrieveNote(i._id)}>Retrieve</button>
               </div>
             </div>
           )

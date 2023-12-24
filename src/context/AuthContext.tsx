@@ -9,12 +9,16 @@ type AuthType =  {
     removeUser: () => void
     logout: () => void
     loading:boolean
+    data:any
+    setData:any
 }
 const AuthContext = createContext({} as AuthType) ;
 
 export const AuthContextProvider = ({children}:{children:React.ReactNode}) => {
     const [user,setUser] = useState<User | null>(null)
     const [loading,setLoading] = useState(true);
+    const [data,setData] = useState([])
+    
     //  const queryClient = useQueryClient()
      
     const saveUser = (user:User) => {
@@ -42,9 +46,9 @@ export const AuthContextProvider = ({children}:{children:React.ReactNode}) => {
           try {
             const user = await getUser();
             console.log(user);
-            
             saveUser(user)
           } catch (error) {
+            console.log(error);
             removeUser()
           }finally{
               setLoading(false)
@@ -66,7 +70,7 @@ export const AuthContextProvider = ({children}:{children:React.ReactNode}) => {
   )
 
     return (
-        <AuthContext.Provider value={{user,saveUser,removeUser,logout,loading}}>
+        <AuthContext.Provider value={{user,saveUser,removeUser,logout,loading,data,setData}}>
             { children}
         </AuthContext.Provider>
     )

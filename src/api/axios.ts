@@ -1,5 +1,5 @@
 import axios from "axios";
-import { NoteType, User } from "../types/types";
+import { NoteType, ProjectType, User } from "../types/types";
 
 
 export const customFetch = axios.create({
@@ -25,9 +25,10 @@ export const addNoteApi = async (note:{title:string,category:string,noteBody:str
     return data
 }
 
-export const getNote = (id:string) => {
-    const data = customFetch.get(`/notes/${id}`)
+export const getNote = async (id:string | undefined) : Promise<NoteType> => {
+    const {data}= await customFetch.get(`/notes/${id}`)
     console.log(data); 
+    return data.note
 }
 
 export const updateNote = (id:string,note:any) :any=> {
@@ -46,22 +47,26 @@ export const removeNote = async (id:string) => {
     console.log(data); 
 }
 
-export const retrieveNote = async (id:string) => {
+export const retrieveNoteApi = async (id:string) => {
     const data = await customFetch.patch(`/notes/retrieve/${id}`)
     console.log(data); 
 }
 
 export const getAllDeletedNotes = async () : Promise<NoteType[]> => {
     const { data }  = await customFetch.get("/deleted-notes");
-    console.log(data);
-    
     return data.notes;
 }
 
-export const clearNotes = async () : Promise<NoteType[]> => {
+export const clearAllNote = async ()  => {
     const { data }  = await customFetch.delete("/clear-notes");
-    return data.notes;
+    return data.msg;
 }
 
 
 // PROJECT API
+export const getAllProjects = async () : Promise<ProjectType[]> => {
+    const { data }  = await customFetch.get("/projects");
+    console.log(data);
+    
+    return data.projects;
+}

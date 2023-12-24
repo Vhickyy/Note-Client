@@ -4,6 +4,10 @@ import Filterform from "../../components/Dashboard/AllNotes/Filterform";
 import { useState } from "react";
 import CreateProjectModal from "../../components/Dashboard/Project/CreateProjectModal";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { getAllProjects } from "../../api/axios";
+import { ProjectType } from "../../types/types";
+import Skeleton from "../../components/Dashboard/Skeleton";
 const projects:any[] = [
   {
     title: "something",
@@ -47,6 +51,15 @@ const Project = () => {
     const openModal = () =>{
       setShowModal(true)
     }
+    const {data,isLoading,error} = useQuery<ProjectType[]>({queryKey: ["notes"],queryFn: getAllProjects});
+
+    if(isLoading){
+      return <Skeleton/>
+    }
+    if(error){
+      // console.log(error);
+      return <h2>{error.message}!!!</h2>
+    }
   return (
     <Wrapper>
       <Navbar page="Project"/>
@@ -64,13 +77,13 @@ const Project = () => {
               <h5>Create New Project</h5>
               <button onClick={openModal}>New</button>
             </div>
-            {projects.map((project,index)=>{
+            {data?.map((project,index)=>{
               return (
                 <Link to={"./1"} key={index}>
                   <div className="card" >
                     <h3>{project.title}</h3>
-                    <p>{project.status}</p>
-                    <p>{project.onSocket === true ? "true" : "false"}, number of members,date and dealine, countdown, creator or collaborator </p>
+                    <p>{project.projectBody}</p>
+                    {/* <p>{project.onSocket === true ? "true" : "false"}, number of members,date and dealine, countdown, creator or collaborator </p> */}
                   </div>
                 </Link>
               )

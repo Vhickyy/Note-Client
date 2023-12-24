@@ -1,12 +1,25 @@
-// import { useState } from "react"
+import { useEffect } from "react"
 import { FaTimes } from "react-icons/fa"
 import styled from "styled-components"
+import { Socket, io } from "socket.io-client"
+import { DefaultEventsMap } from "@socket.io/component-emitter"
 
 type CreateProject = {
     closeModal: ()=>void
 }
 const CreateProjectModal = ({closeModal}:CreateProject) => {
     // const [users,setUsers] = useState([])
+
+    // let socket: Socket<DefaultEventsMap, DefaultEventsMap>;
+    useEffect(()=>{
+        // socket = io("http://localhost:8000");
+        // socket.emit("connection");
+
+        // return () => {
+        //     socket.disconnect()
+        // }
+    },[])
+
   return (
     <Wrapper>
         <form className="content">

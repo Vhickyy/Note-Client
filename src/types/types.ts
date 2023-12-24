@@ -28,6 +28,15 @@ export type NoteType = {
     category:string
 }
 
+export type ProjectType = {
+    _id: string
+    title: string,
+    brief: string,
+    projectBody: boolean,
+    // isDeleted: boolean,
+    // category:string
+}
+
 export type User = {
     _id:string,
     name:string,
