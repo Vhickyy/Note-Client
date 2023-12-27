@@ -24,15 +24,15 @@ const ReadProject = () => {
 
   useEffect(()=>{
     socket?.emit("join project",projectId);
-    const updateChangesWithDelta = (delta:any) => {
+    const realTimeNote = (delta:any) => {
       if (quillRef.current == null ) return;
       const editor = quillRef.current.getEditor()
       editor?.updateContents(delta);
     }; 
-    socket?.on("send changes", updateChangesWithDelta);
+    socket?.on("send changes", realTimeNote);
 
     return () => {
-      socket?.off("send changes", updateChangesWithDelta);
+      socket?.off("send changes", realTimeNote);
     };
 },[socket])
 
