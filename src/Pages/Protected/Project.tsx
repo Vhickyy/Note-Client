@@ -8,50 +8,22 @@ import { useQuery } from "@tanstack/react-query";
 import { getAllProjects } from "../../api/axios";
 import { ProjectType } from "../../types/types";
 import Skeleton from "../../components/Dashboard/Skeleton";
-const projects:any[] = [
-  {
-    title: "something",
-    status: "in Progress",
-    onSocket: false
-  },
-  {
-    title: "something",
-    status: "in Progress",
-    onSocket: false
-  },
-  {
-    title: "something",
-    status: "in Progress",
-    onSocket: false
-  },
-  {
-    title: "something",
-    status: "in Progress",
-    onSocket: false
-  },
-  {
-    title: "something",
-    status: "in Progress",
-    onSocket: true
-  },
-  {
-    title: "something",
-    status: "in Progress",
-    onSocket: false
-  },
-]
+import { useAuth } from "../../context/AuthContext";
+
 const Project = () => {
   const [sort,setSort] = useState({show:false,sort:"latest"});
     const [category,setCategory] = useState({show:false,category:"all"});
     const [showForm, setShowForm] = useState(false)
     const [showModal, setShowModal] =useState(false);
-    const closeModal = () => {
+    const {user} = useAuth()
+    const closeModal = (e:React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault()
       setShowModal(false)
     }
     const openModal = () =>{
       setShowModal(true)
     }
-    const {data,isLoading,error} = useQuery<ProjectType[]>({queryKey: ["notes"],queryFn: getAllProjects});
+    const {data,isLoading,error} = useQuery<ProjectType[]>({queryKey: ["projects"],queryFn: getAllProjects});
 
     if(isLoading){
       return <Skeleton/>
@@ -65,9 +37,9 @@ const Project = () => {
       <Navbar page="Project"/>
         {showModal ? <CreateProjectModal closeModal={closeModal}/> : false}
         <div className="section">
-        {projects.length ? <Filterform sort={sort} setSort={setSort} category={category} setCategory={setCategory} showForm={showForm} setShowForm={setShowForm}/> : null}
-        <div className={!projects.length ? "main" : "card-wrapper"}>
-          {!projects.length ? 
+        {data?.length ? <Filterform sort={sort} setSort={setSort} category={category} setCategory={setCategory} showForm={showForm} setShowForm={setShowForm}/> : null}
+        <div className={!data?.length ? "main" : "card-wrapper"}>
+          {!data?.length ? 
           <>
           <h3>You have no project, create new project.</h3>
           <button onClick={openModal}>Create Project</button>
@@ -79,11 +51,12 @@ const Project = () => {
             </div>
             {data?.map((project,index)=>{
               return (
-                <Link to={"./1"} key={index}>
+                <Link to={`./${project._id}`} key={index}>
                   <div className="card" >
                     <h3>{project.title}</h3>
                     <p>{project.projectBody}</p>
                     {/* <p>{project.onSocket === true ? "true" : "false"}, number of members,date and dealine, countdown, creator or collaborator </p> */}
+                    {project.owner === user?.id ? <button>Delete</button> : null}
                   </div>
                 </Link>
               )

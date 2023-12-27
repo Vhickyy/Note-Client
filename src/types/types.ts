@@ -33,12 +33,13 @@ export type ProjectType = {
     title: string,
     brief: string,
     projectBody: boolean,
+    owner:string
     // isDeleted: boolean,
     // category:string
 }
 
 export type User = {
-    _id:string,
+    id:string,
     name:string,
     profile:string,
     email:string,

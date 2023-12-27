@@ -8,43 +8,39 @@ import { DefaultEventsMap } from "@socket.io/component-emitter"
 import { useParams } from "react-router-dom";
 
 const ReadProject = () => {
-  const [socket,setSocket] = useState<Socket<DefaultEventsMap, DefaultEventsMap> | null>(null);
-  const [value,setValue] = useState("");
+  const [socket,setSocket] = useState<Socket<DefaultEventsMap, DefaultEventsMap>>();
+  const [value,_setValue] = useState("");
   const quillRef = useRef<any>()
-  const {id:projectId} = useParams()
-  console.log(projectId);
-  
+  const {id:projectId} = useParams();
 
   useEffect(()=>{
     const s = io("http://localhost:8000");
-// //     setSocket(s)
-    s.emit("join project",projectId);
-
-//     return () => {
-//         s.disconnect()
-//         setSocket(s)
-//     }
-},[])
-  useEffect(()=>{
-    // if(quillRef.current){
-      const editor = quillRef.current.getEditor()
-      console.log(editor);
-      // editor.on("text-change", (delta: any,oldDelta: any,source: any) => {
-      //   console.log(delta);
-        
-      // })
-    // }
+    setSocket(s)
+    return () => {
+      s.disconnect()
+      console.log(s);
+    }
   },[])
 
   useEffect(()=>{
-    
-  })
+    socket?.emit("join project",projectId);
+    const updateChangesWithDelta = (delta:any) => {
+      if (quillRef.current == null ) return;
+      const editor = quillRef.current.getEditor()
+      editor?.updateContents(delta);
+    }; 
+    socket?.on("send changes", updateChangesWithDelta);
 
-  const handler = (value: string, delta: any, source: any, editor: ReactQuill.UnprivilegedEditor) => {
-    console.log(delta);
-    
+    return () => {
+      socket?.off("send changes", updateChangesWithDelta);
+    };
+},[socket])
+
+  const handler = (_value: string, delta: any, source: any, _editor: ReactQuill.UnprivilegedEditor) => {
+    if (socket == null) return;
+    if (source !== "user") return;
+    socket?.emit("writing",delta)
   }
-  
  
   return (
     <Wrapper>

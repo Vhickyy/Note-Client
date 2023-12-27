@@ -5,7 +5,7 @@ import { Socket, io } from "socket.io-client"
 import { DefaultEventsMap } from "@socket.io/component-emitter"
 
 type CreateProject = {
-    closeModal: ()=>void
+    closeModal: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 const CreateProjectModal = ({closeModal}:CreateProject) => {
     // const [users,setUsers] = useState([])
@@ -47,7 +47,7 @@ const CreateProjectModal = ({closeModal}:CreateProject) => {
                 </div>
             </div>
             <div>
-                <button>Discard</button>
+                <button onClick={closeModal}>Discard</button>
                 <button>Create</button>
             </div>
         </form>
