@@ -17,17 +17,18 @@ const ReadProject = () => {
     const s = io("http://localhost:8000");
     setSocket(s)
     return () => {
-      s.disconnect()
-      console.log(s);
+      s.disconnect();
     }
   },[])
 
   useEffect(()=>{
     socket?.emit("join project",projectId);
+    const editor = quillRef.current.getEditor();
+
+
     const realTimeNote = (delta:any) => {
-      if (quillRef.current == null ) return;
-      const editor = quillRef.current.getEditor()
-      editor?.updateContents(delta);
+      editor.updateContents(delta);
+      socket?.emit("save", editor.getContents())
     }; 
     socket?.on("send changes", realTimeNote);
 

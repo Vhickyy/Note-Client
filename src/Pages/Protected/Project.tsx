@@ -54,7 +54,7 @@ const Project = () => {
                 <Link to={`./${project._id}`} key={index}>
                   <div className="card" >
                     <h3>{project.title}</h3>
-                    <p>{project.projectBody}</p>
+                    {/* <p>{project.projectBody}</p> */}
                     {/* <p>{project.onSocket === true ? "true" : "false"}, number of members,date and dealine, countdown, creator or collaborator </p> */}
                     {project.owner === user?.id ? <button>Delete</button> : null}
                   </div>
