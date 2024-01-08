@@ -33,13 +33,16 @@ const ReadProject = () => {
       editor.enable();
     };
     socket?.once("get project", loadDocument);
+    const timer = setInterval(() => {
+      socket?.emit("save", editor.getContents());
+    }, 3000);
     const realTimeNote = (delta:any) => {
       editor.updateContents(delta);
-      socket?.emit("save", editor?.getContents());
     }; 
     socket?.on("send changes", realTimeNote);
 
     return () => {
+      clearInterval(timer);
       socket?.off("send changes", realTimeNote);
     };
 },[socket])
