@@ -28,6 +28,9 @@ const EditNote = () => {
   //   title: "jj",
   //   desc: "jj"
   // }
+  const handleChange = (e:any) => {
+    setValue(e.target.value)
+  }
   if(isLoading){
     return <h1>loading</h1>
   }
@@ -43,7 +46,7 @@ const EditNote = () => {
             <h4>Title</h4>
             <button>Save Change</button>
           </div>
-          {data ? <NoteEditor value={data.noteBody} setValue={setValue}/> : null}
+          {data ? <NoteEditor value={data.noteBody} setValue={handleChange}/> : null}
         </form>
     </Wrapper>
   )
