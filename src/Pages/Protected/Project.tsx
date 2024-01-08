@@ -4,8 +4,8 @@ import Filterform from "../../components/Dashboard/AllNotes/Filterform";
 import { useState } from "react";
 import CreateProjectModal from "../../components/Dashboard/Project/CreateProjectModal";
 import { Link } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import { getAllProjects } from "../../api/axios";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { deleteProjectApi, getAllProjects } from "../../api/axios";
 import { ProjectType } from "../../types/types";
 import Skeleton from "../../components/Dashboard/Skeleton";
 import { useAuth } from "../../context/AuthContext";
@@ -24,6 +24,15 @@ const Project = () => {
       setShowModal(true)
     }
     const {data,isLoading,error} = useQuery<ProjectType[]>({queryKey: ["projects"],queryFn: getAllProjects});
+
+    const {mutate}  = useMutation({
+      mutationFn:  deleteProjectApi
+    })
+
+   const deleteProject =(e: React.MouseEvent<HTMLButtonElement, MouseEvent>,id:string)=>{
+    e.preventDefault()
+      mutate(id)
+    }
 
     if(isLoading){
       return <Skeleton/>
@@ -54,9 +63,9 @@ const Project = () => {
                 <Link to={`./${project._id}`} key={index}>
                   <div className="card" >
                     <h3>{project.title}</h3>
-                    {/* <p>{project.projectBody}</p> */}
+                    <p>{project.brief}</p>
                     {/* <p>{project.onSocket === true ? "true" : "false"}, number of members,date and dealine, countdown, creator or collaborator </p> */}
-                    {project.owner === user?.id ? <button>Delete</button> : null}
+                    {project.owner === user?.id ? <button onClick={(e)=>deleteProject(e,project._id)}>Delete</button> : null}
                   </div>
                 </Link>
               )

@@ -6,6 +6,9 @@ import { useEffect, useRef, useState } from "react"
 import { Socket, io } from "socket.io-client"
 import { DefaultEventsMap } from "@socket.io/component-emitter"
 import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { ProjectType } from "../../types/types";
+import { getProject } from "../../api/axios";
 
 const ReadProject = () => {
   const [socket,setSocket] = useState<Socket<DefaultEventsMap, DefaultEventsMap>>();
@@ -13,6 +16,8 @@ const ReadProject = () => {
   const quillRef = useRef<any>()
   const {id:projectId} = useParams();
 
+  const {data,isLoading,error} = useQuery<ProjectType>({queryKey: ["projects",projectId],queryFn: ()=> getProject(projectId)});
+  
   useEffect(()=>{
     const s = io("http://localhost:8000");
     setSocket(s)
@@ -23,12 +28,14 @@ const ReadProject = () => {
 
   useEffect(()=>{
     socket?.emit("join project",projectId);
-    const editor = quillRef.current.getEditor();
-
+    const editor = quillRef?.current?.getEditor();
+    if(data){
+      editor.setContents(data?.projectBody);
+    }
 
     const realTimeNote = (delta:any) => {
       editor.updateContents(delta);
-      socket?.emit("save", editor.getContents())
+      socket?.emit("save", editor?.getContents())
     }; 
     socket?.on("send changes", realTimeNote);
 
@@ -42,7 +49,13 @@ const ReadProject = () => {
     if (source !== "user") return;
     socket?.emit("writing",delta)
   }
- 
+  if(isLoading){
+    return <h1>loading</h1>
+  }
+  if(error){
+    // console.log(error);
+    return <h2>{error.message}!!!</h2>
+  }
   return (
     <Wrapper>
         <Navbar page="Read Project"/>
@@ -51,7 +64,7 @@ const ReadProject = () => {
             <button>Project Details</button>
           </div>
           <div>
-            <ReactQuill theme="snow" ref={quillRef} value={value} onChange={handler}/>
+            <ReactQuill theme="snow" ref={quillRef}  onChange={handler}/>
         </div>
         </form>
     </Wrapper>

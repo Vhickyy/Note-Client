@@ -67,6 +67,14 @@ export const clearAllNote = async ()  => {
 export const getAllProjects = async () : Promise<ProjectType[]> => {
     const { data }  = await customFetch.get("/projects");
     console.log(data);
-    
     return data.projects;
+}
+export const getProject = async (id:string | undefined) : Promise<ProjectType> => {
+    const {data}= await customFetch.get(`/projects/${id}`)
+    console.log(data); 
+    return data.project
+}
+export const deleteProjectApi = async (id:string) => {
+    const data = await customFetch.delete(`/projects/${id}`)
+    console.log(data); 
 }

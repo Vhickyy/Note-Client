@@ -1,26 +1,19 @@
 import styled from "styled-components";
 // import data from "../../../data/fakedata";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import Filterform from "./Filterform";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { getAllNotes, removeNote } from "../../../api/axios";
 import { NoteType } from "../../../types/types";
 import Skeleton from "../Skeleton";
-import { useAuth } from "../../../context/AuthContext";
 const AllNotesComponenent = () => {
-  // const {setData} = useAuth()
   const [sort,setSort] = useState({show:false,sort:"latest"});
     const [category,setCategory] = useState({show:false,category:"all"});
     const [showForm, setShowForm] = useState(false);
 
     const {data,isLoading,error} = useQuery<NoteType[]>({queryKey: ["notes"],queryFn: getAllNotes});
-    // useEffect(()=>{
-    //   if(data){
-    //     setData(data)
-    //   }
-    // },[])
     const {mutate}  = useMutation({
       mutationFn:  removeNote
     })
