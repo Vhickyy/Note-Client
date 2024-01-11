@@ -13,8 +13,8 @@ const AllNotesComponenent = () => {
     const [category,setCategory] = useState({show:false,category:"all"});
     const [showForm, setShowForm] = useState(false);
 
-    const {data,isLoading,error} = useQuery<NoteType[]>({queryKey: ["notes"],queryFn: getAllNotes});
-    const {mutate}  = useMutation({
+    const {data,isLoading,isError,error} = useQuery<NoteType[]>({queryKey: ["notes"],queryFn: getAllNotes});
+    const {mutate,isPending}  = useMutation({
       mutationFn:  removeNote
     })
 
@@ -24,8 +24,8 @@ const AllNotesComponenent = () => {
     if(isLoading){
       return <Skeleton/>
     }
-    if(error){
-      // console.log(error);
+    if(isError){
+      console.log(error);
       return <h2>{error.message}!!!</h2>
     }
   return (
@@ -43,7 +43,7 @@ const AllNotesComponenent = () => {
                 </Link>
                   <div>
                     <Link to={"../editnote/1"}><FaEdit className="icon"/></Link>
-                    <FaTrash className="icon" onClick={()=>deletNote(i._id)}/>
+                    <button onClick={()=>deletNote(i._id)} disabled={isPending}><FaTrash className="icon" /></button>
                   </div>
               </div>
             )

@@ -4,14 +4,13 @@ import "react-quill/dist/quill.snow.css"
 
 type NoteEditorProp = {
   value:string
-  setValue: React.Dispatch<React.SetStateAction<string>>
-
+  onChange?: React.Dispatch<React.SetStateAction<string>>
 }
-const NoteEditor = ({value,setValue}:NoteEditorProp) => {
+const NoteEditor = ({value,onChange}:NoteEditorProp) => {
     
   return (
     <div>
-        <ReactQuill theme="snow" value={value} onChange={setValue}/>
+        <ReactQuill theme="snow" value={value} onChange={onChange} />
     </div>
   )
 }

@@ -24,7 +24,7 @@ const DesktopSidebar = ({showSidebar}:props) => {
             {theme == "dark" ? <BsSunFill className="icon" onClick={toggleTheme}/> : <BsMoonFill className="icon" onClick={toggleTheme}/>}
             <div className="flex">
               {/* <FaPersonBooth /> */}
-              <Link to={"/login"}>Logout</Link>
+              <Link to={"#"}>Logout</Link>
             </div>
           </div>
         </div>

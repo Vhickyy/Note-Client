@@ -15,7 +15,7 @@ export const getUser = async () : Promise<User> => {
 
 // NOTES API
 export const getAllNotes = async () : Promise<NoteType[]> => {
-    const { data }  = await customFetch.get("/notes");
+    const { data }  = await customFetch.get("/notess");
     return data.notes;
 }
 
@@ -31,9 +31,8 @@ export const getNote = async (id:string | undefined) : Promise<NoteType> => {
     return data.note
 }
 
-export const updateNote = ({id,note} : {id:string | undefined,note:any}) : any=> {
-    const data = customFetch.patch(`/notes/${id}`,note)
-    console.log(data);   
+export const updateNote = async ({id,note} : {id:string | undefined,note:any}) : Promise<any>=> {
+    const data = await customFetch.patch(`/notes/${id}`,note);
     return data
 }
 

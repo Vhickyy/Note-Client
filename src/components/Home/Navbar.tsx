@@ -28,7 +28,7 @@ const Navbar = () => {
     <Wrapper >
         <nav ref={navRef}>
             <div className="nav">
-                <Link to={"/"}><h2>VEENOTES</h2></Link>
+                <Link to={"/"}><h2>NOTES</h2></Link>
                 <div className="icon-container">
                     {theme == "dark" ? <BsSunFill className="icon" onClick={toggleTheme}/> : <BsMoonFill className="icon" onClick={toggleTheme}/>}
                     {!show ?<FaBars className="icon ham" onClick={openNav}/> : <FaTimes className="icon ham" onClick={closeNav}/>}

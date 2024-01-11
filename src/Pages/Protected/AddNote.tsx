@@ -7,23 +7,25 @@ import { useState } from "react";
 const AddNote = () => {
   const [value,setValue] = useState("")
   // const Edit: boolean = false
-  const {mutate,isPending} = useMutation({
+  const {mutate,isPending,error} = useMutation({
     mutationFn: addNoteApi
   })
   const addNote = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>,note:{title:string,category:string,noteBody:string}) => {
     e.preventDefault()
     mutate(note);
   }
+  
   return (
     <Wrapper>
         <Navbar page="Add New Note"/>
         {/* <h1>add note</h1> */}
+        {/* {error  && <p>{error}</p>} */}
         <form>
           <div className="top">
             <h4>Title</h4>
-            <button onClick={(e)=>addNote(e,{title:"firdt note from frontend",category:"personal",noteBody:value})} disabled={isPending}>{isPending ? "Saving" : "Save"}</button>
+            <button onClick={(e)=>addNote(e,{title:"",category:"personal",noteBody:value})} disabled={isPending}>{isPending ? "Saving" : "Save"}</button>
           </div>
-          <NoteEditor value={value} setValue={setValue}/>
+          <NoteEditor value={value} onChange={setValue}/>
         </form>
     </Wrapper>
   )

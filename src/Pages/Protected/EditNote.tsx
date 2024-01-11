@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import { NoteType } from "../../types/types"
 import { getNote, updateNote } from "../../api/axios"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 // import { useMutation } from "@tanstack/react-query"
 // import { updateNote } from "../../api/axios"
 
@@ -18,32 +18,35 @@ const EditNote = () => {
   // }
   
   const {data,isLoading,error} = useQuery<NoteType>({queryKey: ["note",id],queryFn:()=> getNote(id)});
-  const {mutate} = useMutation({
+  const {mutate,isPending} = useMutation({
     mutationFn: updateNote
   })
   // const newnote = {
   //   title: "jj",
   //   desc: "jj"
   // }
-  const handleChange = (e:any) => {
-    setValue(e.target.value)
-  }
   const handleEdit = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    mutate({id,note:value})
+    console.log(value);
+    mutate({id,note:{title:"New Title",noteBody:value}})
   }
+  useEffect(()=>{
+    if(data){
+      setValue(data?.noteBody)
+    }
+  },[data])
   
   return (
     <Wrapper>
         <Navbar page="Edit Note"/>
         {isLoading && <h1>Loading</h1>}
         {error && <h2>{error.message}!!!</h2>}
-        <form>
+        <form >
           <div className="top">
             <h4>Title</h4>
-            <button onClick={handleEdit}>Save Change</button>
+            <button onClick={handleEdit} disabled={isPending}>{isPending ? "Saving..." : "Save Change"}</button>
           </div>
-          {data ? <NoteEditor value={data.noteBody} setValue={handleChange}/> : null}
+          {data ? <NoteEditor value={value} onChange={setValue}/> : null}
         </form>
     </Wrapper>
   )
