@@ -68,7 +68,6 @@ export const AuthContextProvider = ({children}:{children:React.ReactNode}) => {
       return Promise.reject(error)
     },
   )
-
     return (
         <AuthContext.Provider value={{user,saveUser,removeUser,logout,loading,data,setData}}>
             { children}

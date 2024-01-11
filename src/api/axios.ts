@@ -31,7 +31,7 @@ export const getNote = async (id:string | undefined) : Promise<NoteType> => {
     return data.note
 }
 
-export const updateNote = (id:string,note:any) :any=> {
+export const updateNote = ({id,note} : {id:string | undefined,note:any}) : any=> {
     const data = customFetch.patch(`/notes/${id}`,note)
     console.log(data);   
     return data
