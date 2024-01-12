@@ -13,6 +13,7 @@ const AllNotesComponenent = () => {
   const [sort,setSort] = useState({show:false,sort:"latest"});
     const [category,setCategory] = useState({show:false,category:"all"});
     const [showForm, setShowForm] = useState(false);
+    const [id,setId] = useState<string>("");
 
     const {data,isLoading,isError,error} = useQuery<NoteType[]>({queryKey: ["notes"],queryFn: getAllNotes});
     const {mutate,isPending}  = useMutation({
@@ -20,6 +21,7 @@ const AllNotesComponenent = () => {
     })
 
    const deletNote =(id:string)=>{
+      setId(id)
       mutate(id)
     }
     if(isLoading){
@@ -45,7 +47,7 @@ const AllNotesComponenent = () => {
                 </Link>
                   <div>
                     <Link to={"../editnote/1"}><FaEdit className="icon"/></Link>
-                    <button onClick={()=>deletNote(i._id)} disabled={isPending}>{isPending && i._id  ? "Loading..." : <FaTrash className="icon" />}</button>
+                    <button onClick={()=>deletNote(i._id)} disabled={isPending}>{isPending && i._id == id  ? "Loading..." : <FaTrash className="icon" />}</button>
                   </div>
               </div>
             )
