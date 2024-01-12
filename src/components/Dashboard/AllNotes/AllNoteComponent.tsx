@@ -54,7 +54,7 @@ const AllNotesComponenent = () => {
           }) : 
           <div>
             <h2>You have not created any note.</h2>
-            <button>Create Note.</button>
+            <Link to={"../addnote"}><button>Create Note</button></Link>
           </div>}
       </div>
     </Wrapper>

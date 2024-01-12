@@ -21,7 +21,6 @@ export const getAllNotes = async () : Promise<NoteType[]> => {
 
 export const addNoteApi = async (note:{title:string,category:string,noteBody:string}) : Promise<NoteType> => {
     const {data} = await customFetch.post("/notes",note);
-    console.log(data); 
     return data
 }
 
@@ -37,7 +36,7 @@ export const updateNote = async ({id,note} : {id:string | undefined,note:any}) :
 }
 
 export const deleteSingleNote = async (id:string) => {
-    const data = await customFetch.delete(`/notes/${id}`)
+    const data = await customFetch.delete(`/notess/${id}`)
     console.log(data); 
 }
 

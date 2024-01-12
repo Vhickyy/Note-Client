@@ -13,14 +13,17 @@ const AddNote = () => {
   })
   const addNote = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
+    console.log("ehrer");
     const newNote = {title,category:"personal",noteBody:value}
     mutate(newNote);
+    console.log("hi");
+    
   }
   
   return (
     <Wrapper>
         <Navbar page="Add New Note"/>
-        {/* <h1>add note</h1> */}
+        {isError && error && <p>{error.message}</p>}
         {isError && error instanceof AxiosError && <p>{error?.response?.data.msg}</p>}
         <form>
           <div className="top">

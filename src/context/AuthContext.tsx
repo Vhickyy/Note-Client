@@ -49,7 +49,7 @@ export const AuthContextProvider = ({children}:{children:React.ReactNode}) => {
             saveUser(user)
           } catch (error) {
             console.log(error);
-            removeUser()
+            // removeUser()
           }finally{
               setLoading(false)
           }
