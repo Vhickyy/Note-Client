@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { getAllNotes, removeNote } from "../../../api/axios";
 import { NoteType } from "../../../types/types";
 import Skeleton from "../Skeleton";
+import { AxiosError } from "axios";
 const AllNotesComponenent = () => {
   const [sort,setSort] = useState({show:false,sort:"latest"});
     const [category,setCategory] = useState({show:false,category:"all"});
@@ -25,8 +26,9 @@ const AllNotesComponenent = () => {
       return <Skeleton/>
     }
     if(isError){
-      console.log(error);
-      return <h2>{error.message}!!!</h2>
+      if(error instanceof AxiosError){
+        return <h2>{error?.response?.data.msg}!!!</h2>
+      }
     }
   return (
     <Wrapper>
@@ -43,7 +45,7 @@ const AllNotesComponenent = () => {
                 </Link>
                   <div>
                     <Link to={"../editnote/1"}><FaEdit className="icon"/></Link>
-                    <button onClick={()=>deletNote(i._id)} disabled={isPending}><FaTrash className="icon" /></button>
+                    <button onClick={()=>deletNote(i._id)} disabled={isPending}>{isPending && i._id  ? "Loading..." : <FaTrash className="icon" />}</button>
                   </div>
               </div>
             )
@@ -70,7 +72,6 @@ const Wrapper = styled.main`
   .card-wrapper{
     display: grid;
     grid-template-columns: 1fr;
-    /* grid-template-columns: repeat(auto-fit,minmax(250px,auto)); */
     gap: 1.1rem;
   }
   .card{
@@ -86,7 +87,6 @@ const Wrapper = styled.main`
   @media screen and (min-width: 1000px){
     .card-wrapper{
       grid-template-columns: 1fr 1fr;
-      /* grid-template-columns: repeat(auto-fit,minmax(300px,auto)); */
     }
   }
 `

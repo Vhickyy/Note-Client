@@ -15,7 +15,7 @@ export const getUser = async () : Promise<User> => {
 
 // NOTES API
 export const getAllNotes = async () : Promise<NoteType[]> => {
-    const { data }  = await customFetch.get("/notess");
+    const { data }  = await customFetch.get("/notes");
     return data.notes;
 }
 
