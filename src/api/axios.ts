@@ -36,7 +36,7 @@ export const updateNote = async ({id,note} : {id:string | undefined,note:any}) :
 }
 
 export const deleteSingleNote = async (id:string) => {
-    const data = await customFetch.delete(`/notess/${id}`)
+    const data = await customFetch.delete(`/notes/${id}`)
     console.log(data); 
 }
 

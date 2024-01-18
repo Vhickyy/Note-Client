@@ -4,7 +4,7 @@ import Filterform from "../../components/Dashboard/AllNotes/Filterform";
 import { useState } from "react";
 import CreateProjectModal from "../../components/Dashboard/Project/CreateProjectModal";
 import { Link } from "react-router-dom";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { deleteProjectApi, getAllProjects } from "../../api/axios";
 import { ProjectType } from "../../types/types";
 import Skeleton from "../../components/Dashboard/Skeleton";
@@ -24,9 +24,12 @@ const Project = () => {
       setShowModal(true)
     }
     const {data,isLoading,error} = useQuery<ProjectType[]>({queryKey: ["projects"],queryFn: getAllProjects});
-
+    const queryClient = useQueryClient()
     const {mutate}  = useMutation({
-      mutationFn:  deleteProjectApi
+      mutationFn:  deleteProjectApi,
+      onSuccess:() => {
+        queryClient.invalidateQueries({queryKey:["notes"]})
+      },
     })
 
    const deleteProject =(e: React.MouseEvent<HTMLButtonElement, MouseEvent>,id:string)=>{

@@ -1,25 +1,23 @@
 import styled from "styled-components"
 import Navbar from "../../components/Dashboard/Navbar"
 import NoteEditor from '../../components/Dashboard/AddNotes/NoteEditor'
-import { useParams } from "react-router-dom"
-// import { useAuth } from "../../context/AuthContext"
-import { useMutation, useQuery } from "@tanstack/react-query"
-import { NoteType } from "../../types/types"
-import { getNote, updateNote } from "../../api/axios"
-import { useEffect, useState } from "react"
-// import { useMutation } from "@tanstack/react-query"
-// import { updateNote } from "../../api/axios"
+import { useNavigate, useParams } from "react-router-dom";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { NoteType } from "../../types/types";
+import { getNote, updateNote } from "../../api/axios";
+import { useEffect, useState } from "react";
 
 const EditNote = () => {
   const {id} = useParams()
   const [value,setValue] = useState('');
-  // const editingNote = () => {
-  //   setValue()
-  // }
+  const navigate = useNavigate();
   
   const {data,isLoading,error} = useQuery<NoteType>({queryKey: ["note",id],queryFn:()=> getNote(id)});
   const {mutate,isPending} = useMutation({
-    mutationFn: updateNote
+    mutationFn: updateNote,
+    onSuccess: () => {
+      navigate("/dashboard/allnotes")
+    }
   })
   // const newnote = {
   //   title: "jj",
@@ -41,13 +39,13 @@ const EditNote = () => {
         <Navbar page="Edit Note"/>
         {isLoading && <h1>Loading</h1>}
         {error && <h2>{error.message}!!!</h2>}
-        <form >
+        {data && <form >
           <div className="top">
             <h4>Title</h4>
             <button onClick={handleEdit} disabled={isPending}>{isPending ? "Saving..." : "Save Change"}</button>
           </div>
-          {data ? <NoteEditor value={value} onChange={setValue}/> : null}
-        </form>
+          <NoteEditor value={value} onChange={setValue}/>
+        </form>}
     </Wrapper>
   )
 }

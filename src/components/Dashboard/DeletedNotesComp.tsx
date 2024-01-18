@@ -1,23 +1,32 @@
 import styled from "styled-components";
 import { FaTrash } from "react-icons/fa";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { NoteType } from "../../types/types";
 import { clearAllNote, deleteSingleNote, getAllDeletedNotes, retrieveNoteApi } from "../../api/axios";
 import Skeleton from "./Skeleton";
 const AllNotesComponenent = () => {
 
   const {data,isLoading:getLoading,isError:getError,error:getErrorDetail} = useQuery<NoteType[]>({queryKey: ["deleted-notes"],queryFn: getAllDeletedNotes})
-
+  const queryClient = useQueryClient()
   const {mutate: retrieveMutate}  = useMutation({
-    mutationFn:  retrieveNoteApi
+    mutationFn:  retrieveNoteApi,
+    onSuccess:() => {
+      queryClient.invalidateQueries({queryKey:["deleted-notes"]})
+    },
   })
 
   const {mutate: deleteMutate}  = useMutation({
-    mutationFn:  deleteSingleNote
+    mutationFn:  deleteSingleNote,
+    onSuccess:() => {
+      queryClient.invalidateQueries({queryKey:["deleted-notes"]})
+    },
   })
 
   const {mutate:clearNoteMutate} = useMutation({
-    mutationFn: clearAllNote
+    mutationFn: clearAllNote,
+    onSuccess:() => {
+      queryClient.invalidateQueries({queryKey:["deleted-notes"]})
+    },
   })
   const retrieveNote = (id:string) => {
     retrieveMutate(id)

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 // import data from "../../../data/fakedata";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {useState } from "react";
 import Filterform from "./Filterform";
 import { FaEdit, FaTrash } from "react-icons/fa";
@@ -16,8 +16,12 @@ const AllNotesComponenent = () => {
     const [id,setId] = useState<string>("");
 
     const {data,isLoading,isError,error} = useQuery<NoteType[]>({queryKey: ["notes"],queryFn: getAllNotes});
+    const queryClient = useQueryClient()
     const {mutate,isPending}  = useMutation({
-      mutationFn:  removeNote
+      mutationFn:  removeNote,
+      onSuccess:() => {
+        queryClient.invalidateQueries({queryKey:["notes"]})
+      },
     })
 
    const deletNote =(id:string)=>{
