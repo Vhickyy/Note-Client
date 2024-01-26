@@ -28,7 +28,7 @@ const Project = () => {
     const {mutate}  = useMutation({
       mutationFn:  deleteProjectApi,
       onSuccess:() => {
-        queryClient.invalidateQueries({queryKey:["notes"]})
+        queryClient.invalidateQueries({queryKey:["projects"]})
       },
     })
 

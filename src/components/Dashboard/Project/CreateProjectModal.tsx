@@ -1,24 +1,27 @@
-import { useEffect } from "react"
+import { useMutation,  useQueryClient } from "@tanstack/react-query"
 import { FaTimes } from "react-icons/fa"
 import styled from "styled-components"
-import { Socket, io } from "socket.io-client"
-import { DefaultEventsMap } from "@socket.io/component-emitter"
+import { createProjectApi } from "../../../api/axios"
 
 type CreateProject = {
     closeModal: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
+
 const CreateProjectModal = ({closeModal}:CreateProject) => {
-    // const [users,setUsers] = useState([])
+    const queryClient = useQueryClient();
 
-    // let socket: Socket<DefaultEventsMap, DefaultEventsMap>;
-    useEffect(()=>{
-        // socket = io("http://localhost:8000");
-        // socket.emit("connection");
-
-        // return () => {
-        //     socket.disconnect()
-        // }
-    },[])
+    const {mutateAsync,isPending} = useMutation({
+        mutationFn: createProjectApi,
+        onSuccess:() => {
+            queryClient.invalidateQueries({queryKey:["projects"]})
+        },
+      })
+    const createNewProject = async (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.preventDefault();
+        const newProject = {title:"new project",brief:"summary of project",dueDate:new Date(Date.now() + 40000).toString()};
+        await mutateAsync(newProject);
+        closeModal(e)
+      }
 
   return (
     <Wrapper>
@@ -36,10 +39,10 @@ const CreateProjectModal = ({closeModal}:CreateProject) => {
                     <h5>Project Brief</h5>
                     <textarea name="" id=""></textarea>
                 </div>
-                <div className="inputs">
+                {/* <div className="inputs">
                     <h5>Add User, min 1, max 2</h5>
                     <input type="text" placeholder="find users"/>
-                </div>
+                </div> */}
                 {/* map added  users here and remove user too and add user task */}
                 <div className="inputs">
                     <h5>Date for completion</h5>
@@ -48,7 +51,7 @@ const CreateProjectModal = ({closeModal}:CreateProject) => {
             </div>
             <div>
                 <button onClick={closeModal}>Discard</button>
-                <button>Create</button>
+                <button onClick={createNewProject} disabled={isPending}>{isPending ? "Creating" : "Create"}</button>
             </div>
         </form>
     </Wrapper>

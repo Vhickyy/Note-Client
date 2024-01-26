@@ -5,13 +5,12 @@ import { useMutation } from "@tanstack/react-query";
 import { addNoteApi } from "../../api/axios";
 import { useState } from "react";
 import { AxiosError } from "axios";
-import { Navigate, redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const AddNote = () => {
   const [value,setValue] = useState("");
   const [title,setTitle] = useState("");
   const navigate = useNavigate()
-  // const navigate = useNavigate()
-  const {mutate,isPending,error, isError,data,isSuccess} = useMutation({
+  const {mutate,isPending,error, isError} = useMutation({
     mutationFn: addNoteApi,
     onSuccess: () => {
       navigate("/dashboard/allnotes")
@@ -21,7 +20,6 @@ const AddNote = () => {
     e.preventDefault();
     const newNote = {title,category:"personal",noteBody:value}
     mutate(newNote);
-    console.log(isSuccess);
   }
   
   return (

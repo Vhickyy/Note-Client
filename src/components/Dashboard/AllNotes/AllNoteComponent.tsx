@@ -44,13 +44,15 @@ const AllNotesComponenent = () => {
           data.map((i,index)=>{
             return(
               <div key={index} className="card">
-                <Link to={`/dashboard/editnote/${i._id}`} >
+                {/* <Link to={`/dashboard/editnote/${i._id}`} > */}
+                <div>
                   <h4>{i.title}</h4>
                   <p>{i.noteBody}</p>
                   <p>{i.category}</p>
-                </Link>
+                </div>
+                {/* </Link> */}
                   <div>
-                    <Link to={"../editnote/1"}><FaEdit className="icon"/></Link>
+                    <Link to={`../editnote/${i._id}`}><FaEdit className="icon"/></Link>
                     <button onClick={()=>deletNote(i._id)} disabled={isPending}>{isPending && i._id == id  ? "Loading..." : <FaTrash className="icon" />}</button>
                   </div>
               </div>
