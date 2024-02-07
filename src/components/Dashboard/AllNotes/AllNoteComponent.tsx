@@ -47,7 +47,7 @@ const AllNotesComponenent = () => {
                 {/* <Link to={`/dashboard/editnote/${i._id}`} > */}
                 <div>
                   <h4>{i.title}</h4>
-                  <p>{i.noteBody}</p>
+                  <p dangerouslySetInnerHTML={{__html:i.noteBody}}></p>
                   <p>{i.category}</p>
                 </div>
                 {/* </Link> */}

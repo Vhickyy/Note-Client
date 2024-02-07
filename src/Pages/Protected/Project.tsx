@@ -9,12 +9,15 @@ import { deleteProjectApi, getAllProjects } from "../../api/axios";
 import { ProjectType } from "../../types/types";
 import Skeleton from "../../components/Dashboard/Skeleton";
 import { useAuth } from "../../context/AuthContext";
+import AddUserModal from "../../components/Dashboard/Project/AddUserModal";
+import React from "react";
 
 const Project = () => {
   const [sort,setSort] = useState({show:false,sort:"latest"});
     const [category,setCategory] = useState({show:false,category:"all"});
     const [showForm, setShowForm] = useState(false)
     const [showModal, setShowModal] =useState(false);
+    const [addUserModal, setAddUserModal] =useState({open:false,title:"",projectId:""});
     const {user} = useAuth()
     const closeModal = (e:React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault()
@@ -44,6 +47,10 @@ const Project = () => {
       // console.log(error);
       return <h2>{error.message}!!!</h2>
     }
+    const addCollaborator = (e:React.MouseEvent<HTMLButtonElement>,title: string,projectId: string) => {
+      e.preventDefault();
+      setAddUserModal({open:true,title,projectId})
+    }
   return (
     <Wrapper>
       <Navbar page="Project"/>
@@ -63,14 +70,22 @@ const Project = () => {
             </div>
             {data?.map((project,index)=>{
               return (
-                <Link to={`./${project._id}`} key={index}>
-                  <div className="card" >
-                    <h3>{project.title}</h3>
-                    <p>{project.brief}</p>
-                    {/* <p>{project.onSocket === true ? "true" : "false"}, number of members,date and dealine, countdown, creator or collaborator </p> */}
-                    {project.owner === user?.id ? <button onClick={(e)=>deleteProject(e,project._id)}>Delete</button> : null}
+                <React.Fragment key={index}>
+                  <div className="card">
+                    <Link to={`./${project._id}`} >
+                      <h3>{project.title}</h3>
+                      <p>{project.brief}</p>
+                      {/* <p>{project.onSocket === true ? "true" : "false"}, number of members,date and dealine, countdown, creator or collaborator </p> */}
+                      {project.owner === user?.id ? <div>
+                        <p>Owner</p>
+                        <button onClick={(e)=>deleteProject(e,project._id)}>Delete</button>
+                        {/* show number of collaborators */}
+                        <button onClick={(e) => addCollaborator(e,project.title,project._id)} className="add">View Collaborator</button>
+                        </div>: <p>Collaborator</p>}
+                    </Link>
+                  {addUserModal.open ? <AddUserModal addUserModal={addUserModal} setAddUserModal={setAddUserModal} /> : false}
                   </div>
-                </Link>
+                </React.Fragment>
               )
             })}
           </>
@@ -85,7 +100,7 @@ export default Project
 
 const Wrapper = styled.div`
 a{
-  color: black;
+  color: var(--textColor);
 }
 .section{
   padding-block: 2rem;
@@ -103,7 +118,7 @@ a{
 }
 .card-wrapper{
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,auto));
+    grid-template-columns: 1fr;
     gap: 1.1rem;
   }
   .card{
@@ -114,9 +129,14 @@ a{
     height: 10rem;
     color: var(--textColor);
   }
+  .add{
+    background-color: transparent;
+    color: var(--primaryColor);
+    border: 1px solid var(--primaryColor);
+  }
   @media screen and (min-width: 1000px){
     .card-wrapper{
-      grid-template-columns: repeat(auto-fit,minmax(300px,auto));
+      grid-template-columns: 1fr 1fr;
     }
   }
 `

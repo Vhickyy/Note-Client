@@ -53,7 +53,7 @@ const AllNotesComponenent = () => {
           return(
             <div key={index} className="card">
               <h4>{i.title}</h4>
-              <p>{i.noteBody}</p>
+              <p dangerouslySetInnerHTML={{__html:i.noteBody}}></p>
               <p>{i.category}</p>
               <div>
                 <FaTrash onClick={()=>deleteNote(i._id)}/>

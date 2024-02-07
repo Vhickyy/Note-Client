@@ -33,7 +33,8 @@ export type ProjectType = {
     title: string,
     brief: string,
     projectBody: boolean,
-    owner:string
+    owner:string,
+    members:string[]
     // isDeleted: boolean,
     // category:string
 }

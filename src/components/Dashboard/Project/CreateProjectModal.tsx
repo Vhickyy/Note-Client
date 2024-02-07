@@ -2,6 +2,7 @@ import { useMutation,  useQueryClient } from "@tanstack/react-query"
 import { FaTimes } from "react-icons/fa"
 import styled from "styled-components"
 import { createProjectApi } from "../../../api/axios"
+import ModalWrapper from "../../ModalWrapper"
 
 type CreateProject = {
     closeModal: (e: React.MouseEvent<HTMLButtonElement>) => void
@@ -24,8 +25,9 @@ const CreateProjectModal = ({closeModal}:CreateProject) => {
       }
 
   return (
+    <ModalWrapper>
     <Wrapper>
-        <form className="content">
+        {/* <form className="content"> */}
             <div className="head">
                 <h4>New Project</h4>
                 <FaTimes className="icon" onClick={closeModal}/>
@@ -53,21 +55,16 @@ const CreateProjectModal = ({closeModal}:CreateProject) => {
                 <button onClick={closeModal}>Discard</button>
                 <button onClick={createNewProject} disabled={isPending}>{isPending ? "Creating" : "Create"}</button>
             </div>
-        </form>
+        {/* </form> */}
     </Wrapper>
+    </ModalWrapper>
   )
 }
 
 export default CreateProjectModal
 
-const Wrapper = styled.div`
-    position: fixed;
-    inset: 0;
-    background-color: var(--overlay);
-    display: grid;
-    place-items: center;
-    z-index: 100;
-    .content{
+const Wrapper = styled.form`
+    /* .content{ */
         background-color: var(--backgroundColor);
         width: min(90%,var(--fixedWidth));
         padding: 2rem;
@@ -75,7 +72,7 @@ const Wrapper = styled.div`
         gap: 2rem;
         box-shadow: var(--shadowlg);
         border-radius: .5rem;
-    }
+    /* } */
     .head{
         display: flex;
         justify-content: space-between;

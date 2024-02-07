@@ -16,6 +16,7 @@ import ReadProject from "./Pages/Protected/ReadProject";
 import Memorycheck from "./Pages/Protected/Memorycheck";
 import NotFound from "./Pages/NotFound";
 import { AuthContextProvider } from "./context/AuthContext";
+import CheckMember from "./Pages/Protected/CheckMember";
 // import { ErrorBoundary } from "react-error-boundary";
 // import Fallback from "./components/Fallback";
 
@@ -37,7 +38,10 @@ function App() {
         <Route path="addnote" element={<AddNote/>}/>
         <Route path="editnote/:id" element={<EditNote/>}/>
         <Route path="project" element={<Project/>}/>
-        <Route path="project/:id" element={<ReadProject/>}/>
+        {/* <Route path="project/:id" element={<ReadProject/>}/> */}
+        <Route path="project/:id" element={<CheckMember/>}>
+          <Route index element={<ReadProject/>}/>
+        </Route>
         <Route path="memorycheck" element={<Memorycheck/>}/>
       </Route>
       <Route path="*" element={<NotFound/>}/>
@@ -47,7 +51,9 @@ function App() {
   // const errorHandler = (error: any,errorInfo: any) => {
   //   console.log(error,errorInfo)
   // }
-
+{/* <Route path="project/:id" element={<CheckMember/>}>
+          <Route index element={<ReadProject/>}/>
+        </Route> */}
   return (
     // <ErrorBoundary FallbackComponent={Fallback} onError={errorHandler}>
     <AuthContextProvider>
