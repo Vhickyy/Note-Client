@@ -1,42 +1,41 @@
-import styled from "styled-components";
-import OtpInput from "../components/OtpInput";
-import { useEffect, useState } from "react";
-import { customFetch } from "../api/axios";
-import { useNavigate } from "react-router-dom";
+import  { useEffect, useState } from 'react'
+import styled from 'styled-components';
+import OtpInput from '../components/OtpInput';
+import { customFetch } from '../api/axios';
+import { useNavigate } from 'react-router-dom';
 
-const VerifyCode = () => {
+const ResetCode = () => {
+    const navigate = useNavigate()
     const [resendState,setResendState] = useState({loading:false,error:"",data:"",timer:false,time:"02:00"});
     const [verifyState,setVerifyState] = useState({loading:false,error:"",data:""});
     const [code,setCode] = useState<string[]>(Array(6).fill(""));
     const email = new URLSearchParams(window.location.search).get("email");
-    const navigate = useNavigate()
     const resendCode = async () => {
         try {
             setResendState({...resendState,loading:true});
-            const {data} = await customFetch.post("/resend-otp",{email});
-            setResendState({...resendState,data:data.msg,timer:true});
+            const {data} = await customFetch.post("/resend-password-otp",{email});
             console.log(data);
-            
+            setResendState({...resendState,data:data.msg,timer:true,loading:false})
+            // data:data.msg,
         } catch (error) {
             console.log(error);
+            setResendState({...resendState,loading:false})
             
+        }
+    }
+    const verifyCode = async () => {
+        console.log("hi");
+        try {
+            setVerifyState({...verifyState,loading:true});
+            const response = await customFetch.post("/verify-password-otp",{email,otpCode:code.join("")});
+            console.log(response);
+            navigate(`/reset-password?email=${email}`)
+        } catch (error) {
+            console.log(error);
+            setVerifyState({...verifyState,loading:false});
         }
     }
 
-    const verifyCode = async () => {
-        try {
-            setVerifyState({...verifyState,loading:true});
-            const response = await customFetch.post("/verify-email",{email,otpCode:code.join("")});
-            console.log(response);
-            setVerifyState({...verifyState,loading:false});
-            navigate("/login")
-        } catch (error) {
-            console.log(error);
-            setVerifyState({...verifyState,loading:false});
-        }
-        
-    }
-    
     useEffect(()=>{
         const int = setInterval(()=>{
             if(resendState.timer){
@@ -60,10 +59,9 @@ const VerifyCode = () => {
             clearInterval(int)
         }
     },[resendState.timer,resendState.time])
-
   return (
     <Wrapper>
-        <h3>Verify Email</h3>
+        <h3>Reset Code</h3>
         <div className="verify-box">
             <h5>Input OTP</h5>
             <p>Enter the code sent to your email</p>
@@ -73,7 +71,7 @@ const VerifyCode = () => {
   )
 }
 
-export default VerifyCode;
+export default ResetCode;
 
 const Wrapper = styled.div`
     letter-spacing: var(--letterSpacing);
@@ -96,7 +94,5 @@ const Wrapper = styled.div`
         border-radius: 1rem;
         text-align: center;
     }
-    input:focus{
-        border: 2px solid var(--primaryColor);
-    }
+    
 `

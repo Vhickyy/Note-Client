@@ -1,23 +1,22 @@
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"
 import styled from "styled-components"
-import Navbar from "../../components/Dashboard/Navbar"
 import { useEffect, useRef, useState } from "react"
 import { Socket, io } from "socket.io-client"
 import { DefaultEventsMap } from "@socket.io/component-emitter"
-import { useNavigate, useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import { getProject } from "../../api/axios";
-import { ProjectType } from "../../types/types";
-import { useAuth } from "../../context/AuthContext";
+import {  useParams } from "react-router-dom";
+// import { useAuth } from "../../context/AuthContext";
+import Random from "../../components/Dashboard/RandomBtn";
 
 const ReadProject = () => {
   const [socket,setSocket] = useState<Socket<DefaultEventsMap, DefaultEventsMap>>();
   const [value,_setValue] = useState("");
+  // const [pc,setPc] = useState< RTCPeerConnection | null>(null)
+  // const [localAudio,setLocalAudio] = useState<MediaStreamTrack | null>(null)
   const quillRef = useRef<any>()
   const {id:projectId} = useParams();
-  const {user} = useAuth();
-  const navigate = useNavigate()
+  // const {user} = useAuth();
+  // const navigate = useNavigate()
 
   // const {data,isLoading,error} = useQuery<ProjectType>({queryKey: ["projects",projectId],queryFn: ()=> getProject(projectId)});
   // useEffect(()=>{
@@ -36,7 +35,28 @@ const ReadProject = () => {
     }
   },[])
 
+  // useEffect(()=>{
+  //   const getAudio = async ()=>{
+  //     try {
+  //       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  //       const audioTrack = stream.getAudioTracks()[0];
+  //       setLocalAudio(audioTrack)
+  //       console.log(audioTrack);
+  //     } catch (error) {
+  //       console.log(error);
+        
+  //     }
+  //   }
+  //   getAudio()
+  // },[])
+
   useEffect(()=>{
+    // socket?.on("snf offer", async()=>{
+    //   const peer = new RTCPeerConnection()
+    //   setPc(peer)
+    //   const sdp = await pc?.createOffer()
+    //   socket.emit("ss",{sdp})
+    // })
     socket?.emit("join project",projectId);
     const editor = quillRef?.current?.getEditor();
     const loadDocument = (document: any) => {
@@ -52,6 +72,11 @@ const ReadProject = () => {
     }; 
     socket?.on("send changes", realTimeNote);
 
+    socket?.on("talking", (data:any)=>{
+      console.log(data);
+      
+    });
+
     return () => {
       clearInterval(timer);
       socket?.off("send changes", realTimeNote);
@@ -64,17 +89,32 @@ const ReadProject = () => {
     socket?.emit("writing",delta)
   }
 
+
+  // const viewDetails = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  //   e.preventDefault()
+  //   if(true){
+  //     console.log("kk");
+      
+  //   }else{
+
+  //     console.log("j");
+  //   }
+    
+  // }
   
   return (
     <Wrapper>
         {/* <Navbar page="Read Project"/> */}
         <form>
           <div className="top">
-            <button>Project Details</button>
+            {/* <button onClick={(e)=>viewDetails(e)}>Project Details</button> */}
+            {/* <button onClick={(e)=>raiseHand(e)}>{hand ? "hand up" : "hand down"}</button> */}
+            {/* <button type="button" onClick={(e)=>speakOrNot(e)}>{speak ? "speak" : "mute"}</button> */}
+            <Random socket={socket}/>
           </div>
           <div>
             <ReactQuill theme="snow" ref={quillRef}  value={value} onChange={handler}/>
-        </div>
+          </div>
         </form>
     </Wrapper>
   )

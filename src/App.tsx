@@ -17,6 +17,10 @@ import Memorycheck from "./Pages/Protected/Memorycheck";
 import NotFound from "./Pages/NotFound";
 import { AuthContextProvider } from "./context/AuthContext";
 import CheckMember from "./Pages/Protected/CheckMember";
+import ForgotPassword from "./Pages/ForgotPassword";
+import ResetCode from "./Pages/ResetCode";
+import ResetPassword from "./Pages/ResetPassword";
+import EmailVerifiedSuccess from "./Pages/EmailVerifiedSuccess";
 // import { ErrorBoundary } from "react-error-boundary";
 // import Fallback from "./components/Fallback";
 
@@ -28,6 +32,10 @@ function App() {
         <Route index element={<Home/>}/>
         <Route path="login" element={<Login/>}/>
         <Route path="signup" element={<Signup/>}/>
+        <Route path="email-verified" element={<EmailVerifiedSuccess/>}/>
+        <Route path="forget-password" element={<ForgotPassword/>}/>
+        <Route path="reset-code" element={<ResetCode/>}/>
+        <Route path="reset-password" element={<ResetPassword/>}/>
         <Route path="verifycode" element={<VerifyCode/>}/>
       </Route>
       <Route path="dashboard" element={<Protected/>}>
@@ -38,7 +46,6 @@ function App() {
         <Route path="addnote" element={<AddNote/>}/>
         <Route path="editnote/:id" element={<EditNote/>}/>
         <Route path="project" element={<Project/>}/>
-        {/* <Route path="project/:id" element={<ReadProject/>}/> */}
         <Route path="project/:id" element={<CheckMember/>}>
           <Route index element={<ReadProject/>}/>
         </Route>

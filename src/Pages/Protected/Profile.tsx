@@ -14,7 +14,17 @@ const Profile = () => {
 
 export default Profile
 const Wrapper = styled.div`
-section{
-  /* min-height: 86vh; */
-}
+min-height: 100vh;
+display: grid;
+grid-template-rows: auto 1fr;
+
+  section{
+    padding-block: 2rem;
+    margin-inline: auto;
+    width: min(90%,var(--maxWidth2));
+    /* min-height: 86vh; */
+    /* height: 100%; */
+    color:white;
+    background-color: var(--secondaryColor);
+  }
 `

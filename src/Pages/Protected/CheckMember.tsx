@@ -7,7 +7,7 @@ import Navbar from '../../components/Dashboard/Navbar';
 
 const CheckMember = () => {
     const {id:projectId} = useParams();
-    const {data,isLoading,error} = useQuery<ProjectType>({queryKey: ["projects",projectId],queryFn: ()=> getProject(projectId)});
+    const {data,isLoading} = useQuery<ProjectType>({queryKey: ["projects",projectId],queryFn: ()=> getProject(projectId)});
     
   return (
     <div>

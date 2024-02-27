@@ -26,10 +26,11 @@ const Wrapper = styled.header`
     /* background-color: var(--primaryColor); */
     position: sticky;
     top: 0;
+    /* height: auto; */
     /* background-color: red; */
     background-color: var(--backgroundColor);
     .head{
-        width: min(1440px,90%);
+        width: min(var(--maxWidth2),90%);
         margin-inline: auto;
         display: flex;
         align-items: center;

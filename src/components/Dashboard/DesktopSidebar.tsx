@@ -4,14 +4,14 @@ import { BsMoonFill, BsSunFill } from "react-icons/bs";
 import { useTheme } from "../../context/ThemeContext";
 // import { FaPersonBooth } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+// import { useAuth } from "../../context/AuthContext";
 type props = {
     // close: ()=>void,
     showSidebar: boolean
 }
 const DesktopSidebar = ({showSidebar}:props) => {
   const {theme,toggleTheme} = useTheme()
-  const {removeUser} = useAuth();
+  // const {removeUser} = useAuth();
   return (
     <Wrapper>
       <div className={`main ${showSidebar ? "hide" : "show"}`}>
@@ -45,8 +45,11 @@ const Wrapper = styled.aside`
     }
     .grid{
       display: grid;
-      gap: 2rem;
-      padding-block: 2rem;
+      height: 100vh;
+      padding-block: 1.5rem;
+      /* justify-content: space-between;
+      background-color: red; */
+      align-content: space-between;
       position: sticky;
       top: 0;
     }

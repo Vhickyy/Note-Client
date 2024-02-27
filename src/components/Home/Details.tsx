@@ -42,7 +42,6 @@ export default Details;
 const Wrapper = styled.section`
     padding-block: 4.5rem;
     margin-top: 3rem;
-    
     text-align: center;
     .main{
         /* position: relative; */
@@ -52,8 +51,9 @@ const Wrapper = styled.section`
     }
     .relative{
         max-width: var(--maxWidth);
-    margin-inline: auto;
-    position: relative;
+        margin-inline: auto;
+        position: relative;
+        margin-top: 2rem;
     }
     .absolute{
         height: 100%;

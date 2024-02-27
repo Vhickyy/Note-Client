@@ -64,11 +64,12 @@ export const clearAllNote = async ()  => {
 // PROJECT API
 export const getAllProjects = async () : Promise<ProjectType[]> => {
     const { data }  = await customFetch.get("/projects");
-    console.log(data);
+    // console.log(data);
     return data.projects;
 }
-export const getProject = async (id:string | undefined) : Promise<ProjectType> => {
+export const getProject = async (id:string | undefined) : Promise<any> => {
     const {data}= await customFetch.get(`/projects/${id}`)
+    // console.log(data);
     return data.project
 }
 export const deleteProjectApi = async (id:string) => {
@@ -81,11 +82,11 @@ export const createProjectApi = async (project:{title:string,brief:string,dueDat
 }
 export const addUserApi = async ({id,email}:{id:string,email:string}) => {
     const data = await customFetch.patch(`project/add-user/${id}`,{email});
-    console.log(data);
+    // console.log(data);
     return data  
 }
 export const deleteUserApi = async ({id,memberId}:{id:string,memberId:string}) => {
     const data = await customFetch.patch(`project/delete-user/${id}`,{memberId});
-    console.log(data);
+    // console.log(data);
     return data  
 }

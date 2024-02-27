@@ -54,8 +54,8 @@ const Project = () => {
   return (
     <Wrapper>
       <Navbar page="Project"/>
-        {showModal ? <CreateProjectModal closeModal={closeModal}/> : false}
         <div className="section">
+        {showModal ? <CreateProjectModal closeModal={closeModal}/> : false}
         {data?.length ? <Filterform sort={sort} setSort={setSort} category={category} setCategory={setCategory} showForm={showForm} setShowForm={setShowForm}/> : null}
         <div className={!data?.length ? "main" : "card-wrapper"}>
           {!data?.length ? 
@@ -99,6 +99,9 @@ const Project = () => {
 export default Project
 
 const Wrapper = styled.div`
+min-height: 100vh;
+display: grid;
+grid-template-rows: auto 1fr;
 a{
   color: var(--textColor);
 }
@@ -108,7 +111,7 @@ a{
   margin-inline: auto;
 }
 .main{
-  min-height: 70vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;

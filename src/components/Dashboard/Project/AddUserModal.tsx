@@ -1,22 +1,22 @@
-import React, { useEffect } from 'react'
+// import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import ModalWrapper from '../../ModalWrapper'
 import { FaTimes } from 'react-icons/fa'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { addUserApi, deleteUserApi, getProject } from '../../../api/axios'
-import { useAuth } from '../../../context/AuthContext'
+// import { useAuth } from '../../../context/AuthContext'
 
 
 
 const AddUserModal = ({addUserModal,setAddUserModal}:{addUserModal: { open: boolean; title: string; projectId: string;}, setAddUserModal: React.Dispatch<React.SetStateAction<{open: boolean;title: string;projectId: string;}>>}) => {
     const {title,projectId} = addUserModal;
     const queryClient = useQueryClient();
-    const {data:users, isLoading} = useQuery({
+    const {data:users} = useQuery({
         queryKey: ["single-project",projectId],
         queryFn: ()=>getProject(projectId)
     })
     
-    const {mutate,isPending,error} = useMutation({
+    const {mutate,isPending} = useMutation({
         mutationFn: addUserApi,
         onSuccess:() => {
             queryClient.invalidateQueries({queryKey:["single-project",projectId]})
@@ -29,7 +29,7 @@ const AddUserModal = ({addUserModal,setAddUserModal}:{addUserModal: { open: bool
         mutate({id:projectId,email})
     }
 
-    const {mutate:deleteMember,isPending:deleteMemberPending} = useMutation({
+    const {mutate:deleteMember} = useMutation({
         mutationFn: deleteUserApi,
         onSuccess:() => {
             queryClient.invalidateQueries({queryKey:["single-project",projectId]})
@@ -56,11 +56,11 @@ const AddUserModal = ({addUserModal,setAddUserModal}:{addUserModal: { open: bool
                 </div>
                 <div>
                     <p>{users?.members && users.members.length - 1 > 0 ? users.members.length - 1 : "No" } collaborator</p>
-                    {users?.members.slice(1).map(user=>{
+                    {users?.members.slice(1).map((user: { _id: React.Key | null | undefined; name: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined })=>{
                         return(
-                            <div key={user}>
-                                <p>{user}</p>
-                                <FaTimes onClick={ (e:React.MouseEvent<HTMLButtonElement>) => deleteUser(e,{id:projectId,memberId:user})}/>
+                            <div key={user._id}>
+                                <p>{user.name}</p>
+                                <FaTimes onClick={ (e:React.MouseEvent<HTMLButtonElement>) => deleteUser(e,{id:projectId,memberId:user._id as string})}/>
                             </div>
                         )
                     })}
