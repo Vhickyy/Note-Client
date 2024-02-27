@@ -8,7 +8,7 @@ export default defineConfig({
     proxy: {
       '/api': {
         // target: 'http://localhost:8000/api',
-        // target: "https://note-backend-boze.onrender.com/api",
+        target: "https://note-backend-boze.onrender.com/api",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/,''),
       },
