@@ -25,6 +25,8 @@ const Login = () => {
         // {email:"vee@gmail.com",password:"secret"}
         const {data} = await customFetch.post("/login",loginData);
         saveUser(data.user)
+        console.log(data);
+        
         navigate(from, {replace: true})
       }catch (e:any){
         // console.log(e);

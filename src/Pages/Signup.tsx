@@ -20,6 +20,8 @@ const Signup =  () => {
     try{
       setSignupState({...setSignupState,loading:true})
       const response = await customFetch.post("/register", newUser);
+      console.log(response);
+      
       console.log(response.data)
       navigate(`/verifycode?email=${newUser.email}`)
     }catch(e:any){
