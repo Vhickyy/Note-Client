@@ -4,7 +4,8 @@ import { NoteType, ProjectType, User } from "../types/types";
 
 export const customFetch = axios.create({
         // baseURL: "http://localhost:8000/api",
-        baseURL: "https://note-backend-boze.onrender.com/api",
+        baseURL: "https://note-backend-mah3.onrender.com/api",
+        // baseURL: "https://note-backend-betaa.vercel.app/",
         headers: {
             "Content-Type": "application/json",
             // "Access-Control-Allow-Headers":
