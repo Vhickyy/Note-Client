@@ -1,10 +1,18 @@
+import { useEffect } from "react";
+import { getAllNotes } from "../../api/axios";
 import Navbar from "../../components/Dashboard/Navbar";
 import { useAuth } from "../../context/AuthContext";
 
 const Dashboard = () => {
   const {user} = useAuth();
   
-  
+  const getnotes = async () => {
+    const res = await getAllNotes()
+    console.log(res);
+  }
+  useEffect(() => {
+    getnotes()
+  },[])
   // if(isLoading){
   //   return <>Loadung</>
   // }else if(error){

@@ -24,14 +24,14 @@ const Login = () => {
       try{
         // {email:"vee@gmail.com",password:"secret"}
         const {data} = await customFetch.post("/login",loginData);
-        saveUser(data.user)
         console.log(data);
+        saveUser(data.user)
         
         navigate(from, {replace: true})
       }catch (e:any){
-        // console.log(e);
+        console.log(e);
         // check for server error
-        console.log(e.response.data);
+        // console.log(e.response.data);
       }finally{
         setLoading(false)
       }
