@@ -40,7 +40,7 @@ const Login = () => {
 
     useEffect(()=>{
       const note = async () => {
-        const data = await axios.get("http://localhost:8000/api",{withCredentials:true})
+        const data = await axios.get("http://localhost:8000/api/notes",{withCredentials:true})
         console.log(data);
       }
       note()
