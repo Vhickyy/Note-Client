@@ -2,7 +2,8 @@ import styled from "styled-components"
 import { Link, useLocation, useNavigate  } from "react-router-dom";
 import { customFetch } from "../api/axios";
 import { useAuth } from "../context/AuthContext";
-import {  useState } from "react";
+import {  useEffect, useState } from "react";
+import axios from "axios";
 
 const Login = () => {
   const [loading,setLoading] = useState(false)
@@ -37,6 +38,13 @@ const Login = () => {
       }
     }
 
+    useEffect(()=>{
+      const note = async () => {
+        const data = await axios.get("http://localhost:8000/api",{withCredentials:true})
+        console.log(data);
+      }
+      note()
+    },[])
   return (
     <Wrapper>
       <form onSubmit={login}>
