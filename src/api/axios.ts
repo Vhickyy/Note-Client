@@ -6,9 +6,7 @@ export const customFetch = axios.create({
         // baseURL: "http://localhost:8000/api",
         baseURL: "https://note-backend-boze.onrender.com/api",
         headers: {
-            // origin: "http://localhost:5173"
             // "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "http://localhost:5173",
             // "Access-Control-Allow-Headers":
             //     "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
           },
