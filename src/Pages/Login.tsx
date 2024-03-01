@@ -2,8 +2,8 @@ import styled from "styled-components"
 import { Link, useLocation, useNavigate  } from "react-router-dom";
 import { customFetch } from "../api/axios";
 import { useAuth } from "../context/AuthContext";
-import {  useEffect, useState } from "react";
-import axios from "axios";
+import {  useState } from "react";
+// import axios from "axios";
 
 const Login = () => {
   const [loading,setLoading] = useState(false)
