@@ -22,13 +22,13 @@ export const AuthContextProvider = ({children}:{children:React.ReactNode}) => {
     
     //  const queryClient = useQueryClient()
      
-    useEffect(()=>{
-      const note = async () => {
-        const data = await axios.get("http://localhost:8000/noteapi")
-        console.log(data);
-      }
-      // note()
-    },[])
+    // useEffect(()=>{
+    //   const note = async () => {
+    //     const data = await axios.get("http://localhost:8000/noteapi")
+    //     console.log(data);
+    //   }
+    //   // note()
+    // },[])
     
     const saveUser = (user:User) => {
       setUser(user)
