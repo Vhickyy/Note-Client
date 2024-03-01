@@ -2,7 +2,7 @@ import {  createContext, useContext, useEffect, useState } from "react";
 import { customFetch } from "../api/axios";
 // import {  useQueryClient } from "@tanstack/react-query";
 import { User } from "../types/types";
-import axios from "axios";
+// import axios from "axios";
 
 type AuthType =  {
     user: User | null,
