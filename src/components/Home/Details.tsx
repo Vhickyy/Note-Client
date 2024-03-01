@@ -6,6 +6,12 @@ import { FaAngleRight } from "react-icons/fa";
 const Details = () => {
   return (
     <Wrapper>
+    <div className="upper">
+        <p>75+</p>
+        <p>75+</p>
+        <p>75+</p>
+    </div>
+    <div>
         <h2>Featured</h2>
         <div className="underline"></div>
         <div className="relative">
@@ -33,6 +39,7 @@ const Details = () => {
                 </motion.div>
             </div>
         </div>
+    </div>
     </Wrapper>
   )
 }
@@ -40,9 +47,19 @@ const Details = () => {
 export default Details;
 
 const Wrapper = styled.section`
-    padding-block: 4.5rem;
+    padding-bottom: 4.5rem;
     margin-top: 3rem;
     text-align: center;
+    .upper{
+        width: min(1200px,85%);
+        margin-inline: auto;
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 4.5rem;
+        font-size: 4rem;
+        font-weight: 600;
+        color: var(--primaryColor);
+    }
     .main{
         /* position: relative; */
         width: min(1200px,85%);
@@ -79,9 +96,10 @@ const Wrapper = styled.section`
         /* margin-bottom: 1rem; */
     }
     .feature-card{
-        background-color: var(--secondaryColor);
+        background-color: var(--backgroundColor);
         /* color: white; */
         border: 2px solid var(--primaryColor);
+        /* border: 2px solid whitesmoke; */
         color: var(--textColor);
         display: flex;
         align-items: center;

@@ -45,7 +45,8 @@ html {
     0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 .dark{
-  --backgroundColor: #130700;
+  /* --backgroundColor: #130700; */
+  --backgroundColor: #010109;
   --textGray: ;
   --textColor: whitesmoke;
   --textInverse: #020617;
