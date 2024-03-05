@@ -37,18 +37,22 @@ export default DesktopSidebar;
 const Wrapper = styled.aside`
     display: none;
     min-height: 100dvh;
-    background-color: var(--backgroundColor);
+    background-color: var(--backgroundColor2);
+    color: white;
     .main{
-      box-shadow: var(--shadowlg);
-      width: 17rem;
+      /* box-shadow: var(--shadowlg); */
+      width: 20rem;
       height: 100%;
+      /* padding-block: 2rem; */
+      /* display: grid;
+      gap: 5rem; */
+      /* background-color: red; */
     }
     .grid{
       display: grid;
-      height: 100vh;
+      min-height: 100vh;
       padding-block: 1.5rem;
-      /* justify-content: space-between;
-      background-color: red; */
+      /* justify-content: space-between; */
       align-content: space-between;
       position: sticky;
       top: 0;

@@ -3,6 +3,8 @@ import { Link, useLocation, useNavigate  } from "react-router-dom";
 import { customFetch } from "../api/axios";
 import { useAuth } from "../context/AuthContext";
 import {  useState } from "react";
+import { toast } from "react-toastify";
+import axios from "axios";
 // import axios from "axios";
 
 const Login = () => {
@@ -24,13 +26,14 @@ const Login = () => {
       setLoading(true)
       try{
         // {email:"vee@gmail.com",password:"secret"}
-        const {data} = await customFetch.post("/login",loginData);
+        const {data} = await axios.post("http://localhost:8000/api/login",loginData,{withCredentials:true});
         console.log(data);
         saveUser(data.user)
         
         navigate(from, {replace: true})
       }catch (e:any){
         console.log(e);
+        toast(e.response.data.msg,{position:"top-center"})
         // check for server error
         // console.log(e.response.data);
       }finally{
@@ -67,19 +70,19 @@ const Wrapper = styled.div`
 padding-block: 5rem;
 letter-spacing: normal;
 form{
-  background-color: var(--secondaryColor);
+  /* background-color: var(--secondaryColor); */
   width: min(90%,var(--fixedWidth));
   margin-inline: auto;
-  padding: 3rem 2.5rem;
+  /* padding: 3rem 2.5rem; */
   border-radius: 0.5rem;
-  border-bottom: .5rem solid var(--primaryColor);
+  /* border-bottom: .5rem solid var(--primaryColor); */
   /* box-shadow: var(--shadowlg); */
   display: grid;
   gap: .7rem;
   font-size: .9rem;
   color: var(--textColor);
   label{
-    display: block;
+    display: none;
     font-weight: 600;
     margin-bottom: .6rem;
   }
@@ -88,7 +91,8 @@ form{
     padding-block: .5rem;
     padding-inline: 1rem;
     outline: none;
-    border: 2px solid transparent;
+    border: 2px solid var(--backgroundColor2);
+    background-color: whitesmoke;
     border-radius: .3rem;
     font-size: 1rem;
     background-color: whitesmoke;

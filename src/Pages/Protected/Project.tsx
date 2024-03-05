@@ -102,13 +102,14 @@ const Wrapper = styled.div`
 min-height: 100vh;
 display: grid;
 grid-template-rows: auto 1fr;
+
 a{
   color: var(--textColor);
 }
 .section{
   padding-block: 2rem;
-  width: 90%;
-  margin-inline: auto;
+  width: min(var(--maxWidth2),90%);
+        margin-inline: auto;
 }
 .main{
   height: 100%;
@@ -125,9 +126,9 @@ a{
     gap: 1.1rem;
   }
   .card{
-    background-color: var(--backgroundColor);
+    background-color: var(--secondaryColor);
     padding: 1rem;
-    border-radius: var(--borderRadius);
+    border-radius: .5rem;
     box-shadow: var(--shadowmd);
     height: 10rem;
     color: var(--textColor);

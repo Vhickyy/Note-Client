@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { customFetch } from "../api/axios";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import axios from "axios";
 const Signup =  () => {
   const [signupState,setSignupState] = useState({loading:false})
   const navigate = useNavigate();
@@ -19,23 +20,18 @@ const Signup =  () => {
     }
     try{
       setSignupState({...setSignupState,loading:true})
-      const response = await customFetch.post("/register", newUser);
-      console.log(response);
-      
+      // const response = await axios.post("http://localhost:8000/api/register", newUser,{withCredentials:true});
+      const response = await customFetch.post("/register", newUser,{withCredentials:true});
       console.log(response.data)
       navigate(`/verifycode?email=${newUser.email}`)
     }catch(e:any){
-      if(e.response.status === 500){
-        console.log(e);
+      console.log(e);
+      
+      if(e?.response?.status === 500 || e.message == "Network Error"){
         toast("Internal Server Error",{position:"top-center"})
-        console.log("jj");
         return
       }
-      console.log(e.response.data)
-      toast(e.response.data,{position:"top-center"})
-      toast(e.response.data,{position:"bottom-left"})
-      console.log("hi");
-      
+      toast(e.response.data.msg,{position:"top-center"})
     }finally{
       setSignupState({...setSignupState,loading:false})
     }
@@ -91,27 +87,27 @@ const Wrapper = styled.div`
 padding-block: 4rem;
 letter-spacing: normal;
 form{
-  background-color: var(--secondaryColor);
-  width: min(90%,700px);
+  /* background-color: var(--secondaryColor); */
+  width: min(90%,var(--fixedWidth));
   margin-inline: auto;
-  padding: 2rem 1rem;
+  /* padding: 2rem 1rem; */
   border-radius: 0.5rem;
-  border-bottom: .5rem solid var(--primaryColor);
+  /* border-bottom: .5rem solid var(--primaryColor); */
   display: grid;
-  gap: .3rem;
+  gap: .8rem;
   font-size: 1rem;
   .flex{
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 1rem;
+    gap: .8rem;
     & > div {
       width: 100%;
     }
   }
   label{
-    display: block;
+    display: none;
     /* font-weight: 600; */
     margin-block: .5rem;
   }
@@ -120,7 +116,8 @@ form{
     padding-block: .5rem;
     padding-inline: 1rem;
     outline: none;
-    border: 2px solid transparent;
+    border: 2px solid var(--backgroundColor2);
+    background-color: whitesmoke;
     border-radius: .3rem;
     font-size: .8rem;
     background-color: whitesmoke;
@@ -151,9 +148,9 @@ form{
     color: var(--primaryColor80);
   }
 }
-@media screen and (min-width: 659px){
+@media screen and (min-width: 700px){
     form{
-      padding-inline: 4rem;
+      width: 500px;
         .flex{
             flex-direction: row;
         }

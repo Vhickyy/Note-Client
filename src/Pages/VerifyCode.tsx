@@ -78,7 +78,7 @@ export default VerifyCode;
 const Wrapper = styled.div`
     letter-spacing: var(--letterSpacing);
     color: var(--textColor50);
-    background-color: var(--backgroundColor);
+    /* background-color: var(--backgroundColor); */
     padding-block: 4rem;
     text-align: center;
     display: grid;
@@ -89,7 +89,7 @@ const Wrapper = styled.div`
     .verify-box{
         padding-inline: 4rem;
         padding-block: 2rem;
-        background-color: var(--secondaryColor);
+        /* background-color: var(--secondaryColor); */
         width: min(90%,var(--fixedWidth));
         margin-inline: auto;
         box-shadow: var(--shadowmd);

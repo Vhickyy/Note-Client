@@ -12,7 +12,7 @@ export default ModalWrapper
 const Wrapper = styled.div`
     position: fixed;
     inset: 0;
-    background-color: var(--overlay);
+    background-color: var(--modal);
     display: grid;
     place-items: center;
     z-index: 100;

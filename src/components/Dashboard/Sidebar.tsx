@@ -38,7 +38,7 @@ const Wrapper = styled.section`
         /* margin-block-start: 2rem; */
         /* justify-content: center; */
         a{
-            color: var(--textColor);
+            color: white;
             display: flex;
             align-items: center;
             gap: 1rem;

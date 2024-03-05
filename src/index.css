@@ -24,33 +24,38 @@ html {
   --primaryColor40: #d6824d;
   --primaryColor: #C44C00;
   /* --textColor: #cbd5e1; */
-  --textColor: #020617;
+  --textColor: #010109;
   --textInverse: white;
   --secondaryColor: white;
-  --overlay: #f5f5f599;
-  min-height: 86vh;
+  --secondaryColor2: #f5f5f5;
   --redText: #842029;
   --redBackground: #f8d7da;
   --greenText: #0f5132;
   --greenBackground: #d1e7dd;
   --backgroundColor: whitesmoke;
+  --backgroundColor2: #010109;
+  --cardbg: white;
   --letterSpacing: 1px;
   --transition: all 2s linear;
   --maxWidth: 1440px;
-  --maxWidth2: 1000px;
+  --maxWidth2: 1200px;
   --fixedWidth: 500px;
   --shadowmd: 0px 4px 6px -1px rgb(0 0 0/0.1),
     0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadowlg: 0px 10px 15px -3px rgb(0 0 0/0.1),
     0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --modal: #33333e50;
 }
 .dark{
   /* --backgroundColor: #130700; */
   --backgroundColor: #010109;
-  --textGray: ;
+  --backgroundColor2: #010109;
+  --secondaryColor2: #33333e50;
+  --cardbg: #010109;
   --textColor: whitesmoke;
   --textInverse: #020617;
-  --secondaryColor: #33261f;
+  --secondaryColor: #010109;
+  /* --secondaryColor: #33261f; */
   --overlay: #33261f99;
 }
 

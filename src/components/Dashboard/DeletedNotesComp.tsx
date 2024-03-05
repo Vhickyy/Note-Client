@@ -69,10 +69,10 @@ const AllNotesComponenent = () => {
 
 export default AllNotesComponenent
 
-const Wrapper = styled.main`
+const Wrapper = styled.div`
   padding-block: 2rem;
-  /* width: min(90%,var(--maxWidth)); */
-  width: 90%;
+  width: min(var(--maxWidth2),90%);
+  margin-inline: auto;
   button{
     margin-bottom: 1rem;
   }
@@ -83,11 +83,11 @@ const Wrapper = styled.main`
   .card-wrapper{
     display: grid;
     /* grid-template-columns: 1fr; */
-    grid-template-columns: repeat(auto-fit,minmax(250px,auto));
+    grid-template-columns: repeat(auto-fill,minmax(300px,auto));
     gap: 1.1rem;
   }
   .card{
-    background-color: var(--backgroundColor);
+    background-color: var(--cardbg);
     padding: 1rem;
     border-radius: var(--borderRadius);
     box-shadow: var(--shadowmd);
@@ -96,7 +96,7 @@ const Wrapper = styled.main`
   @media screen and (min-width: 1000px){
     .card-wrapper{
       /* grid-template-columns: 1fr 1fr; */
-      grid-template-columns: repeat(auto-fit,minmax(300px,auto));
+      /* grid-template-columns: repeat(auto-fit,minmax(300px,auto)); */
     }
   }
 `

@@ -28,7 +28,8 @@ const Wrapper = styled.header`
     top: 0;
     /* height: auto; */
     /* background-color: red; */
-    background-color: var(--backgroundColor);
+    background-color: var(--backgroundColor2);
+    color: white;
     .head{
         width: min(var(--maxWidth2),90%);
         margin-inline: auto;
@@ -40,7 +41,7 @@ const Wrapper = styled.header`
             font-weight: 500;
         }
         .icon{
-            border: 2px solid var(--primaryColor80);
+            /* border: 2px solid var(--primaryColor80); */
             padding: .3rem;
             border-radius: .25rem;
         }

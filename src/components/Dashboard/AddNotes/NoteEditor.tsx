@@ -1,6 +1,7 @@
 
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"
+import styled from "styled-components";
 
 type NoteEditorProp = {
   value:string
@@ -9,10 +10,11 @@ type NoteEditorProp = {
 const NoteEditor = ({value,onChange}:NoteEditorProp) => {
     
   return (
-    <div>
+    <>
         <ReactQuill theme="snow" value={value} onChange={onChange} />
-    </div>
+    </>
   )
 }
 
 export default NoteEditor
+

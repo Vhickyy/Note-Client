@@ -25,6 +25,5 @@ grid-template-rows: auto 1fr;
     /* min-height: 86vh; */
     /* height: 100%; */
     color:white;
-    background-color: var(--secondaryColor);
   }
 `

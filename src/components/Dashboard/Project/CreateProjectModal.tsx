@@ -65,7 +65,7 @@ export default CreateProjectModal
 
 const Wrapper = styled.form`
     /* .content{ */
-        background-color: var(--backgroundColor);
+        background-color: var(--backgroundColor2);
         width: min(90%,var(--fixedWidth));
         padding: 2rem;
         display: grid;

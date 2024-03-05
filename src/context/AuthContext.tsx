@@ -2,6 +2,7 @@ import {  createContext, useContext, useEffect, useState } from "react";
 import { customFetch } from "../api/axios";
 // import {  useQueryClient } from "@tanstack/react-query";
 import { User } from "../types/types";
+import axios from "axios";
 // import axios from "axios";
 
 type AuthType =  {
@@ -22,13 +23,13 @@ export const AuthContextProvider = ({children}:{children:React.ReactNode}) => {
     
     //  const queryClient = useQueryClient()
      
-    // useEffect(()=>{
-    //   const note = async () => {
-    //     const data = await axios.get("http://localhost:8000/noteapi")
-    //     console.log(data);
-    //   }
-    //   // note()
-    // },[])
+    useEffect(()=>{
+      const note = async () => {
+        const data = await axios.get("http://localhost:8000/api/notes",{withCredentials:true})
+        console.log(data);
+      }
+      note()
+    },[])
     
     const saveUser = (user:User) => {
       setUser(user)
@@ -72,6 +73,8 @@ export const AuthContextProvider = ({children}:{children:React.ReactNode}) => {
       return response
     },
     error => {
+      // console.log(error);
+      
       if(error.response.status === 401){
         setUser(null)
       }

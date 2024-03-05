@@ -16,12 +16,14 @@ const AddUserModal = ({addUserModal,setAddUserModal}:{addUserModal: { open: bool
         queryFn: ()=>getProject(projectId)
     })
     
-    const {mutate,isPending} = useMutation({
+    const {mutate,isPending,error} = useMutation({
         mutationFn: addUserApi,
         onSuccess:() => {
             queryClient.invalidateQueries({queryKey:["single-project",projectId]})
         },
     })
+    console.log(error);
+    
     const addUser = (e:React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         const email = "veevhickyy@gmail.com"

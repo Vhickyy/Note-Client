@@ -28,7 +28,9 @@ export default Profile
 const Wrapper = styled.form`
   width: 100%;
   padding: 1rem;
-  border-radius: 1rem;
+  border-radius: .5rem;
   /* height: 20rem; */
-  background-color: var(--backgroundColor); 
+  background-color: var(--secondaryColor); 
+  color: var(--textColor);
+  box-shadow: var(--shadowmd);
 `

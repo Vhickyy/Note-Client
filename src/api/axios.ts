@@ -3,8 +3,8 @@ import { NoteType, ProjectType, User } from "../types/types";
 
 
 export const customFetch = axios.create({
-        // baseURL: "http://localhost:8000/api",
-        baseURL: "https://note-backend-mah3.onrender.com/api",
+        baseURL: "http://localhost:8000/api",
+        // baseURL: "https://note-backend-mah3.onrender.com/api",
         headers: {
             "Content-Type": "application/json",
             // "Access-Control-Allow-Headers":
@@ -22,6 +22,8 @@ export const getUser = async () : Promise<User> => {
 // NOTES API
 export const getAllNotes = async () : Promise<NoteType[]> => {
     const { data }  = await customFetch.get("/notes");
+    console.log(data);
+    
     return data.notes;
 }
 

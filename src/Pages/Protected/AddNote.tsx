@@ -6,6 +6,7 @@ import { addNoteApi } from "../../api/axios";
 import { useState } from "react";
 import { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 const AddNote = () => {
   const [value,setValue] = useState("");
   const [title,setTitle] = useState("");
@@ -13,7 +14,14 @@ const AddNote = () => {
   const {mutate,isPending,error, isError} = useMutation({
     mutationFn: addNoteApi,
     onSuccess: () => {
+      toast("success",{position:"top-center"})
       navigate("/dashboard/allnotes")
+    },
+    onError: (error:any) => {
+      if(error instanceof AxiosError){
+        return toast(error.response?.data.msg,{position: "top-center"})
+      }
+      return toast(error?.message,{position: "top-center"})
     }
   })
   const addNote = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -25,8 +33,8 @@ const AddNote = () => {
   return (
     <Wrapper>
         <Navbar page="Add New Note"/>
-        {isError && error && <p>{error.message}</p>}
-        {isError && error instanceof AxiosError && <p>{error?.response?.data.msg}</p>}
+        {/* {isError && error && <p>{error.message}</p>}
+        {isError && error instanceof AxiosError && <p>{error?.response?.data.msg}</p>} */}
         <form>
           <div className="top">
             <div className="inputDiv">
@@ -46,7 +54,7 @@ export default AddNote
 const Wrapper = styled.div`
   form{
     padding-block: 2rem;
-    width: 90%;
+    width: min(var(--maxWidth2),90%);
     margin-inline: auto;
     min-height: 86vh;
   }
@@ -71,5 +79,6 @@ const Wrapper = styled.div`
     padding: .5rem;
     border-radius: 0.5rem;
     caret-color: gray;
+    color: var(--textColor);
   }
 `

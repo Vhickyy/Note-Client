@@ -40,11 +40,11 @@ const Memorycheck = () => {
                 <textarea name="" id="" placeholder="try writing the text here" className="text-div" value={tryText} onChange={(e)=>changeTry(e)}></textarea>
             {/* </div> */}
             <div className="text-div">
-                {result?.length && result.map((res,index)=>{
+                {result.length ? result.map((res,index)=>{
                   return(
-                    <span key={index} className={res.match ? "green" : "red"}>{`${res.word} `}</span>
+                    <span key={index} className={res.match ? "green" : "red"}>{ `${res.word}`}</span>
                   )
-                })}
+                }) : <p>Result will be shown here</p>}
             </div>
           </div>    
         </section>
@@ -60,7 +60,7 @@ const Wrapper = styled.div`
     padding: .2rem;
   }
   .green{
-    background-color: green;    
+    background-color: green;
   }
   .red{
     background-color: red;
@@ -70,7 +70,6 @@ const Wrapper = styled.div`
     width: min(90%,var(--maxWidth));
     margin-inline: auto;
     min-height: 86vh;
-    color:white;
   }
   .memory-body{
     display: grid;
@@ -78,12 +77,14 @@ const Wrapper = styled.div`
   }
   .text-div{
     width: 100%;
-    border-radius: 1rem;
+    border-radius: .5rem;
     height: 20rem;
-    background-color: #fff;
-    box-shadow: var(--shadowmd);
+    background-color: var(--secondaryColor);
     padding: .5rem;
     overflow-y: auto;
+    color: var(--textColor);
+    /* color: whitesmoke; */
+    box-shadow: var(--shadowmd);
   }
   textarea{
     width: 100%;
@@ -92,6 +93,8 @@ const Wrapper = styled.div`
     outline: none;
     border: none;
     resize: none;
+    color: var(--textColor);
+    box-shadow: var(--shadowmd);
   }
   @media screen and (min-width: 1000px) {
     .memory-body{

@@ -48,8 +48,9 @@ const Wrapper = styled.aside`
   .nav{
     height: 100%;
     width: 20rem;
-    background-color: var(--backgroundColor);
+    background-color: var(--backgroundColor2);
     box-shadow: var(--shadowlg); 
+    color: white;
   }
   .flex{
     display: flex;

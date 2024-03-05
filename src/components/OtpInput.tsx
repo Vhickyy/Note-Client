@@ -91,8 +91,9 @@ const Wrapper = styled.div`
     }
     button{
         width: 100%;
+        color: whitesmoke;
     }
     button:disabled{
-        background-color: gray;
+        background-color: var(--secondaryColor);
     }
 `
