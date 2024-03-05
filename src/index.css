@@ -171,6 +171,13 @@ button{
   border: 1px solid var(--primaryColor);
   color: #33261f;
 }
+.loader{
+  width: 2rem;
+  height: 2rem;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 1rem solid var(--primaryColor);
+}
 /* @media screen and (min-width:700px) {
   h1 {
       font-size: 4rem;

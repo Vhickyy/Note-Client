@@ -3,12 +3,20 @@ import { FaTimes } from "react-icons/fa"
 import styled from "styled-components"
 import { createProjectApi } from "../../../api/axios"
 import ModalWrapper from "../../ModalWrapper"
+import { ProjectType } from "../../../types/types"
+import { Dispatch, SetStateAction } from "react"
 
 type CreateProject = {
-    closeModal: (e: React.MouseEvent<HTMLButtonElement>) => void
+    closeModal: (e: React.MouseEvent<HTMLButtonElement> | React.FormEvent<HTMLFormElement>) => void
+    project?: ProjectType
+    editProjectBool?: Boolean,
+    // setProject: 
+    setEditProjectBool?: Dispatch<SetStateAction<boolean>>
 }
 
-const CreateProjectModal = ({closeModal}:CreateProject) => {
+const CreateProjectModal = ({closeModal,project,editProjectBool,setEditProjectBool}:CreateProject) => {
+    console.log(editProjectBool);
+    
     const queryClient = useQueryClient();
 
     const {mutateAsync,isPending} = useMutation({
@@ -17,16 +25,22 @@ const CreateProjectModal = ({closeModal}:CreateProject) => {
             queryClient.invalidateQueries({queryKey:["projects"]})
         },
       })
-    const createNewProject = async (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const createNewProject = async (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const newProject = {title:"new project",brief:"summary of project",dueDate:new Date(Date.now() + 40000).toString()};
+        const formData = new FormData(e.currentTarget);
+        const projectData:{title:string,brief:string} = Object.fromEntries(formData) as {title:string,brief:string};
+        // const newProject = {title:"new project",brief:"summary of project",dueDate:new Date(Date.now() + 40000).toString()};
+        const newProject = {...projectData,dueDate:new Date(Date.now() + 40000).toString()};
         await mutateAsync(newProject);
+        if(editProjectBool){
+            setEditProjectBool!(false)
+        }
         closeModal(e)
       }
 
   return (
     <ModalWrapper>
-    <Wrapper>
+    <Wrapper onSubmit={createNewProject}>
         {/* <form className="content"> */}
             <div className="head">
                 <h4>New Project</h4>
@@ -35,11 +49,11 @@ const CreateProjectModal = ({closeModal}:CreateProject) => {
             <div className="body">
                 <div className="inputs">
                     <h5>Project Name</h5>
-                    <input type="text" placeholder="project name"/>
+                    <input type="text" name="title" placeholder="project name" defaultValue={project?.title ? `${project?.title}` : ""}/>
                 </div>
                 <div className="inputs">
                     <h5>Project Brief</h5>
-                    <textarea name="" id=""></textarea>
+                    <textarea name="brief" id="" defaultValue={project?.brief ? `${project?.brief}` : ""}></textarea>
                 </div>
                 {/* <div className="inputs">
                     <h5>Add User, min 1, max 2</h5>
@@ -52,8 +66,8 @@ const CreateProjectModal = ({closeModal}:CreateProject) => {
                 </div>
             </div>
             <div>
-                <button onClick={closeModal}>Discard</button>
-                <button onClick={createNewProject} disabled={isPending}>{isPending ? "Creating" : "Create"}</button>
+                <button onClick={closeModal} className="btn">Discard</button>
+                <button type="submit" className="btn" disabled={isPending}>{isPending ? "Creating" : "Create"}</button>
             </div>
         {/* </form> */}
     </Wrapper>

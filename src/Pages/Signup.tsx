@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { customFetch } from "../api/axios";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import axios from "axios";
+// import axios from "axios";
 const Signup =  () => {
   const [signupState,setSignupState] = useState({loading:false})
   const navigate = useNavigate();

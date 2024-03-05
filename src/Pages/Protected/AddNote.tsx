@@ -11,10 +11,10 @@ const AddNote = () => {
   const [value,setValue] = useState("");
   const [title,setTitle] = useState("");
   const navigate = useNavigate()
-  const {mutate,isPending,error, isError} = useMutation({
+  const {mutate,isPending} = useMutation({
     mutationFn: addNoteApi,
     onSuccess: () => {
-      toast("success",{position:"top-center"})
+      // toast("success",{position:"top-center"})
       navigate("/dashboard/allnotes")
     },
     onError: (error:any) => {

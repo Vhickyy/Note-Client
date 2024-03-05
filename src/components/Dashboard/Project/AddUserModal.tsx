@@ -4,6 +4,7 @@ import ModalWrapper from '../../ModalWrapper'
 import { FaTimes } from 'react-icons/fa'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { addUserApi, deleteUserApi, getProject } from '../../../api/axios'
+import { toast } from 'react-toastify'
 // import { useAuth } from '../../../context/AuthContext'
 
 
@@ -21,12 +22,16 @@ const AddUserModal = ({addUserModal,setAddUserModal}:{addUserModal: { open: bool
         onSuccess:() => {
             queryClient.invalidateQueries({queryKey:["single-project",projectId]})
         },
+        onError: (error:any) => {
+            return toast(error.response.data.msg)
+        }
     })
     console.log(error);
     
-    const addUser = (e:React.MouseEvent<HTMLButtonElement>) => {
+    const addUser = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const email = "veevhickyy@gmail.com"
+        const email = new FormData(e.currentTarget) as unknown as string;
+        // const email = "veevhickyy@gmail.com"
         console.log(projectId);
         mutate({id:projectId,email})
     }
@@ -46,15 +51,15 @@ const AddUserModal = ({addUserModal,setAddUserModal}:{addUserModal: { open: bool
 
   return (
     <ModalWrapper>
-        <Wrapper >
+        <Wrapper onSubmit={addUser}>
             {/* <form className="content"> */}
                 <div className="head">
                     <h4>Title:{title}</h4>
                     <FaTimes className="icon" onClick={()=>setAddUserModal({open:false,title:"",projectId:""})}/>
                 </div>
                 <div className='input'>
-                <input type="text" placeholder='Enter Email of user' />
-                <button onClick={addUser} disabled={isPending}>{!isPending ? "Add" : "Adding"}</button>
+                <input type="text" placeholder='Enter Email of user' name="email" />
+                <button type='submit' disabled={isPending} className='btn'>{!isPending ? "Add" : "Adding"}</button>
                 </div>
                 <div>
                     <p>{users?.members && users.members.length - 1 > 0 ? users.members.length - 1 : "No" } collaborator</p>
