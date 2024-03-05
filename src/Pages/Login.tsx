@@ -4,8 +4,8 @@ import { Link, useLocation, useNavigate  } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import {  useState } from "react";
 import { toast } from "react-toastify";
-import axios from "axios";
 // import axios from "axios";
+import { customFetch } from "../api/axios";
 
 const Login = () => {
   const [loading,setLoading] = useState(false)
@@ -16,7 +16,8 @@ const Login = () => {
   
   const googleSignIn = async (e:React.MouseEvent<HTMLButtonElement> ) => {
     e.preventDefault()
-    window.open("http://localhost:8000/auth/google","_self")
+    // window.open("http://localhost:8000/auth/google","_self")
+    window.open("https://note-backend-mah3.onrender.com/api","_self")
   }
   // getaddrinfo ENOTFOUND ac-kh38zfn-shard-00-00.up4r05f.mongodb.net
   const login = async (e:React.FormEvent<HTMLFormElement> ) => {
@@ -26,7 +27,8 @@ const Login = () => {
       setLoading(true)
       try{
         // {email:"vee@gmail.com",password:"secret"}
-        const {data} = await axios.post("http://localhost:8000/api/login",loginData,{withCredentials:true});
+        // const {data} = await axios.post("http://localhost:8000/api/login",loginData,{withCredentials:true});
+        const {data} = await customFetch.post("/login",loginData,{withCredentials:true});
         console.log(data);
         saveUser(data.user)
         
